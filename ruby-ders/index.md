@@ -37,7 +37,7 @@ Samsun
 
 # Hello
 
-.code: 01_hello.rb
+.code: code/01_hello.rb
 
 - `print`: standart giriş/çıkış/error
 
@@ -47,19 +47,19 @@ Samsun
 
 # Ruby Turu: OOP
 
-.coden: 01_oop.rb
+.coden: code/01_oop.rb
 
 ---
 
 # Ruby Turu: Bloklar ve Iteratorler
 
-.coden: 01_block.rb
+.coden: code/01_block.rb
 
 ---
 
 # Ruby Turu: İfadeler ve İşleçler
 
-.coden: 01_expression.rb
+.coden: code/01_expression.rb
 
 .shelr: 5051de1e96608010b3000025
 
@@ -67,7 +67,7 @@ Samsun
 
 # Ruby Turu: Yöntemler
 
-.coden: 01_fun.rb
+.coden: code/01_fun.rb
 
 .shelr: 5051de9c966080189000001e
 
@@ -75,7 +75,7 @@ Samsun
 
 # Ruby Turu: Atama
 
-.coden: 01_atama.rb
+.coden: code/01_atama.rb
 
 .shelr: 5051dfac96608010b3000026
 
@@ -87,7 +87,7 @@ Samsun
 
 - öntakı olarak `$` (global değişken), `@` (instance değişkeni) ve `@@` (class değişkeni) kullanılır
 
-.coden: 01_punc.rb
+.coden: code/01_punc.rb
 
 .shelr: 5051e094966080189000001f
 
@@ -95,7 +95,7 @@ Samsun
 
 # Ruby Turu: Regexp ve Range
 
-.coden: 01_regexp.rb
+.coden: code/01_regexp.rb
 
 .shelr: 5051e3039660801890000020
 
@@ -103,7 +103,7 @@ Samsun
 
 # Ruby Turu: Class ve Modüller
 
-.coden: 01_class.rb
+.coden: code/01_class.rb
 
 .shelr: 5051e41b96608010b3000029
 
@@ -117,7 +117,7 @@ Samsun
 
 - iki nokta-`::`: class yöntemi
 
-.coden: 01_irb.rb
+.coden: code/01_irb.rb
 
 .shelr: 5051e6ef96608010b300002c
 
@@ -245,7 +245,7 @@ bunları kullanmayın.
 
 # Beyaz Boşluklar
 
-.coden: 01_whitespace.rb
+.coden: code/01_whitespace.rb
 
 .shelr: 5051f02096608010b3000031
 
