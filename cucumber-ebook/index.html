@@ -1595,7 +1595,7 @@ div.slide {
 
 <p>Samsun</p>
 
-<p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://fo.seyyah.me/cucumber-ebook">http://fo.seyyah.me/cucumber-ebook</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
+<p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/cucumber-ebook">http://seyyah.me/p/cucumber-ebook</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1937,15 +1937,15 @@ div.slide {
             <header><h1>2.3 Creating Step Definitions</h1></header>
             
             
-            <section><p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^the input &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+            <section><p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^the input &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^the calculator is run$/</span> <span class="k">do</span>
+<span class="no">When</span><span class="sr"> /^the calculator is run$/</span> <span class="k">do</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -1979,15 +1979,15 @@ div.slide {
             <header><h1>2.4 Implementing Step Definitions</h1></header>
             
             
-            <section><p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^the input &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">input</span><span class="o">|</span>
+            <section><p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^the input &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">input</span><span class="o">|</span>
   <span class="vi">@input</span> <span class="o">=</span> <span class="n">input</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^the calculator is run$/</span> <span class="k">do</span>
+<span class="no">When</span><span class="sr"> /^the calculator is run$/</span> <span class="k">do</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -2056,16 +2056,16 @@ div.slide {
             <header><h1>2.5 Running Our Program</h1></header>
             
             
-            <section><p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^the input &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">input</span><span class="o">|</span>
+            <section><p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^the input &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">input</span><span class="o">|</span>
   <span class="vi">@input</span> <span class="o">=</span> <span class="n">input</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^the calculator is run$/</span> <span class="k">do</span>
+<span class="no">When</span><span class="sr"> /^the calculator is run$/</span> <span class="k">do</span>
   <span class="vi">@output</span> <span class="o">=</span> <span class="sb">`ruby calc.rb </span><span class="si">#{</span><span class="vi">@input</span><span class="si">}</span><span class="sb">`</span>
   <span class="k">raise</span><span class="p">(</span><span class="s1">&#39;Command failed!&#39;</span><span class="p">)</span> <span class="k">unless</span> <span class="vg">$?</span><span class="o">.</span><span class="n">success?</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -2192,7 +2192,7 @@ features/step_definitions/foo_steps.rb
 
 <p>Tatmin edecek step&#39;i yazalım,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
   <span class="vi">@output</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="n">expected_output</span>
 <span class="k">end</span>
 </pre></div>
@@ -2727,7 +2727,7 @@ Examples
 
 <p>Step tanımı şöyle olmalıdır,</p>
 
-<div class="highlight"><pre><span class="no">Given</span> <span class="sr">/I have (\d+) cucumbers? in my basket/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+<div class="highlight"><pre><span class="no">Given</span><span class="sr"> /I have (\d+) cucumbers? in my basket/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
   <span class="c1"># TODO: code goes here</span>
 <span class="k">end</span>
 </pre></div>
@@ -2770,7 +2770,7 @@ Examples
 
 <p>Step tanımı şöyle olmalıdır,</p>
 
-<div class="highlight"><pre><span class="no">When</span> <span class="sr">/I (?:visit|go to) the homepage/</span> <span class="k">do</span>
+<div class="highlight"><pre><span class="no">When</span><span class="sr"> /I (?:visit|go to) the homepage/</span> <span class="k">do</span>
   <span class="c1"># TODO: code goes here</span>
 <span class="k">end</span>
 </pre></div>
@@ -3119,16 +3119,16 @@ Scenario)</p>
             
             <section><p>Step,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="c1"># table is a Cucumber::Ast::Table</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="c1"># table is a Cucumber::Ast::Table</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
@@ -3167,16 +3167,16 @@ Scenario)</p>
             
             <section><p>Step,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="vi">@board</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">raw</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="vi">@board</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="c1"># table is a Cucumber::Ast::Table</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
@@ -3215,16 +3215,16 @@ Scenario)</p>
             
             <section><p>Step,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="vi">@board</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">raw</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">|</span>
 
 
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_table</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_table</span><span class="o">|</span>
   <span class="n">expected_table</span><span class="o">.</span><span class="n">diff!</span><span class="p">(</span><span class="vi">@board</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -3262,16 +3262,16 @@ Scenario)</p>
             
             <section><p>Step,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="vi">@board</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">raw</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^player x plays in row (\d+), column (\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">|</span>
   <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">to_i</span><span class="p">,</span> <span class="n">col</span><span class="o">.</span><span class="n">to_i</span>
   <span class="vi">@board</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_board</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the board should look like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_board</span><span class="o">|</span>
   <span class="n">expected_board</span><span class="o">.</span><span class="n">diff!</span><span class="p">(</span><span class="vi">@board</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -3769,14 +3769,14 @@ Scenario)</p>
 
 <p>Step&#39;ler şöyle olur,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have pushed my card in the slot$/</span> <span class="k">do</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have pushed my card in the slot$/</span> <span class="k">do</span>
 </pre></div>
 </p>
 
 <pre><code>...
 </code></pre>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have authenticated with the correct PIN$/</span> <span class="k">do</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have authenticated with the correct PIN$/</span> <span class="k">do</span>
   <span class="n">steps</span> <span class="sx">%{</span>
 <span class="sx">    And I have pushed my card into the slot</span>
 <span class="sx">    And I enter my PIN</span>
@@ -3816,7 +3816,7 @@ Scenario)</p>
             
             <section><p>Step örneği 1: ruby kodu</p>
 
-<div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^an activated customer (\w+) exists$/</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+<div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^an activated customer (\w+) exists$/</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
   <span class="n">steps</span> <span class="sx">%{</span>
 <span class="sx">    Given I create a customer with login </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="sx"></span>
 <span class="sx">    And I register the customer with login </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="sx"></span>
@@ -3828,7 +3828,7 @@ Scenario)</p>
 
 <p>Data Tables&#39;ı böyle geçebiliriz, +bonus: tek step durumu</p>
 
-<div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^a (\w+) widget with the following details:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">color</span><span class="p">,</span> <span class="n">details_table</span><span class="o">|</span>
+<div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a (\w+) widget with the following details:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">color</span><span class="p">,</span> <span class="n">details_table</span><span class="o">|</span>
   <span class="n">step</span> <span class="s2">&quot;I create a </span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2"> widget with the following details:&quot;</span><span class="p">,</span> <span class="n">details_table</span>
   <span class="n">steps</span> <span class="sx">%{</span>
 <span class="sx">    And I register the </span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="sx"> widget</span>
@@ -4129,7 +4129,7 @@ Scenario)</p>
 
 <p><strong>Step 1:</strong> <font color=red>KIRMIZI</font>,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="no">Account</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -4176,7 +4176,7 @@ Scenario)</p>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="no">Given</span> <span class="sr">/^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="no">Account</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -4223,7 +4223,7 @@ Scenario)</p>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="no">Given</span> <span class="sr">/^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
 <span class="k">end</span>
@@ -4272,7 +4272,7 @@ Scenario)</p>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="no">Given</span> <span class="sr">/^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">),</span> 
@@ -4432,7 +4432,7 @@ Scenario)</p>
 <li><p>Bunun için Step tanımında <code>Transform</code> tanımlayalım,</p></li>
 </ul>
 
-<p><div class="highlight"><pre><span class="no">Transform</span> <span class="sr">/^\d+$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Transform</span><span class="sr"> /^\d+$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
   <span class="n">number</span><span class="o">.</span><span class="n">to_i</span>
 <span class="k">end</span>
 </pre></div>
@@ -4442,7 +4442,7 @@ Scenario)</p>
 <li>Artık <code>to_i</code>&#39;siz yazabiliriz</li>
 </ul>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
@@ -4485,11 +4485,11 @@ Scenario)</p>
             
             <section><p>Bir sabit olarak tanımlayıpta kullanabiliriz,</p>
 
-<p><div class="highlight"><pre><span class="no">CAPTURE_A_NUMBER</span> <span class="o">=</span> <span class="no">Transform</span> <span class="sr">/^\d+$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">CAPTURE_A_NUMBER</span> <span class="o">=</span> <span class="no">Transform</span><span class="sr"> /^\d+$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
   <span class="n">number</span><span class="o">.</span><span class="n">to_i</span>
 <span class="k">end</span>
 
-<span class="no">Given</span> <span class="sr">/^I have deposited \$(</span><span class="si">#{</span><span class="no">CAPTURE_A_NUMBER</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">Given</span><span class="sr"> /^I have deposited \$(</span><span class="si">#{</span><span class="no">CAPTURE_A_NUMBER</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
@@ -4564,7 +4564,7 @@ Scenario)</p>
 
 <p>Step en son şöyle idi,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I request \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I request \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -4572,7 +4572,7 @@ Scenario)</p>
 
 <p>Transform+Constant kullanarak Step&#39;i tekrardan yazalım,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I request (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I request (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -4608,7 +4608,7 @@ Scenario)</p>
             
             <section><p>Banka memuru (<em>teller</em>), hesabımızdan çeksin (<em>withdraw</em>),</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I request (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I request (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
@@ -4628,7 +4628,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 
 <p>Bunun step&#39;ini güncelleyelim,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
@@ -4708,14 +4708,14 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             <section><p>instance&#39;a dönüştrmek gerek (normal ruby davranışı),</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="vi">@my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="vi">@my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="vi">@my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="vi">@my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="vi">@my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
@@ -4808,13 +4808,13 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             <section><p>Step&#39;leri tekrar güncelle (<code>@my_account &gt; my_account</code>),</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
@@ -4851,7 +4851,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             <section><p>Son Step,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^\$(\d+) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^\$(\d+) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -4859,7 +4859,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 
 <p>Önce Transform:Constant&#39;ını devreye alalım,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -4867,7 +4867,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 
 <p>Şöyle yazabiliriz,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">cash_slot</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="n">amount</span>
 <span class="k">end</span>
 </pre></div>
@@ -5006,7 +5006,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             <section><p>Step&#39;in önceki hali,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
@@ -5015,7 +5015,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 
 <p>güncellersek,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -5371,7 +5371,7 @@ features/step_definitions/cash_slot_steps.rb
             
             <section><p>Kasa&#39;dan düşen böyle sınanıyor,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -5438,13 +5438,13 @@ edeceğim?</p>
 
 <p>dair adım,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the balance of my account should be \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the balance of my account should be \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -5480,7 +5480,7 @@ edeceğim?</p>
             
             <section><p>Böyle başladık,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^the balance of my account should be \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^the balance of my account should be \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
@@ -5488,7 +5488,7 @@ edeceğim?</p>
 
 <p>şöyle yapıyoruz,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
@@ -5599,7 +5599,7 @@ tetikleyen feature satırı,</p>
 
 <p>buna ait step,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -5960,14 +5960,14 @@ olarak dört kriter belirlemiştir,</p>
             
             <section><p>Step (önce),</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p>
 
 <p>Step (sonra),</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p></section>
@@ -6014,14 +6014,14 @@ olarak dört kriter belirlemiştir,</p>
 
 <p>Buna dair Step (önce),</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p>
 
 <p>Step (sonra),</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p></section>
@@ -6056,13 +6056,13 @@ olarak dört kriter belirlemiştir,</p>
             
             <section><p>Bu iki adım,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
@@ -6071,11 +6071,11 @@ olarak dört kriter belirlemiştir,</p>
 
 <p>Evet&hellip; kod tekrarı içeriyor fakat zaten ilk adım, görevi olmayan işe girişmiş,</p>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
@@ -6208,7 +6208,7 @@ olarak dört kriter belirlemiştir,</p>
             <section><p>Peki nasıl? İlgili step&#39;te teller (kasiyer)&#39;in hesaptan nasıl düşeceğini
 bilmiyoruz,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -6271,7 +6271,7 @@ bilmiyoruz,</p>
 
 <p>Neden? İlgili Step,</p>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">cash_slot</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="n">amount</span>
 <span class="k">end</span>
 </pre></div>
@@ -6315,7 +6315,7 @@ bilmiyoruz,</p>
             
             <section><p>Bu ise bir önceki adımda,</p>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -7012,7 +7012,7 @@ end
 <li>Adım tanımını oluşturalım,</li>
 </ul>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^there is a User$/</span> <span class="k">do</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^there is a User$/</span> <span class="k">do</span>
   <span class="no">Factory</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
@@ -7167,7 +7167,7 @@ end
 <li>Adım tanımını oluşturalım,</li>
 </ul>
 
-<p><div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^the User has posted the message &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">message_text</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^the User has posted the message &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">message_text</span><span class="o">|</span>
   <span class="no">User</span><span class="o">.</span><span class="n">count</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1</span>
   <span class="no">Factory</span><span class="p">(</span><span class="ss">:message</span><span class="p">,</span> <span class="ss">:content</span> <span class="o">=&gt;</span> <span class="n">message_text</span><span class="p">,</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="p">)</span>
 <span class="k">end</span>
@@ -7358,7 +7358,7 @@ end
 <li>Adım tanımını oluşturalım,</li>
 </ul>
 
-<p><div class="highlight"><pre><span class="no">When</span> <span class="sr">/^I visit the page for the User$/</span> <span class="k">do</span>
+<p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I visit the page for the User$/</span> <span class="k">do</span>
   <span class="no">User</span><span class="o">.</span><span class="n">count</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1</span>
   <span class="n">visit</span><span class="p">(</span><span class="n">user_path</span><span class="p">(</span><span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="p">))</span>
 <span class="k">end</span>
@@ -7511,7 +7511,7 @@ end
 <li>View: Adım tanımını oluşturalım,</li>
 </ul>
 
-<p><div class="highlight"><pre><span class="no">Then</span> <span class="sr">/^I should see &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">text</span><span class="o">|</span>
+<p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^I should see &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">text</span><span class="o">|</span>
   <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>

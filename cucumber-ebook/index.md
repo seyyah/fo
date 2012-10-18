@@ -10,7 +10,7 @@ Haziran, 2012
 
 Samsun
 
-.qr: 150|http://fo.seyyah.me/cucumber-ebook
+.qr: 150|http://seyyah.me/p/cucumber-ebook
 
 ---
 
