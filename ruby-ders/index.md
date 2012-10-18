@@ -159,8 +159,8 @@ Yorum satırları diyez-`#` ile başlatılır
 
     !ruby
     # Bu satırın tamamı yorum satırıdır
-    x = "#Bu bir katardır"                  # bu ise yorumdur
-    y = "/#bu düzenli ifadedir/"        # bu diğer bir yorumdur
+    x = "#Bu bir katardır" 		    # bu ise yorumdur
+    y = "/#bu düzenli ifadedir/"	# bu diğer bir yorumdur
 
 ---
 
@@ -712,4 +712,3 @@ Genişleyen diziler,
 ---
 
 # 3.4 Çırpı
-

@@ -1590,16 +1590,11 @@ div.slide {
             <header><h1>Devise</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
-<p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
+            <section><p>Nurettin Şenyer <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#101;&#121;&#121;&#97;&#104;&#64;&#98;&#105;&#108;&#46;&#111;&#109;&#117;&#46;&#101;&#100;&#117;&#46;&#116;&#114;">&#115;&#101;&#121;&#121;&#97;&#104;&#64;&#98;&#105;&#108;&#46;&#111;&#109;&#117;&#46;&#101;&#100;&#117;&#46;&#116;&#114;</a></p>
+<p>http://seyyah.me</p>
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
-<p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/devise">http://seyyah.me/p/devise</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
+<p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=http://seyyah.me/p/devise&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1629,20 +1624,41 @@ div.slide {
             <header><h1>Yetenekleri</h1></header>
             
             
-            <section><p> It&#39;s composed of 12 modules:</p>
-
+            <section><p>It's composed of 12 modules:</p>
 <ul>
-<li><p>Database Authenticatable: encrypts and stores a password in db</p></li>
-<li><p>Token Authenticatable: signs in a user based on an authentication token</p></li>
-<li><p>Omniauthable: adds Omniauth (<a href="https://github.com/intridea/omniauth">https://github.com/intridea/omniauth</a>) support;</p></li>
-<li><p>Confirmable: sends emails with confirmation and verifies</p></li>
-<li><p>Recoverable: resets the user password and sends reset instructions.</p></li>
-<li><p>Registerable: handles signing up users</p></li>
-<li><p>Rememberable: manages remembers; saved cookie.</p></li>
-<li><p>Trackable: tracks sign in count, timestamps and IP address.</p></li>
-<li><p>Timeoutable: expires sessions</p></li>
-<li><p>Validatable: provides validations of email and password.</p></li>
-<li><p>Lockable: locks an account after a specified number of failed sign-in</p></li>
+<li>
+<p>Database Authenticatable: encrypts and stores a password in db</p>
+</li>
+<li>
+<p>Token Authenticatable: signs in a user based on an authentication token</p>
+</li>
+<li>
+<p>Omniauthable: adds Omniauth (https://github.com/intridea/omniauth) support;</p>
+</li>
+<li>
+<p>Confirmable: sends emails with confirmation and verifies</p>
+</li>
+<li>
+<p>Recoverable: resets the user password and sends reset instructions.</p>
+</li>
+<li>
+<p>Registerable: handles signing up users</p>
+</li>
+<li>
+<p>Rememberable: manages remembers; saved cookie.</p>
+</li>
+<li>
+<p>Trackable: tracks sign in count, timestamps and IP address.</p>
+</li>
+<li>
+<p>Timeoutable: expires sessions</p>
+</li>
+<li>
+<p>Validatable: provides validations of email and password.</p>
+</li>
+<li>
+<p>Lockable: locks an account after a specified number of failed sign-in</p>
+</li>
 </ul></section>
             
           </div>
@@ -1676,8 +1692,12 @@ div.slide {
             <section><ul>
 <li><a href="http://rails-bestpractices.com/blog/posts/14-migrate-from-authlogic-authlogic-connect-to-devise-omniauth">http://rails-bestpractices.com/blog/posts/14-migrate-from-authlogic-authlogic-connect-to-devise-omniauth</a></li>
 <li><a href="http://www.sitepoint.com/10-ruby-on-rails-best-practices/#.T-1oB6VzSBt">http://www.sitepoint.com/10-ruby-on-rails-best-practices/#.T-1oB6VzSBt</a></li>
-<li><p><a href="http://railsapps.github.com/tutorial-rails-devise-rspec-cucumber.html">http://railsapps.github.com/tutorial-rails-devise-rspec-cucumber.html</a></p></li>
-<li><p><a href="https://github.com/railscasts/250-authentication-from-scratch">https://github.com/railscasts/250-authentication-from-scratch</a></p></li>
+<li>
+<p><a href="http://railsapps.github.com/tutorial-rails-devise-rspec-cucumber.html">http://railsapps.github.com/tutorial-rails-devise-rspec-cucumber.html</a></p>
+</li>
+<li>
+<p><a href="https://github.com/railscasts/250-authentication-from-scratch">https://github.com/railscasts/250-authentication-from-scratch</a></p>
+</li>
 </ul></section>
             
           </div>
@@ -1736,8 +1756,7 @@ div.slide {
             <header><h1>Ön ayarlar</h1></header>
             
             
-            <section><p>Controller&#39;da,</p>
-
+            <section><p>Controller'da,</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">ProjectsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
     <span class="n">before_filter</span> <span class="ss">:authenticate_user!</span><span class="p">,</span> <span class="n">except</span><span class="p">:</span> <span class="o">[</span><span class="ss">:show</span><span class="p">,</span> <span class="ss">:index</span><span class="o">]</span>
 <span class="k">end</span>
