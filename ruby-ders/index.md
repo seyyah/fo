@@ -37,7 +37,7 @@ Samsun
 
 # Hello
 
-.code: 01_hello.rb
+.gist: 3738256
 
 - `print`: standart giriş/çıkış/error
 
@@ -47,19 +47,17 @@ Samsun
 
 # Ruby Turu: OOP
 
-.coden: 01_oop.rb
+.gist: 3738281
 
 ---
 
 # Ruby Turu: Bloklar ve Iteratorler
 
-.coden: 01_block.rb
+.gist: 3738307
 
 ---
 
 # Ruby Turu: İfadeler ve İşleçler
-
-.coden: 01_expression.rb
 
 .shelr: 5051de1e96608010b3000025
 
@@ -67,15 +65,11 @@ Samsun
 
 # Ruby Turu: Yöntemler
 
-.coden: 01_fun.rb
-
 .shelr: 5051de9c966080189000001e
 
 ---
 
 # Ruby Turu: Atama
-
-.coden: 01_atama.rb
 
 .shelr: 5051dfac96608010b3000026
 
@@ -83,19 +77,15 @@ Samsun
 
 # Ruby Turu: Punctuation
 
+.shelr: 5051e094966080189000001f
+
 - fonksiyon tanımında `!` ve `?` sıklıkla kullanılır
 
 - öntakı olarak `$` (global değişken), `@` (instance değişkeni) ve `@@` (class değişkeni) kullanılır
 
-.coden: 01_punc.rb
-
-.shelr: 5051e094966080189000001f
-
 ---
 
 # Ruby Turu: Regexp ve Range
-
-.coden: 01_regexp.rb
 
 .shelr: 5051e3039660801890000020
 
@@ -103,23 +93,19 @@ Samsun
 
 # Ruby Turu: Class ve Modüller
 
-.coden: 01_class.rb
-
 .shelr: 5051e41b96608010b3000029
 
 ---
 
 # IRB
 
+.shelr: 5051e6ef96608010b300002c
+
 - nokta-`.`: class/modül ile yöntemi ayırır
 
 - diyez-`#`: instance yöntemi
 
 - iki nokta-`::`: class yöntemi
-
-.coden: 01_irb.rb
-
-.shelr: 5051e6ef96608010b300002c
 
 ---
 
@@ -245,8 +231,6 @@ bunları kullanmayın.
 
 # Beyaz Boşluklar
 
-.coden: 01_whitespace.rb
-
 .shelr: 5051f02096608010b3000031
 
 ---
@@ -335,11 +319,6 @@ Koşul ve döngü **ifade**leri (statement) ile birleştirilebilir
 
 # Karakter Kodlama
 
-Shebang,
-
-    !ruby
-    # encoding: utf-8
-
 .shelr: 5051f6139660801890000023
 
 - diyez ile başlayan satırlar _shebang comment_ olarak bilinir
@@ -350,365 +329,3 @@ Shebang,
 
 <img src="http://i.imgur.com/Wlnp3.png" height="500">
 
----
-
-# 3.1 Sayılar
-
-![](http://i.imgur.com/C4kth.png)
-
-- Integer, 31 bit ? Fixnum : Bignum (keyfi uzunluklu)
-
----
-
-# 3.1.1 Tamsayı sabitleri
-
-Örnek,
-
-    !ruby
-    0
-    123
-    12345678901234567890
-
-Binlik ayracı olarak `_` kullanılabilir,
-
-    !ruby
-    1_000_000
-
-`0` başlayan sayılar özel anlamlıdır,
-
-    !ruby
-    0377   # Octal
-    0b1010 # Binary
-    0xFF   # Hexadecimal
-
----
-
-# 3.1.2 Gerçel sayı sabitleri
-
-Örnek,
-
-    !ruby
-    0.0
-    -3.14
-    6.02e23
-    1_000_000.01
-
----
-
-# 3.1.3 Aritmetik işlemler
-
-Dört işlem (`+, -, *, /`)
-
-    Ruby
-    [5/2, 5.0/2, 5/2.0]                 # => [2, 2.5, 2.5]
-    [5.0.div(2), 5.0.fdiv(2), 5.quo(2)] # => [2, 2.5, 5/2 kesri]
-
-- Sığmadığında otomatik tür dönüşümü
-- `0`'a bölme `ZeroDivisionError` hatası üretir
-- `0.0`'a bölme ise `Infinity` üretir
-- `0.0/0.0` ise `NaN` üretir
-
----
-
-# Modül
-
-Modülün yeri ayrıdır,
-
-    !ruby
-    5 % 2              # => 1
-    q, r = 10.divmod 3 # => Kesir: 3 tam 1/3
-
-`**` ise üst almada kullanılır,
-
-    !ruby
-    x ** 4
-    x ** (1/3.0)
-
----
-
-# Bit düzeyi erişim
-
-- İşleçler: `~, &, |, ^, <<, >>`
-
-- Tamsayılar için indisleme mümkündür ve bitlerine erişimi sağlar
-
-Örnek,
-
-    !ruby
-    x = 9 # => ikil: 0b1001
-    x[0]  # => 1
-    x[1]  # => 0
-    x[2]  # => 0
-    x[3]  # => 1
-
----
-
-# 3.1.4 İkil kayar noktalı sayılar ve yuvarlama hataları
-
-- Çoğu bilgisayar donanımı ve dili (Ruby buna dahildir) gerçel sayıları yaklaşık
-olarak tutar
-
-- donanımı etkin kullanmak adına, `1/2, 1/4, 1/1024` gibi ikilleri temsil
-  ederken
-
-- `1/10, 1/100` gibi kesirler yaklaşık tutulur
-
-Dolayısıyla,
-
-    !ruby
-    (0.4 - 0.3) == 0.1 # => false!
-
-Bu bir çok dilin (C, Java, JavaScript) ortak sorunudur
-
----
-
-# 3.2 Metin ve dizgi sabitleri
-
-## 3.2.1.1 Tek tırnak dizgi sabitleri
-
-Örnekler,
-
-    !ruby
-    'Bu dizgidir'
-    'Bu baska\' bir dizgidir'
-    'a\b' == 'a\\b' # => true
-
-    mesaj = 'Bu cok uzun '\
-    'Cok satirli'\
-    'Bir dizgidir.'
-
----
-
-# 3.2.1.2 Çift tırnak dizgi sabitleri
-
-Örnekler,
-
-    !ruby
-    "\t\"Bunda hem sekme hem de çift tırnak var ve yeni satırla biter\"\n"
-    "\\" # ter slaş
-
-    "360 derece=#{2 * Math::PI}} radyandır"
-
-    $global = 'foo'
-    "#$global bar" # => 'foo bar'
-
-    "foo \#{" # => 'foo #{'
-
-İleri düzey,
-
-    !ruby
-    sprintf("pi yaklaşık olrak %.4f", Math::PI)
-    "pi yaklaşık olarak %.4f" % Math::PI
-    "%s: %f" % ["pi", Math::PI]
-
-Escape sequences: `a, b, e, f, n, t, s, u{hexdigits}, ...`
-
----
-
-# 3.2.1.3 Unicode escape
-
-Örnek,
-
-    !ruby
-    "\u00D7  # => "x"
-    "\u20ac" # => "€"
-
----
-
-# 3.2.1.4 Keyfi ayırgaç kullanımı
-
-örnek,
-
-    !ruby
-    %q(Bu bir string'dir)
-    %-Bu ise yeni satırla sonlanır\n-
-
-Eşleşen parantezler: (, [, {, < , vs
-
----
-
-# 3.2.1.5 Here dökümanları
-
-- Uzun bir dizgiye ihtiyaç duyulunca
-
-- Unix'den mirastır
-
-- `<<` veya `<<-` ile başlar
-
-Örnek,
-
-    !ruby
-    document = <<HERE
-    Bu bir dizgidir.
-    Bu iki satırdan oluşur.
-    HERE
-
----
-
-# 3.2.1.6 Ters tırnakla komut yürütme
-
-Ters tırnak `\`` ile işletim sistemine ait bir komutu çalıştırmaya izin verir.
-Ör. "`\`ls\``". Keyfi dizgi yapısı %x (execute)
-
-    !ruby
-    %x[ls]
-
-Çift/tek tırnak içerisinden de yürütülebilirler,
-
-    !ruby
-    if windows
-      komut = 'dir'
-    else
-      komut = 'ls'
-    end
-    sonuc = `#{komut}`
-
----
-
-# 3.2.1.7 Dizgi sabitleri ve değiştirilebilirlik
-
-Python'un aksine benzer dizgiler aynı nesne değildir!
-
-    !ruby
-    10.times { puts "foo".object_id }
-
-- Çıktısı nedir?
-
-- Bu yüzden döngü içinde dizgi sabitleri kullanmaktan sakının!
-
----
-
-# Karakter sabitleri
-
-Kısa kısa,
-
-    !ruby
-    ?A # 'A' karakter sabiti
-    ?€
-    ?\t
-    ?\C-x # Ctrl-X karakter sabiti
-
----
-
-# 3.2.3 Dizgi işleçleri
-
-- `+` işleci dizginin ardına ekler
-
-- `< < ` benzer göreve sahiptir
-
-- en önemli fark ilki yeni nesne oluştururken, ikincisi sol işleneni
-  günceller/ardına ekler
-
-Örnek,
-
-    !ruby
-    mesaj = "Merhaba"
-    mesaj << " " << "Dunya"
-    puts mesaj # => "Merhaba Dunya"
-
-İlginç,
-
-    !ruby
-    alfabe = "A"
-    alfabe << ?B # "AB"
-    alfabe << 67 # "ABC"
-
----
-
-# 3.2.4 Karakterlere ve altdizgiere erişim
-
-`[]` indislemede kullanılır,
-
-    !ruby
-    s = 'hello'
-    s[0] # => 'h'
-
-    s[0] = ?H    # => 'Hello'
-    s[-1] = ""   # => 'Hell'
-    s[-1] = "p!" # => 'Help!'
-
-Dilimleme: `[başla, uzunluk]`
-
-    !ruby
-    s = 'hello'
-    s[0, 2] # => 'he'
-
-Dilimle: `[başla..bitir]`,
-
-    !ruby
-    s = 'hello'
-    s[2..3] # => 'll'
-
-İndis,
-
-    !ruby
-    s = 'hello'
-    s['l'] # => true
-
-Daha fazlası RegExp'de!
-
----
-
-# 3.2.5 Dizgilerde iterasyon
-
-`each` yerine `each_byte` kullanın,
-
-    !ruby
-    "€123".each_byte {|x| puts "#{x} " } # => "€ 1 2 3"
-
----
-
-# 3.3 Diziler
-
-Örnek,
-
-    !ruby
-    [1, 2, 3]
-    [-10..0, 0..10]
-    [[1,2], [3,4], [5]]
-    []
-
-    %w[foo bar baz] # => ['foo', 'bar', 'baz']
-
-    Array.new       # => []
-    Array.new(3)    # => [nil, nil, nil]
-    Array.new(4, 0) # => [0, 0, 0, 0]
-
-Ayrıntılar,
-
-    !ruby
-    a = [0,1,4,9,16]
-    a[0]
-    a[-1]
-    a[-2] = 'dokuz'
-    a[-3] = 1..10
-
----
-
-# Dilimleme
-
-Dilimleme,
-
-    !ruby
-    d = ('a'..'e').to_a
-    d[0,0]
-    d[0..-1]
-
-    d[0,2] = ['A', 'B']
-
-Genişleyen diziler,
-
-    !ruby
-    a = []
-    a << 1
-    a << 2 << 3
-    a << [4,5,6]
-    a.concat [7,8] # => [1,2,3,[4,5,6],7,8]
-
-- `-` ortak özellikler çıkarılır
-
-- `|`: birleşim, `&`: kesişim
-
----
-
-# 3.4 Çırpı

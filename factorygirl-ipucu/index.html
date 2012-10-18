@@ -27,7 +27,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta id="viewport" name="viewport" content="user-scalable=no" />
-    <title>Linux: İpucu</title>
+    <title>Factory Girl: İpucu</title>
     <!-- Styles -->
     
     <style type="text/css" media="print">
@@ -1582,12 +1582,12 @@ div.slide {
     </div>
     <div class="slides">
       
-      <!-- slide source: linux-ipucu/index.md -->
+      <!-- slide source: factorygirl-ipucu/index.md -->
       <div class="slide-wrapper">
         <div class="slide first has_qr">
           <div class="inner">
             
-            <header><h1>Linux: İpucu</h1></header>
+            <header><h1>Factory Girl: İpucu</h1></header>
             
             
             <section>
@@ -1599,7 +1599,7 @@ div.slide {
 
 <p>Samsun</p>
 
-<p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/linux-ipucu">http://seyyah.me/p/linux-ipucu</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
+<p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/factorygirl-ipucu">http://seyyah.me/p/factorygirl-ipucu</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1611,39 +1611,31 @@ div.slide {
           <footer>
             
             <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
+              Source: <a href="factorygirl-ipucu/index.md">factorygirl-ipucu/index.md</a>
             </aside>
             
             <aside class="page_number">
-              1/7
+              1/6
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: linux-ipucu/index.md -->
+      <!-- slide source: factorygirl-ipucu/index.md -->
       <div class="slide-wrapper">
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Rsync</h1></header>
+            <header><h1>Gemfile</h1></header>
             
             
-            <section><p>A makinesine <code>a_klasor</code>&#39;ünü B makinesinde senkronlamak (tek taraflı)</p>
+            <section><p>Rails için</p>
 
-<div class="highlight"><pre><span class="c"># Makine A</span>
-<span class="nv">$ </span>rsync -vauz -delete -rsh<span class="o">=</span>ssh -stats a_klasor
-  seyyah@example.com:/home/seyyah/b_klasor
+<div class="highlight"><pre><span class="n">gem</span> <span class="s1">&#39;factory_girl_rails&#39;</span>
 </pre></div>
 
 
-<ul>
-<li><p>bu kod A makinesinde yer alan <code>a_klasor</code>&#39;ünü,</p></li>
-<li><p>B makinesinde <code>b_klasor</code>&#39;ü olarak rsync eder</p></li>
-</ul>
-
-<p>Kaynak:
-<a href="http://www.arsgeek.com/2006/10/20/quicktips-how-to-rsync-files-and-folders-to-remote-machines-using-ssh/">http://www.arsgeek.com/2006/10/20/quicktips-how-to-rsync-files-and-folders-to-remote-machines-using-ssh/</a></p></section>
+<p>Kaynak: <a href="https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md">https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md</a></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1655,27 +1647,28 @@ div.slide {
           <footer>
             
             <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
+              Source: <a href="factorygirl-ipucu/index.md">factorygirl-ipucu/index.md</a>
             </aside>
             
             <aside class="page_number">
-              2/7
+              2/6
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: linux-ipucu/index.md -->
+      <!-- slide source: factorygirl-ipucu/index.md -->
       <div class="slide-wrapper">
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>MPEG4, MP3, AAC Codec</h1></header>
+            <header><h1>Factory Girl + Cucumber</h1></header>
             
             
-            <section><p>Ubuntu Precise Pangolin 12.04 LTS and Ubuntu Oneiric Ocelot 11.10,</p>
+            <section><p><code>features/support/env.rb</code> dosyasında,</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install ffmpeg libavcodec-extra-53
+<div class="highlight"><pre>    <span class="nb">require</span> <span class="s1">&#39;factory_girl&#39;</span>
+    <span class="c1"># FactoryGirl.find_definitions</span>
 </pre></div>
 </section>
             
@@ -1689,40 +1682,27 @@ div.slide {
           <footer>
             
             <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
+              Source: <a href="factorygirl-ipucu/index.md">factorygirl-ipucu/index.md</a>
             </aside>
             
             <aside class="page_number">
-              3/7
+              3/6
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: linux-ipucu/index.md -->
+      <!-- slide source: factorygirl-ipucu/index.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code">
+        <div class="slide">
           <div class="inner">
             
-            <header><h1>32 bit X 64 bit</h1></header>
+            <header><h1>Debug</h1></header>
             
             
-            <section><p>İpucu,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>cat /proc/cpuinfo | grep lm  <span class="c"># long mode?</span>
-</pre></div>
-
-
-<p>çıktıda varsa <em>64 bit</em> yoksa <em>32 bit</em>&#39;tir.</p>
-
-<p>Diğer taraftan</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>uname -a
-... x86_64
-</pre></div>
-
-
-<p>bu da kernelin 64 bit olup-olmadığı bilgisini sağlar.</p></section>
+            <section><ul>
+<li>Feature dosyasında <code>raise variable</code></li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1734,58 +1714,29 @@ div.slide {
           <footer>
             
             <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
+              Source: <a href="factorygirl-ipucu/index.md">factorygirl-ipucu/index.md</a>
             </aside>
             
             <aside class="page_number">
-              4/7
+              4/6
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: linux-ipucu/index.md -->
+      <!-- slide source: factorygirl-ipucu/index.md -->
       <div class="slide-wrapper">
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>SSH</h1></header>
+            <header><h1>Etc</h1></header>
             
             
-            <section><p>Key&#39;i üretip Github&#39;a bu keyi eklemek için,</p>
+            <section><p>Konsol</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install xclip
-<span class="nv">$ </span>ssh-keygen -t dsa
-<span class="nv">$ </span>xclip -i ~/.ssh/id_dsa.pub
-</pre></div>
-
-
-<p>Github&#39;da <a href="https://github.com/settings/ssh">Account Settings:ssh</a> &ldquo;Add SSH key&rdquo;. Test edelim,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>ssh -vT git@github.com
-</pre></div>
-
-
-<p>Sanala/sunucuya bağlanmak için kısayol tanımla,</p>
-
-<div class="highlight"><pre><span class="c"># ~/.ssh/config</span>
-Host kisa_ad
-  HostName 1.2.3.4
-  User seyyah
-  ForwardAgent yes
-</pre></div>
-
-
-<p>Artık kısa adla erişebiliriz,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>ssh kisa_ad
-</pre></div>
-
-
-<p>Parolasız erişim için,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>ssh-copy-id kisa_ad ~/.ssh/id_dsa.pub
-<span class="nv">$ </span>ssh kisa_ad
+<div class="highlight"><pre>    <span class="no">FactoryGirl</span><span class="o">.</span><span class="n">factories</span>
+    <span class="no">FactoryGirl</span><span class="o">.</span><span class="n">factories</span><span class="o">.</span><span class="n">clear</span>
+    <span class="no">FactoryGirl</span><span class="o">.</span><span class="n">reload</span>
 </pre></div>
 </section>
             
@@ -1799,30 +1750,32 @@ Host kisa_ad
           <footer>
             
             <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
+              Source: <a href="factorygirl-ipucu/index.md">factorygirl-ipucu/index.md</a>
             </aside>
             
             <aside class="page_number">
-              5/7
+              5/6
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source: linux-ipucu/index.md -->
+      <!-- slide source: factorygirl-ipucu/index.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code">
+        <div class="slide">
           <div class="inner">
             
-            <header><h1>Bash</h1></header>
+            <header><h1>Kaynaklar</h1></header>
             
             
-            <section><p>Find,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>find . -type f -perm 0755 |
-  xargs /bin/chmod 0644
-</pre></div>
-</section>
+            <section><ul>
+<li><a href="http://xtargets.com/2011/02/06/seeding-your-rails-db-with-factory-girl/">http://xtargets.com/2011/02/06/seeding-your-rails-db-with-factory-girl/</a></li>
+<li><a href="http://stackoverflow.com/questions/9861075/how-can-i-load-seeds-rb-into-the-test-database-without-breaking-factorygirl?lq=1">http://stackoverflow.com/questions/9861075/how-can-i-load-seeds-rb-into-the-test-database-without-breaking-factorygirl?lq=1</a></li>
+<li><a href="http://robots.thoughtbot.com/post/254496652/aint-no-calla-back-girl">http://robots.thoughtbot.com/post/254496652/aint-no-calla-back-girl</a></li>
+<li><a href="http://stackoverflow.com/questions/1484374/how-to-create-has-and-belongs-to-many-associations-in-factory-girl">http://stackoverflow.com/questions/1484374/how-to-create-has-and-belongs-to-many-associations-in-factory-girl</a></li>
+<li><a href="http://ditoinfo.wordpress.com/2008/11/19/factory-girl-and-has_many-has_many-through-associations/">http://ditoinfo.wordpress.com/2008/11/19/factory-girl-and-has_many-has_many-through-associations/</a></li>
+<li><a href="http://stackoverflow.com/questions/4071205/creating-fixture-data-for-model-using-acts-as-taggable-on">http://stackoverflow.com/questions/4071205/creating-fixture-data-for-model-using-acts-as-taggable-on</a></li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1834,59 +1787,11 @@ Host kisa_ad
           <footer>
             
             <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
+              Source: <a href="factorygirl-ipucu/index.md">factorygirl-ipucu/index.md</a>
             </aside>
             
             <aside class="page_number">
-              6/7
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: linux-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>VirtualBox - Ubuntu</h1></header>
-            
-            
-            <section><p><a href="http://www.liberiangeek.net/2012/05/install-virtualbox-4-1-14-in-ubuntu-12-04-precise-pangolin/">Install VirtualBox 4.1.14 in Ubuntu 12.04 (Precise
-Pangolin)</a>
-kodlar,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O-
-| sudo apt-key add -
-<span class="nv">$ </span>sudo sh -c <span class="s1">&#39;echo &quot;deb http://download.virtualbox.org/virtualbox/debian</span>
-<span class="s1">precise contrib&quot; &gt;&gt; /etc/apt/sources.list&#39;</span>
-<span class="nv">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install virtualbox-4.1
-</pre></div>
-
-
-<p>USB problemini çözmek için <a href="http://seoroot.com/blog/ubuntu-linux/virtualbox-4-failed-to-access-the-usb-subsystem.html/">VirtualBox 4: Failed to access the USB
-subsystem</a>,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>sudo usermod -a -G vboxusers username
-<span class="c"># logout - login</span>
-</pre></div>
-</section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="linux-ipucu/index.md">linux-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              7/7
+              6/6
             </aside>
           </footer>
         </div>
@@ -1901,44 +1806,38 @@ subsystem</a>,</p>
       <caption>Table of Contents</caption>
       
       <tr id="toc-row-1">
-        <th><a href="#slide1">Linux: İpucu</a></th>
+        <th><a href="#slide1">Factory Girl: İpucu</a></th>
         <td><a href="#slide1">1</a></td>
       </tr>
       
       
       <tr id="toc-row-2">
-        <th><a href="#slide2">Rsync</a></th>
+        <th><a href="#slide2">Gemfile</a></th>
         <td><a href="#slide2">2</a></td>
       </tr>
       
       
       <tr id="toc-row-3">
-        <th><a href="#slide3">MPEG4, MP3, AAC Codec</a></th>
+        <th><a href="#slide3">Factory Girl + Cucumber</a></th>
         <td><a href="#slide3">3</a></td>
       </tr>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">32 bit X 64 bit</a></th>
+        <th><a href="#slide4">Debug</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">SSH</a></th>
+        <th><a href="#slide5">Etc</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Bash</a></th>
+        <th><a href="#slide6">Kaynaklar</a></th>
         <td><a href="#slide6">6</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-7">
-        <th><a href="#slide7">VirtualBox - Ubuntu</a></th>
-        <td><a href="#slide7">7</a></td>
       </tr>
       
       

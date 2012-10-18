@@ -775,10 +775,6 @@ ul li:before {
   vertical-align: 16%;
   padding-right: 0.4em;
 }
-li ul li:before {
-  content: '\26AB \0020';
-  vertical-align: 3%;
-}
 ul li:first {
   content: ' ';
 }
@@ -852,24 +848,18 @@ div.slide {
   background: none;
 }
 
-.slide.task {
+.slide.achtung {
   background: #ffffe0;
   border: 1px solid #eee;
   border-radius: 20px;
 }
-.slide.task header {
-  color: #9c000d;
-}
-
-.slide.achtung {
-  background: #d7e5f5;
-  border: 1px solid #eee;
-  border-radius: 20px;
-}
 .slide.achtung header {
   color: #9c000d;
 }
-.slide.achtung header {
+.slide.dikkat {
+  background: #ffffe0;
+}
+.slide.dikkat header {
   color: #9c000d;
 }
 
@@ -1571,6 +1561,20 @@ div.slide {
       <button type="checkbox" data-command="help" title="View Help">?</button>
     </menu>
   </nav>
+  <nav id="right">
+    <menu id="top">
+      <button title="Next slide" id="next" class="next">»</button>
+      <button title="Previous slide" id="prev" class="prev">«</button>
+    </menu>
+    <div id="blank"></div>
+    <menu id="bottom">
+      <button type="checkbox" data-command="toc" title="Table of Contents" class="toc">TOC</button>
+      <button type="checkbox" data-command="numbers" title="Show Slide Numbers">#</button>
+      <button type="checkbox" data-command="overview" title="Overview">↻</button>
+      <button type="checkbox" data-command="notes" title="View Slide Notes">✏</button>
+      <button type="checkbox" data-command="help" title="View Help">?</button>
+    </menu>
+  </nav>
 
   <div class="presentation">
     <div id="current_presenter_notes">
@@ -1866,23 +1870,23 @@ div.slide {
             
             <section><p>yaz,</p>
 
-<div class="highlight"><pre><span class="no">Given</span> <span class="sr">/^I go to the new institution page$/</span> <span class="k">do</span>
+<div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I go to the new institution page$/</span> <span class="k">do</span>
   <span class="n">visit</span> <span class="n">new_institution_path</span>
 <span class="k">end</span>
 
-<span class="no">Given</span> <span class="sr">/^I fill in &quot;(.*?)&quot; with &quot;(.*?)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">|</span>
+<span class="no">Given</span><span class="sr"> /^I fill in &quot;(.*?)&quot; with &quot;(.*?)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">|</span>
   <span class="n">fill_in</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">with</span><span class="p">:</span> <span class="n">arg2</span><span class="p">)</span>
 <span class="k">end</span>
 
-<span class="no">When</span> <span class="sr">/^I press &quot;(.*?)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<span class="no">When</span><span class="sr"> /^I press &quot;(.*?)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">click_button</span> <span class="n">arg1</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^I should be on the institution list page$/</span> <span class="k">do</span>
+<span class="no">Then</span><span class="sr"> /^I should be on the institution list page$/</span> <span class="k">do</span>
   <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span><span class="p">(</span><span class="s1">&#39;List Institutions&#39;</span><span class="p">)</span>
 <span class="k">end</span>
 
-<span class="no">Then</span> <span class="sr">/^I should see &quot;(.*?)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
+<span class="no">Then</span><span class="sr"> /^I should see &quot;(.*?)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
