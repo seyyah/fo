@@ -775,6 +775,10 @@ ul li:before {
   vertical-align: 16%;
   padding-right: 0.4em;
 }
+li ul li:before {
+  content: '\26AB \0020';
+  vertical-align: 3%;
+}
 ul li:first {
   content: ' ';
 }
@@ -848,18 +852,24 @@ div.slide {
   background: none;
 }
 
-.slide.achtung {
+.slide.task {
   background: #ffffe0;
+  border: 1px solid #eee;
+  border-radius: 20px;
+}
+.slide.task header {
+  color: #9c000d;
+}
+
+.slide.achtung {
+  background: #d7e5f5;
   border: 1px solid #eee;
   border-radius: 20px;
 }
 .slide.achtung header {
   color: #9c000d;
 }
-.slide.dikkat {
-  background: #ffffe0;
-}
-.slide.dikkat header {
+.slide.achtung header {
   color: #9c000d;
 }
 
@@ -1553,20 +1563,6 @@ div.slide {
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
     </menu>
-    <menu id="bottom">
-      <button type="checkbox" data-command="toc" title="Table of Contents" class="toc">TOC</button>
-      <button type="checkbox" data-command="numbers" title="Show Slide Numbers">#</button>
-      <button type="checkbox" data-command="overview" title="Overview">↻</button>
-      <button type="checkbox" data-command="notes" title="View Slide Notes">✏</button>
-      <button type="checkbox" data-command="help" title="View Help">?</button>
-    </menu>
-  </nav>
-  <nav id="right">
-    <menu id="top">
-      <button title="Next slide" id="next" class="next">»</button>
-      <button title="Previous slide" id="prev" class="prev">«</button>
-    </menu>
-    <div id="blank"></div>
     <menu id="bottom">
       <button type="checkbox" data-command="toc" title="Table of Contents" class="toc">TOC</button>
       <button type="checkbox" data-command="numbers" title="Show Slide Numbers">#</button>
