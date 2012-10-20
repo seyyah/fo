@@ -1708,7 +1708,9 @@ div.slide {
             <header><h1>Hello</h1></header>
             
             
-            <section><p>.code: 01_hello.rb</p>
+            <section><p><div class="highlight"><pre><span class="nb">print</span> <span class="s2">&quot;hello world!&quot;</span>
+</pre></div>
+</p>
 
 <ul>
 <li><p><code>print</code>: standart giriş/çıkış/error</p></li>
@@ -1743,7 +1745,12 @@ div.slide {
             <header><h1>Ruby Turu: OOP</h1></header>
             
             
-            <section><p>.coden: 01_oop.rb</p></section>
+            <section><p><div class="highlight"><pre><span class="lineno">1</span> <span class="nb">print</span> <span class="mi">1</span><span class="o">.</span><span class="n">class</span>    <span class="c1"># =&gt; Fixnum &lt; Integer</span>
+<span class="lineno">2</span> <span class="nb">print</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">class</span>  <span class="c1"># =&gt; Float &lt; Numeric</span>
+<span class="lineno">3</span> <span class="nb">print</span> <span class="kp">true</span><span class="o">.</span><span class="n">class</span> <span class="c1"># =&gt; TrueClass &lt; Object</span>
+<span class="lineno">4</span> <span class="nb">print</span> <span class="kp">nil</span><span class="o">.</span><span class="n">class</span>  <span class="c1"># =&gt; NilClass &lt; Object</span>
+</pre></div>
+</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1773,7 +1780,10 @@ div.slide {
             <header><h1>Ruby Turu: Bloklar ve Iteratorler</h1></header>
             
             
-            <section><p>.coden: 01_block.rb</p></section>
+            <section><p><div class="highlight"><pre><span class="lineno">1</span> <span class="nb">print</span> <span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span> <span class="nb">print</span> <span class="s2">&quot;Ruby!&quot;</span> <span class="p">}</span> <span class="c1"># =&gt; Ruby!Ruby!Ruby!=&gt; 3</span>
+<span class="lineno">2</span> <span class="nb">print</span> <span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">print</span> <span class="n">x</span><span class="p">}</span>   <span class="c1"># =&gt; 123456789=&gt; 1</span>
+</pre></div>
+</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1803,7 +1813,37 @@ div.slide {
             <header><h1>Ruby Turu: İfadeler ve İşleçler</h1></header>
             
             
-            <section><p>.coden: 01_expression.rb</p>
+            <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>                                                                  
+<span class="lineno"> 2</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno"> 3</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">4</span><span class="p">,</span>                                                                      
+<span class="lineno"> 4</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">5</span>                                                                       
+<span class="lineno"> 5</span> <span class="o">]</span>                                                                               
+<span class="lineno"> 6</span> <span class="o">&gt;&gt;</span> <span class="n">x</span>                                                                            
+<span class="lineno"> 7</span> <span class="o">=&gt;</span> <span class="mi">4</span>                                                                            
+<span class="lineno"> 8</span> <span class="o">&gt;&gt;</span> <span class="n">y</span>                                                                            
+<span class="lineno"> 9</span> <span class="o">=&gt;</span> <span class="mi">5</span>                                                                            
+<span class="lineno">10</span> <span class="o">&gt;&gt;</span> <span class="n">min</span> <span class="o">=</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="k">then</span> <span class="n">x</span> <span class="k">else</span> <span class="n">y</span> <span class="k">end</span>                                             
+<span class="lineno">11</span> <span class="o">=&gt;</span> <span class="mi">4</span>
+<span class="lineno">12</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="lineno">13</span> <span class="o">=&gt;</span> <span class="mi">3</span>                                                                            
+<span class="lineno">14</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">3</span>                                                                   
+<span class="lineno">15</span> <span class="o">=&gt;</span> <span class="kp">true</span>                                                                         
+<span class="lineno">16</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">1024</span>                                                                    
+<span class="lineno">17</span> <span class="o">=&gt;</span> <span class="mi">17976931348623159077293051907890247336179769789423065727343008115773267580550</span>
+<span class="lineno">18</span> <span class="mi">09631327084773224075360211201138798713933576587897688144166224928474306394741243</span>
+<span class="lineno">19</span> <span class="mi">77767893424865485276302219601246094119453082952085005768838150682342462881473913</span>
+<span class="lineno">20</span> <span class="mi">110540827237163350510684586298239947245938479716304835356329624224137216</span>
+<span class="lineno">21</span> <span class="o">&gt;&gt;</span> <span class="s2">&quot;ruby &quot;</span> <span class="o">+</span> <span class="s2">&quot;very nice!&quot;</span>                                                       
+<span class="lineno">22</span> <span class="o">=&gt;</span> <span class="s2">&quot;ruby very nice!&quot;</span>                                                            
+<span class="lineno">23</span> <span class="o">&gt;&gt;</span> <span class="s2">&quot;I love ruby!&quot;</span> <span class="o">*</span> <span class="mi">3</span>                                                           
+<span class="lineno">24</span> <span class="o">=&gt;</span> <span class="s2">&quot;I love ruby!I love ruby!I love ruby!&quot;</span>                                       
+<span class="lineno">25</span> <span class="o">&gt;&gt;</span> <span class="s2">&quot;%d kez %s&quot;</span> <span class="o">%</span> <span class="o">[</span><span class="mi">99</span><span class="p">,</span> <span class="s2">&quot;maasallah&quot;</span><span class="o">]</span>                                              
+<span class="lineno">26</span> <span class="o">=&gt;</span> <span class="s2">&quot;99 kez maasallah&quot;</span>
+<span class="lineno">27</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+<span class="lineno">28</span> <span class="o">&gt;&gt;</span> <span class="n">max</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="p">?</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y</span>
+<span class="lineno">29</span> <span class="o">=&gt;</span> <span class="mi">5</span>
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -1845,7 +1885,23 @@ div.slide {
             <header><h1>Ruby Turu: Yöntemler</h1></header>
             
             
-            <section><p>.coden: 01_fun.rb</p>
+            <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="k">def</span> <span class="nf">kare</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                                                                  
+<span class="lineno"> 2</span> <span class="o">|</span>    <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>                                                                      
+<span class="lineno"> 3</span> <span class="o">|</span>    <span class="k">end</span>                                                                        
+<span class="lineno"> 4</span> <span class="o">=&gt;</span> <span class="kp">nil</span>                                                                          
+<span class="lineno"> 5</span> <span class="o">&gt;&gt;</span> <span class="n">kare</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>                                                                      
+<span class="lineno"> 6</span> <span class="o">=&gt;</span> <span class="mi">16</span>                                                                           
+<span class="lineno"> 7</span> <span class="o">&gt;&gt;</span> <span class="n">kare</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span>                                                                    
+<span class="lineno"> 8</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9599999999999997</span>                                                           
+<span class="lineno"> 9</span> <span class="o">&gt;&gt;</span> <span class="k">def</span> <span class="nc">Math</span><span class="o">.</span><span class="nf">kare</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                                                             
+<span class="lineno">10</span> <span class="o">|</span>    <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>                                                                      
+<span class="lineno">11</span> <span class="o">|</span>    <span class="k">end</span>                                                                        
+<span class="lineno">12</span> <span class="o">=&gt;</span> <span class="kp">nil</span>                                                                          
+<span class="lineno">13</span> <span class="o">&gt;&gt;</span> <span class="no">Math</span><span class="o">.</span><span class="n">kare</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                                                                 
+<span class="lineno">14</span> <span class="o">=&gt;</span> <span class="mi">9</span>                                                                            
+<span class="lineno">15</span> <span class="o">&gt;&gt;</span>   
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -1887,7 +1943,43 @@ div.slide {
             <header><h1>Ruby Turu: Atama</h1></header>
             
             
-            <section><p>.coden: 01_atama.rb</p>
+            <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>                                                                        
+<span class="lineno"> 2</span> <span class="o">=&gt;</span> <span class="mi">1</span>                                                                            
+<span class="lineno"> 3</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>                                                                       
+<span class="lineno"> 4</span> <span class="o">=&gt;</span> <span class="mi">2</span>                                                                            
+<span class="lineno"> 5</span> <span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>                                                                    
+<span class="lineno"> 6</span> <span class="o">=&gt;</span> <span class="mi">4</span>                                                                            
+<span class="lineno"> 7</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>                                                                  
+<span class="lineno"> 8</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno"> 9</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
+<span class="lineno">10</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">2</span>                                                                       
+<span class="lineno">11</span> <span class="o">]</span>                                                                               
+<span class="lineno">12</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>                                                              
+<span class="lineno">13</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno">14</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
+<span class="lineno">15</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">2</span><span class="p">,</span>                                                                      
+<span class="lineno">16</span>     <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="mi">3</span>                                                                       
+<span class="lineno">17</span> <span class="o">]</span>                                                                               
+<span class="lineno">18</span> <span class="o">&gt;&gt;</span> <span class="n">z</span>                                                                            
+<span class="lineno">19</span> <span class="o">=&gt;</span> <span class="mi">3</span> 
+<span class="lineno">20</span> <span class="o">&gt;&gt;</span> <span class="k">def</span> <span class="nf">polar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>                                                              
+<span class="lineno">21</span> <span class="o">|</span>    <span class="n">theta</span> <span class="o">=</span> <span class="no">Math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># açıyı hesapla                                  </span>
+<span class="lineno">22</span> <span class="o">|</span>    <span class="n">r</span> <span class="o">=</span> <span class="no">Math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>      <span class="c1"># mesafe                                         </span>
+<span class="lineno">23</span> <span class="o">|</span>    <span class="o">[</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="o">]</span>                <span class="c1"># döndür                                         </span>
+<span class="lineno">24</span> <span class="o">|</span>    <span class="k">end</span>                                                                        
+<span class="lineno">25</span> <span class="o">=&gt;</span> <span class="kp">nil</span>                                                                          
+<span class="lineno">26</span> <span class="o">&gt;&gt;</span>                                                                              
+<span class="lineno">27</span>  <span class="o">&gt;</span>   <span class="n">d</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">polar</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                                                         
+<span class="lineno">28</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno">29</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">2</span><span class="o">.</span><span class="mi">8284271247461903</span><span class="p">,</span>                                                     
+<span class="lineno">30</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">0</span><span class="o">.</span><span class="mi">7853981633974483</span>                                                      
+<span class="lineno">31</span> <span class="o">]</span>                                                                               
+<span class="lineno">32</span> <span class="o">&gt;&gt;</span> <span class="n">d</span>                                                                            
+<span class="lineno">33</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">8284271247461903</span>                                                           
+<span class="lineno">34</span> <span class="o">&gt;&gt;</span> <span class="n">a</span>                                                                            
+<span class="lineno">35</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="o">.</span><span class="mi">7853981633974483</span> 
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -1934,7 +2026,43 @@ div.slide {
 <li><p>öntakı olarak <code>$</code> (global değişken), <code>@</code> (instance değişkeni) ve <code>@@</code> (class değişkeni) kullanılır</p></li>
 </ul>
 
-<p>.coden: 01_punc.rb</p>
+<p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span>                                                          
+<span class="lineno"> 2</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno"> 3</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
+<span class="lineno"> 4</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">3</span><span class="p">,</span>                                                                      
+<span class="lineno"> 5</span>     <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="mi">2</span><span class="p">,</span>                                                                      
+<span class="lineno"> 6</span>     <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="mi">5</span><span class="p">,</span>                                                                      
+<span class="lineno"> 7</span>     <span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="mi">0</span>                                                                       
+<span class="lineno"> 8</span> <span class="o">]</span>                                                                               
+<span class="lineno"> 9</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">sort</span>                                                                       
+<span class="lineno">10</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno">11</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">0</span><span class="p">,</span>                                                                      
+<span class="lineno">12</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
+<span class="lineno">13</span>     <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="mi">2</span><span class="p">,</span>                                                                      
+<span class="lineno">14</span>     <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span><span class="p">,</span>                                                                      
+<span class="lineno">15</span>     <span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="mi">5</span>                                                                       
+<span class="lineno">16</span> <span class="o">]</span>                                                                                                                                                            
+<span class="lineno">17</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">sort!</span>                                                                      
+<span class="lineno">18</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno">19</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">0</span><span class="p">,</span>                                                                      
+<span class="lineno">20</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
+<span class="lineno">21</span>     <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="mi">2</span><span class="p">,</span>                                                                      
+<span class="lineno">22</span>     <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span><span class="p">,</span>                                                                      
+<span class="lineno">23</span>     <span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="mi">5</span>                                                                       
+<span class="lineno">24</span> <span class="o">]</span>                                                                               
+<span class="lineno">25</span> <span class="o">&gt;&gt;</span> <span class="n">a</span>                                                                            
+<span class="lineno">26</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
+<span class="lineno">27</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">0</span><span class="p">,</span>                                                                      
+<span class="lineno">28</span>     <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
+<span class="lineno">29</span>     <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="mi">2</span><span class="p">,</span>                                                                      
+<span class="lineno">30</span>     <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span><span class="p">,</span>                                                                      
+<span class="lineno">31</span>     <span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="mi">5</span>                                                                       
+<span class="lineno">32</span> <span class="o">]</span>                                                                               
+<span class="lineno">33</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">empty?</span>                                                                     
+<span class="lineno">34</span> <span class="o">=&gt;</span> <span class="kp">false</span>                                                                        
+<span class="lineno">35</span> <span class="o">&gt;&gt;</span>   
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -1976,7 +2104,40 @@ div.slide {
             <header><h1>Ruby Turu: Regexp ve Range</h1></header>
             
             
-            <section><p>.coden: 01_regexp.rb</p>
+            <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="k">def</span> <span class="nf">are_you_sure?</span>                                                            
+<span class="lineno"> 2</span> <span class="o">|</span>    <span class="k">while</span> <span class="kp">true</span>                                                                 
+<span class="lineno"> 3</span> <span class="o">|</span>      <span class="nb">print</span> <span class="s2">&quot;Are you sure? [y/n]: &quot;</span>                                            
+<span class="lineno"> 4</span> <span class="o">|</span>      <span class="n">response</span> <span class="o">=</span> <span class="nb">gets</span>                                                          
+<span class="lineno"> 5</span> <span class="o">|</span>      <span class="k">case</span> <span class="n">response</span>                                                            
+<span class="lineno"> 6</span> <span class="o">|</span>        <span class="k">when</span> <span class="sr">/^[yY]/</span>                                                           
+<span class="lineno"> 7</span> <span class="o">|</span>        <span class="k">return</span> <span class="kp">true</span>                                                            
+<span class="lineno"> 8</span> <span class="o">|</span>        <span class="k">when</span> <span class="sr">/^[nN]/</span><span class="p">,</span> <span class="sr">/^$/</span>                                                     
+<span class="lineno"> 9</span> <span class="o">|</span>        <span class="k">return</span> <span class="kp">false</span>                                                           
+<span class="lineno">10</span> <span class="o">|</span>        <span class="k">end</span>                                                                    
+<span class="lineno">11</span> <span class="o">|</span>      <span class="k">end</span>                                                                      
+<span class="lineno">12</span> <span class="o">|</span>    <span class="k">end</span>                                                                        
+<span class="lineno">13</span> <span class="o">=&gt;</span> <span class="kp">nil</span>                                                                          
+<span class="lineno">14</span> <span class="o">&gt;&gt;</span> <span class="n">are_you_sure?</span>                                                                
+<span class="lineno">15</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">a</span>                                                          
+<span class="lineno">16</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">a</span>                                                          
+<span class="lineno">17</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">s</span>                                                          
+<span class="lineno">18</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="mi">1</span>                                                          
+<span class="lineno">19</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">yes</span>                                                        
+<span class="lineno">20</span> <span class="o">=&gt;</span> <span class="kp">true</span>                                                                         
+<span class="lineno">21</span> <span class="o">&gt;&gt;</span> <span class="n">are_you_sure?</span>                                                               
+<span class="lineno">22</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">r</span>                                                          
+<span class="lineno">23</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">nop</span>                                                        
+<span class="lineno">24</span> <span class="o">=&gt;</span> <span class="kp">false</span>                                                                        
+<span class="lineno">25</span> <span class="o">&gt;&gt;</span> <span class="n">are_you_sure?</span>                                                                
+<span class="lineno">26</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">aaa</span>                                                        
+<span class="lineno">27</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">ayes</span>                                                       
+<span class="lineno">28</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">a</span> <span class="n">yes</span>                                                      
+<span class="lineno">29</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">o</span> <span class="n">no</span>                                                       
+<span class="lineno">30</span> <span class="no">Are</span> <span class="n">you</span> <span class="n">sure?</span> <span class="o">[</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">]</span><span class="p">:</span> <span class="n">n</span>                                                          
+<span class="lineno">31</span> <span class="o">=&gt;</span> <span class="kp">false</span>                                                                        
+<span class="lineno">32</span> <span class="o">&gt;&gt;</span>
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -2018,7 +2179,46 @@ div.slide {
             <header><h1>Ruby Turu: Class ve Modüller</h1></header>
             
             
-            <section><p>.coden: 01_class.rb</p>
+            <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Komplex</span>                                                                
+<span class="lineno"> 2</span> <span class="o">|</span>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">re</span><span class="p">,</span> <span class="n">im</span><span class="p">)</span>                                                     
+<span class="lineno"> 3</span> <span class="o">|</span>      <span class="vi">@re</span><span class="p">,</span> <span class="vi">@im</span> <span class="o">=</span> <span class="n">re</span><span class="p">,</span> <span class="n">im</span>                                                        
+<span class="lineno"> 4</span> <span class="o">|</span>      <span class="k">end</span>                                                                      
+<span class="lineno"> 5</span> <span class="o">|</span>    <span class="k">def</span> <span class="nf">abs</span>                                                                    
+<span class="lineno"> 6</span> <span class="o">|</span>      <span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="vi">@re</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="vi">@im</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>                                               
+<span class="lineno"> 7</span> <span class="o">|</span>      <span class="k">end</span>                                                                      
+<span class="lineno"> 8</span> <span class="o">|</span>    <span class="k">def</span> <span class="nf">re</span>                                                                     
+<span class="lineno"> 9</span> <span class="o">|</span>      <span class="vi">@re</span>                                                                      
+<span class="lineno">10</span> <span class="o">|</span>      <span class="k">end</span>                                                                      
+<span class="lineno">11</span> <span class="o">|</span>    <span class="k">def</span> <span class="nf">re</span><span class="o">=</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>                                                                 
+<span class="lineno">12</span> <span class="o">|</span>      <span class="vi">@re</span> <span class="o">=</span> <span class="n">r</span>                                                                  
+<span class="lineno">13</span> <span class="o">|</span>      <span class="k">end</span>                                                                      
+<span class="lineno">14</span> <span class="o">|</span>    <span class="k">end</span>                                                                        
+<span class="lineno">15</span> <span class="o">=&gt;</span> <span class="kp">nil</span>                                                                          
+<span class="lineno">16</span> <span class="o">&gt;&gt;</span> <span class="n">k</span> <span class="o">=</span> <span class="no">Komplex</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="lineno">17</span> <span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`Komplex&#39; for main:Object                       </span>
+<span class="lineno">18</span> <span class="sb">        from (irb):15                                                           </span>
+<span class="lineno">19</span> <span class="sb">        from /usr/bin/irb:12:in `</span><span class="o">&lt;</span><span class="n">main</span><span class="o">&gt;</span><span class="s1">&#39;                                        </span>
+<span class="lineno">20</span> <span class="s1">&gt;&gt; k = new Komplex(2, 3)                                                        </span>
+<span class="lineno">21</span> <span class="s1">NoMethodError: undefined method `Komplex&#39;</span> <span class="k">for</span> <span class="n">main</span><span class="ss">:Object</span>                       
+<span class="lineno">22</span>         <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">16</span>                                                           
+<span class="lineno">23</span>         <span class="n">from</span> <span class="sr">/usr/</span><span class="n">bin</span><span class="o">/</span><span class="n">irb</span><span class="p">:</span><span class="mi">12</span><span class="ss">:in</span> <span class="sb">`&lt;main&gt;&#39;                                        </span>
+<span class="lineno">24</span> <span class="sb">&gt;&gt; k = Komplex.new(2, 3)                                                        </span>
+<span class="lineno">25</span> <span class="sb">=&gt; #&lt;Komplex:0x00ea2db0                                                         </span>
+<span class="lineno">26</span> <span class="sb">    @im = 3,                                                                    </span>
+<span class="lineno">27</span> <span class="sb">    attr_accessor :re = 2                                                       </span>
+<span class="lineno">28</span> <span class="sb">&gt;                                                                               </span>
+<span class="lineno">29</span> <span class="sb">&gt;&gt; k.abs                                                                        </span>
+<span class="lineno">30</span> <span class="sb">=&gt; 3.605551275463989                                                            </span>
+<span class="lineno">31</span> <span class="sb">&gt;&gt; k.re                                                                         </span>
+<span class="lineno">32</span> <span class="sb">=&gt; 2                                                                            </span>
+<span class="lineno">33</span> <span class="sb">&gt;&gt; k.re = 4                                                                     </span>
+<span class="lineno">34</span> <span class="sb">=&gt; 4                                                                            </span>
+<span class="lineno">35</span> <span class="sb">&gt;&gt; k.abs                                                                        </span>
+<span class="lineno">36</span> <span class="sb">=&gt; 5.0                                                                          </span>
+<span class="lineno">37</span> <span class="sb">&gt;&gt; k.re                                                                         </span>
+<span class="lineno">38</span> <span class="sb">=&gt; 4 </span>
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -2066,7 +2266,84 @@ div.slide {
 <li><p>iki nokta-<code>::</code>: class yöntemi</p></li>
 </ul>
 
-<p>.coden: 01_irb.rb</p>
+<p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="err">$</span> <span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;puts &quot;hello&quot;&#39;</span>                                   
+<span class="lineno"> 2</span> <span class="n">hello</span>
+<span class="lineno"> 3</span> <span class="err">$</span> <span class="n">irb</span>
+<span class="lineno"> 4</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span>                                                                         
+<span class="lineno"> 5</span> <span class="o">=&gt;</span> <span class="mi">8</span>                                                                            
+<span class="lineno"> 6</span> <span class="o">&gt;&gt;</span> <span class="s2">&quot;Foo &quot;</span><span class="o">*</span><span class="mi">3</span>                                                                     
+<span class="lineno"> 7</span> <span class="o">=&gt;</span> <span class="s2">&quot;Foo Foo Foo &quot;</span>                                                               
+<span class="lineno"> 8</span> <span class="o">&gt;&gt;</span> <span class="n">quit</span>
+<span class="lineno"> 9</span> <span class="o">&gt;&gt;</span> <span class="n">ri</span> <span class="s2">&quot;Array&quot;</span>                                                                   
+<span class="lineno">10</span> <span class="no">Looking</span> <span class="n">up</span> <span class="n">topics</span> <span class="o">[</span><span class="no">Object</span><span class="c1">#Array, Kernel#Array, Kernel::Array] oo.               </span>
+<span class="lineno">11</span> <span class="no">More</span> <span class="n">than</span> <span class="mi">1</span> <span class="n">article</span> <span class="n">found</span>                                                       
+<span class="lineno">12</span>                                                                                 
+<span class="lineno">13</span>   <span class="mi">1</span> <span class="no">Object</span><span class="c1">#Array (422b)                                                         </span>
+<span class="lineno">14</span>   <span class="mi">2</span> <span class="no">Kernel</span><span class="c1">#Array (387b)                                                         </span>
+<span class="lineno">15</span>                                                                                 
+<span class="lineno">16</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>                                                                            
+<span class="lineno">17</span> <span class="no">Object</span><span class="c1">#Array                                                                    </span>
+<span class="lineno">18</span>                                                                                 
+<span class="lineno">19</span> <span class="p">(</span><span class="n">from</span> <span class="n">ruby</span> <span class="n">core</span><span class="p">)</span>                                                                
+<span class="lineno">20</span> <span class="no">Implementation</span> <span class="n">from</span> <span class="no">Kernel</span>                                                      
+<span class="lineno">21</span> <span class="o">------------------------------------------------------------------------------</span>  
+<span class="lineno">22</span>   <span class="nb">Array</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>    <span class="o">-&gt;</span> <span class="n">array</span>                                                        
+<span class="lineno">23</span>                                                                                 
+<span class="lineno">24</span>                                                                                 
+<span class="lineno">25</span> <span class="o">------------------------------------------------------------------------------</span>  
+<span class="lineno">26</span>                                                                                 
+<span class="lineno">27</span> <span class="no">Returns</span> <span class="n">arg</span> <span class="n">as</span> <span class="n">an</span> <span class="nb">Array</span><span class="o">.</span> <span class="no">First</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">call</span>                                    
+<span class="lineno">28</span> <span class="n">arg</span><span class="o">.</span><span class="n">to_ary</span><span class="p">,</span> <span class="k">then</span> <span class="n">arg</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span>                                                      
+<span class="lineno">29</span>                                                                                 
+<span class="lineno">30</span>   <span class="nb">Array</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">5</span><span class="p">)</span>   <span class="c1">#=&gt; [1, 2, 3, 4, 5]  </span>
+<span class="lineno">31</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="lineno">32</span> <span class="o">&gt;&gt;</span> <span class="n">ri</span> <span class="s2">&quot;Array#sort&quot;</span>                                                              
+<span class="lineno">33</span> <span class="no">Looking</span> <span class="n">up</span> <span class="n">topics</span> <span class="o">[</span><span class="nb">Array</span><span class="c1">#sort, Enumerable#sort] oo                              </span>
+<span class="lineno">34</span> <span class="no">More</span> <span class="n">than</span> <span class="mi">1</span> <span class="n">article</span> <span class="n">found</span>                                                       
+<span class="lineno">35</span>                                                                                 
+<span class="lineno">36</span>   <span class="mi">1</span> <span class="nb">Array</span><span class="c1">#sort (718b)                                                           </span>
+<span class="lineno">37</span>   <span class="mi">2</span> <span class="no">Enumerable</span><span class="c1">#sort (834b)                                                      </span>
+<span class="lineno">38</span>                                                                                 
+<span class="lineno">39</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>                                                                            
+<span class="lineno">40</span> <span class="nb">Array</span><span class="c1">#sort                                                                      </span>
+<span class="lineno">41</span>                                                                                 
+<span class="lineno">42</span> <span class="p">(</span><span class="n">from</span> <span class="n">ruby</span> <span class="n">core</span><span class="p">)</span>                                                                
+<span class="lineno">43</span> <span class="o">------------------------------------------------------------------------------</span>  
+<span class="lineno">44</span>   <span class="n">ary</span><span class="o">.</span><span class="n">sort</span>                   <span class="o">-&gt;</span> <span class="n">new_ary</span>                                         
+<span class="lineno">45</span>   <span class="n">ary</span><span class="o">.</span><span class="n">sort</span> <span class="p">{</span><span class="o">|</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">|</span> <span class="n">block</span> <span class="p">}</span>  <span class="o">-&gt;</span> <span class="n">new_ary</span>                                         
+<span class="lineno">46</span>                                                                                 
+<span class="lineno">47</span>                                                                                 
+<span class="lineno">48</span> <span class="o">------------------------------------------------------------------------------</span>  
+<span class="lineno">49</span>                                                                                 
+<span class="lineno">50</span> <span class="no">Returns</span> <span class="n">a</span> <span class="kp">new</span> <span class="n">array</span> <span class="n">created</span> <span class="n">by</span> <span class="n">sorting</span> <span class="nb">self</span><span class="o">.</span> <span class="no">Comparisons</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sort</span>           
+<span class="lineno">51</span> <span class="n">will</span> <span class="n">be</span> <span class="n">done</span> <span class="n">using</span> <span class="n">the</span> <span class="o">&lt;=&gt;</span> <span class="n">operator</span> <span class="ow">or</span> <span class="n">using</span> <span class="n">an</span> <span class="n">optional</span> <span class="n">code</span> <span class="n">block</span><span class="o">.</span>
+<span class="lineno">52</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span> <span class="no">Returns</span> <span class="n">the</span> <span class="n">non</span><span class="o">-</span><span class="n">negative</span> <span class="n">square</span> <span class="n">root</span> <span class="n">of</span> <span class="n">numeric</span><span class="o">.</span>                                
+<span class="lineno">55</span>                                                                                 
+<span class="lineno">56</span>   <span class="mi">0</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span>                                                               
+<span class="lineno">57</span>     <span class="nb">p</span> <span class="o">[</span><span class="n">x</span><span class="p">,</span> <span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">]</span>                                        
+<span class="lineno">58</span>   <span class="p">}</span>                                                                             
+<span class="lineno">59</span>   <span class="c1">#=&gt;                                                                           </span>
+<span class="lineno">60</span>   <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                                 
+<span class="lineno">61</span>   <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                                 
+<span class="lineno">62</span>   <span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">4142135623731</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                     
+<span class="lineno">63</span>   <span class="o">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">73205080756888</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                    
+<span class="lineno">64</span>   <span class="o">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                                 
+<span class="lineno">65</span>   <span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">23606797749979</span><span class="p">,</span> <span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                    
+<span class="lineno">66</span>   <span class="o">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">44948974278318</span><span class="p">,</span> <span class="mi">6</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                    
+<span class="lineno">67</span>   <span class="o">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">64575131106459</span><span class="p">,</span> <span class="mi">7</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                    
+<span class="lineno">68</span>   <span class="o">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">82842712474619</span><span class="p">,</span> <span class="mi">8</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                    
+<span class="lineno">69</span>   <span class="o">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>                                                                 
+<span class="lineno">70</span> <span class="o">=&gt;</span> <span class="kp">nil</span>                                                                          
+<span class="lineno">71</span> <span class="o">&gt;&gt;</span> <span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>                                                                 
+<span class="lineno">72</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span>                                                                          
+<span class="lineno">73</span> <span class="o">&gt;&gt;</span> <span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>                                                            
+<span class="lineno">74</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span>                                                                          
+<span class="lineno">75</span> <span class="o">&gt;&gt;</span>                                                                              
+<span class="lineno">76</span> <span class="n">seyyah</span><span class="vi">@ustad</span><span class="o">-</span><span class="n">seyyah</span><span class="ss">:~</span>
+</pre></div>
+</p>
 
 <p>
     <iframe
@@ -2417,7 +2694,22 @@ div.slide {
             <header><h1>Beyaz Boşluklar</h1></header>
             
             
-            <section><p>.coden: 01_whitespace.rb</p>
+            <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>                                                                    
+<span class="lineno"> 2</span> <span class="o">=&gt;</span> <span class="mi">0</span>                                                                            
+<span class="lineno"> 3</span> <span class="o">&gt;&gt;</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">55</span> <span class="o">+</span> <span class="c1"># tamamlanmamış ifade, parse devam ediyor                       </span>
+<span class="lineno"> 4</span>  <span class="o">&gt;</span>   <span class="mi">19</span>                                                                         
+<span class="lineno"> 5</span> <span class="o">=&gt;</span> <span class="mi">74</span>                                                                           
+<span class="lineno"> 6</span> <span class="o">&gt;&gt;</span>                                                                              
+<span class="lineno"> 7</span>  <span class="o">&gt;</span>                                                                              
+<span class="lineno"> 8</span>  <span class="o">&gt;</span>   <span class="o">^</span><span class="n">C</span>                                                                         
+<span class="lineno"> 9</span> <span class="o">&gt;&gt;</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">55</span>  <span class="c1"># tamamlanmış ifade!                                             </span>
+<span class="lineno">10</span> <span class="o">=&gt;</span> <span class="mi">55</span>                                                                           
+<span class="lineno">11</span> <span class="o">&gt;&gt;</span> <span class="o">+</span> <span class="mi">19</span> <span class="c1"># faydasız fakat geçerli bir ifade                                      </span>
+<span class="lineno">12</span> <span class="o">=&gt;</span> <span class="mi">19</span>                                                                           
+<span class="lineno">13</span> <span class="o">&gt;&gt;</span> <span class="n">total</span>                                                                        
+<span class="lineno">14</span> <span class="o">=&gt;</span> <span class="mi">55</span> 
+</pre></div>
+</p>
 
 <p>
     <iframe
