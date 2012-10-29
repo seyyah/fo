@@ -89,6 +89,23 @@ Commit mesajıyla issues'u kapatmak: 123 issues'u kapat,
 
 ---
 
+# Branch: current
+
+Bir çok yaklaşım mevcut,
+
+	!bash
+	git rev-parse --abbrev-ref HEAD
+
+	VEYA
+
+	echo $(git branch | grep "*" | sed "s/* //")
+
+	VEYA
+
+	git branch
+
+---
+
 # Branch: rename
 
 Senaryo: `old` dalını `new` olarak yerelde ve uzakta isimlendirmek.
