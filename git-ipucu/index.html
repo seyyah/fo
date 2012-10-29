@@ -1624,7 +1624,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              1/8
+              1/9
             </aside>
           </footer>
         </div>
@@ -1670,7 +1670,7 @@ v1.2
             </aside>
             
             <aside class="page_number">
-              2/8
+              2/9
             </aside>
           </footer>
         </div>
@@ -1712,7 +1712,7 @@ v1.2
             </aside>
             
             <aside class="page_number">
-              3/8
+              3/9
             </aside>
           </footer>
         </div>
@@ -1751,7 +1751,7 @@ git push origin :refs/tags/old
             </aside>
             
             <aside class="page_number">
-              4/8
+              4/9
             </aside>
           </footer>
         </div>
@@ -1792,7 +1792,7 @@ git push origin :refs/tags/old
             </aside>
             
             <aside class="page_number">
-              5/8
+              5/9
             </aside>
           </footer>
         </div>
@@ -1827,7 +1827,7 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              6/8
+              6/9
             </aside>
           </footer>
         </div>
@@ -1838,7 +1838,7 @@ foo bar. Close <span class="c">#123</span>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Branch Rename</h1></header>
+            <header><h1>Branch: rename</h1></header>
             
             
             <section><p>Senaryo: <code>old</code> dalını <code>new</code> olarak yerelde ve uzakta isimlendirmek.</p>
@@ -1874,7 +1874,61 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              7/8
+              7/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: git-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Branch: delete</h1></header>
+            
+            
+            <section><p>Nasıl,</p>
+
+<div class="highlight"><pre>git push origin --delete &lt;branchName&gt;
+
+VEYA
+
+git push origin :&lt;branchName&gt;
+</pre></div>
+
+
+<p>Örnek,</p>
+
+<div class="highlight"><pre>g checkout beni_sil
+g push origin :beni_sil
+g checkout dev
+g branch -d beni_sil
+</pre></div>
+
+
+<p>Kaynak:</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-in-github">http://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-in-github</a></li>
+<li><a href="http://git-scm.com/book/en/Git-Branching-Remote-Branches">http://git-scm.com/book/en/Git-Branching-Remote-Branches</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="git-ipucu/index.md">git-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/9
             </aside>
           </footer>
         </div>
@@ -1908,7 +1962,7 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              8/8
+              9/9
             </aside>
           </footer>
         </div>
@@ -1959,14 +2013,20 @@ foo bar. Close <span class="c">#123</span>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Branch Rename</a></th>
+        <th><a href="#slide7">Branch: rename</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Etc</a></th>
+        <th><a href="#slide8">Branch: delete</a></th>
         <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Etc</a></th>
+        <td><a href="#slide9">9</a></td>
       </tr>
       
       

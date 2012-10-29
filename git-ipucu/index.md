@@ -89,7 +89,7 @@ Commit mesajıyla issues'u kapatmak: 123 issues'u kapat,
 
 ---
 
-# Branch Rename
+# Branch: rename
 
 Senaryo: `old` dalını `new` olarak yerelde ve uzakta isimlendirmek.
 
@@ -107,6 +107,32 @@ uzağı da çözelim,
 **Not**: silinecek uzak dal, github'da _default branch_ olmamalı!
 
 Kaynaklar: <http://www.dmo.ca/blog/20080307124544/>
+
+---
+
+# Branch: delete
+
+Nasıl,
+
+	!bash
+	git push origin --delete <branchName>
+
+	VEYA
+
+	git push origin :<branchName>
+
+Örnek,
+
+	!bash
+	g checkout beni_sil
+	g push origin :beni_sil
+	g checkout dev
+	g branch -d beni_sil
+
+Kaynak:
+
+- http://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-in-github
+- http://git-scm.com/book/en/Git-Branching-Remote-Branches
 
 ---
 
