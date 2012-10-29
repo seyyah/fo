@@ -24,16 +24,24 @@ Amacım mysql ile başlamak ve test-unit'lerini atlamak
 
 ---
 
-# UTF-8
+# Generator: model
 
-controller vs sayfalarında utf-8 desteği için,
+Model oluştururken,
 
-    !ruby
-    # encoding: utf-8
+    !bash
+    $ rails g model QuestionGroup title_tr efp:references
+
+Checklist,
+
+1. Model dosyasını düzenle
+2. Migration dosyasını düzenle
+3. `rake db:migrate`
+4. Gerekiyorsa seed dosyasını düzenle
+5. Gerekiyorsa factorygirl tanımını güncelle
 
 ---
 
-# Generator: Scaffold: only view
+# Generator: scaffold: only view
 
 Evet sadece view üretmek istersek,
 
@@ -265,3 +273,14 @@ Yollardan birisi,
 
     !bash
     $ time bundle exec rspec ...
+
+---
+
+# UTF-8
+
+controller vs sayfalarında utf-8 desteği için,
+
+    !ruby
+    # encoding: utf-8
+
+---
