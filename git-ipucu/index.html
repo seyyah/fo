@@ -869,8 +869,21 @@ div.slide {
 .slide.achtung header {
   color: #9c000d;
 }
-.slide.achtung header {
+
+.slide.wrong {
+  background: #ffdeb5;
+  border: 1px solid #eee;
+  border-radius: 20px;
+}
+.slide.wrong header {
   color: #9c000d;
+}
+
+.slide.right {
+  background: #a2dcc1;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  font-color: #f5f5f5;
 }
 
 .slide.first {
@@ -1611,7 +1624,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              1/6
+              1/8
             </aside>
           </footer>
         </div>
@@ -1641,9 +1654,37 @@ div.slide {
 v1.1
 v1.2
 </pre></div>
-
-
-<p>Tag i göstermek,</p>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="git-ipucu/index.md">git-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: git-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Tags: göster, paylaş</h1></header>
+            
+            
+            <section><p>Tag i göstermek,</p>
 
 <div class="highlight"><pre><span class="nv">$ </span>git show v1.4
 </pre></div>
@@ -1671,7 +1712,46 @@ v1.2
             </aside>
             
             <aside class="page_number">
-              2/6
+              3/8
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: git-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Tags: rename</h1></header>
+            
+            
+            <section><p>Yeniden adlandırırken,</p>
+
+<div class="highlight"><pre>git checkout old
+git tag new
+git tag -d old
+git push origin :refs/tags/old
+</pre></div>
+
+
+<p>Kaynak: <a href="http://stackoverflow.com/questions/1028649/rename-a-tag-in-git">http://stackoverflow.com/questions/1028649/rename-a-tag-in-git</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="git-ipucu/index.md">git-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/8
             </aside>
           </footer>
         </div>
@@ -1712,7 +1792,7 @@ v1.2
             </aside>
             
             <aside class="page_number">
-              3/6
+              5/8
             </aside>
           </footer>
         </div>
@@ -1747,7 +1827,7 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              4/6
+              6/8
             </aside>
           </footer>
         </div>
@@ -1794,7 +1874,7 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              5/6
+              7/8
             </aside>
           </footer>
         </div>
@@ -1828,7 +1908,7 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              6/6
+              8/8
             </aside>
           </footer>
         </div>
@@ -1855,26 +1935,38 @@ foo bar. Close <span class="c">#123</span>
       
       
       <tr id="toc-row-3">
-        <th><a href="#slide3">Checkout</a></th>
+        <th><a href="#slide3">Tags: göster, paylaş</a></th>
         <td><a href="#slide3">3</a></td>
       </tr>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Github</a></th>
+        <th><a href="#slide4">Tags: rename</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Branch Rename</a></th>
+        <th><a href="#slide5">Checkout</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Etc</a></th>
+        <th><a href="#slide6">Github</a></th>
         <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Branch Rename</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Etc</a></th>
+        <td><a href="#slide8">8</a></td>
       </tr>
       
       

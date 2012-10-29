@@ -31,6 +31,9 @@ Tag leri listelerken,
 	$ git tag -l v1.*
 	v1.1
 	v1.2
+---
+
+# Tags: göster, paylaş
 
 Tag i göstermek,
 
@@ -43,6 +46,20 @@ Tag leri paylaşmak,
 	$ git push --tags
 
 Kaynak: <http://learn.github.com/p/tagging.html>
+
+---
+
+# Tags: rename
+
+Yeniden adlandırırken,
+
+	!bash
+	git checkout old
+	git tag new
+	git tag -d old
+	git push origin :refs/tags/old
+
+Kaynak: http://stackoverflow.com/questions/1028649/rename-a-tag-in-git
 
 ---
 
