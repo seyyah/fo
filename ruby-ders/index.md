@@ -6,6 +6,8 @@ Nurettin Şenyer <seyyah@bil.omu.edu.tr>
 
 <http://seyyah.me/p>
 
+<http://shelr.tv/users/5051947696608018680000de>
+
 Haziran, 2012
 
 Samsun
@@ -61,7 +63,7 @@ Samsun
 
 .coden: code/01_expression.rb
 
-.shelr: 5051de1e96608010b3000025
+shelr: 5051de1e96608010b3000025
 
 ---
 
@@ -69,7 +71,7 @@ Samsun
 
 .coden: code/01_fun.rb
 
-.shelr: 5051de9c966080189000001e
+shelr: 5051de9c966080189000001e
 
 ---
 
@@ -77,7 +79,7 @@ Samsun
 
 .coden: code/01_atama.rb
 
-.shelr: 5051dfac96608010b3000026
+shelr: 5051dfac96608010b3000026
 
 ---
 
@@ -89,7 +91,7 @@ Samsun
 
 .coden: code/01_punc.rb
 
-.shelr: 5051e094966080189000001f
+shelr: 5051e094966080189000001f
 
 ---
 
@@ -97,7 +99,7 @@ Samsun
 
 .coden: code/01_regexp.rb
 
-.shelr: 5051e3039660801890000020
+shelr: 5051e3039660801890000020
 
 ---
 
@@ -105,7 +107,7 @@ Samsun
 
 .coden: code/01_class.rb
 
-.shelr: 5051e41b96608010b3000029
+shelr: 5051e41b96608010b3000029
 
 ---
 
@@ -119,7 +121,7 @@ Samsun
 
 .coden: code/01_irb.rb
 
-.shelr: 5051e6ef96608010b300002c
+shelr: 5051e6ef96608010b300002c
 
 ---
 
@@ -247,7 +249,7 @@ bunları kullanmayın.
 
 .coden: code/01_whitespace.rb
 
-.shelr: 5051f02096608010b3000031
+shelr: 5051f02096608010b3000031
 
 ---
 
@@ -340,7 +342,7 @@ Shebang,
     !ruby
     # encoding: utf-8
 
-.shelr: 5051f6139660801890000023
+shelr: 5051f6139660801890000023
 
 - diyez ile başlayan satırlar _shebang comment_ olarak bilinir
 

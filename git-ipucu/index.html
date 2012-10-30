@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -1624,7 +1622,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              1/10
+              1/11
             </aside>
           </footer>
         </div>
@@ -1670,7 +1668,7 @@ v1.2
             </aside>
             
             <aside class="page_number">
-              2/10
+              2/11
             </aside>
           </footer>
         </div>
@@ -1712,7 +1710,7 @@ v1.2
             </aside>
             
             <aside class="page_number">
-              3/10
+              3/11
             </aside>
           </footer>
         </div>
@@ -1751,7 +1749,7 @@ git push origin :refs/tags/old
             </aside>
             
             <aside class="page_number">
-              4/10
+              4/11
             </aside>
           </footer>
         </div>
@@ -1792,7 +1790,47 @@ git push origin :refs/tags/old
             </aside>
             
             <aside class="page_number">
-              5/10
+              5/11
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: git-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Undo: merge</h1></header>
+            
+            
+            <section><p>Herhangi bir merge işlemini geri almak istersen,</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>git log
+commit_sha
+<span class="nv">$ </span>git reset --hard commit_sha
+
+VEYA
+
+<span class="nv">$ </span>git reset --hard HEAD~5 <span class="c"># 5 commit geriye al!</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="git-ipucu/index.md">git-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/11
             </aside>
           </footer>
         </div>
@@ -1827,7 +1865,7 @@ foo bar. Close <span class="c">#123</span>
             </aside>
             
             <aside class="page_number">
-              6/10
+              7/11
             </aside>
           </footer>
         </div>
@@ -1869,7 +1907,7 @@ git branch
             </aside>
             
             <aside class="page_number">
-              7/10
+              8/11
             </aside>
           </footer>
         </div>
@@ -1916,7 +1954,7 @@ git branch
             </aside>
             
             <aside class="page_number">
-              8/10
+              9/11
             </aside>
           </footer>
         </div>
@@ -1970,7 +2008,7 @@ g branch -d beni_sil
             </aside>
             
             <aside class="page_number">
-              9/10
+              10/11
             </aside>
           </footer>
         </div>
@@ -2004,7 +2042,7 @@ g branch -d beni_sil
             </aside>
             
             <aside class="page_number">
-              10/10
+              11/11
             </aside>
           </footer>
         </div>
@@ -2049,32 +2087,38 @@ g branch -d beni_sil
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Github</a></th>
+        <th><a href="#slide6">Undo: merge</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Branch: current</a></th>
+        <th><a href="#slide7">Github</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Branch: rename</a></th>
+        <th><a href="#slide8">Branch: current</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Branch: delete</a></th>
+        <th><a href="#slide9">Branch: rename</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">Etc</a></th>
+        <th><a href="#slide10">Branch: delete</a></th>
         <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Etc</a></th>
+        <td><a href="#slide11">11</a></td>
       </tr>
       
       

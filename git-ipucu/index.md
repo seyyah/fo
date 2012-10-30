@@ -79,6 +79,21 @@ Kaynak: [GETTING OLD VERSIONS](http://gitimmersion.com/lab_12.html)
 
 ---
 
+# Undo: merge
+
+Herhangi bir merge işlemini geri almak istersen,
+
+	!bash
+	$ git log
+	commit_sha
+	$ git reset --hard commit_sha
+
+	VEYA
+
+	$ git reset --hard HEAD~5 # 5 commit geriye al!
+
+---
+
 # Github
 
 Commit mesajıyla issues'u kapatmak: 123 issues'u kapat,
