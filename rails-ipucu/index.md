@@ -14,43 +14,8 @@ Samsun
 
 ---
 
-# rails new
-
-Amacım mysql ile başlamak ve test-unit'lerini atlamak
-
-    !bash
-    $ rails help new
-    $ rails new Edessa --skip-test-unit --database=mysql
-
----
-
-# Generator: model
-
-Model oluştururken,
-
-    !bash
-    $ rails g model QuestionGroup title_tr efp:references
-
-Checklist,
-
-1. Model dosyasını düzenle
-2. Migration dosyasını düzenle
-3. `rake db:migrate`
-4. Gerekiyorsa seed dosyasını düzenle
-5. Gerekiyorsa factorygirl tanımını güncelle
-
----
-
-# Generator: scaffold: only view
-
-Evet sadece view üretmek istersek,
-
-    !bash
-    $ rails generate scaffold Institution --migration=false --skip
-
----
-
 # Model
+
 ---
 
 # HABTM + establish_connection
@@ -60,7 +25,28 @@ Kaynak:
 
 ---
 
+# View
+---
+
+# Controller
+
+---
+
+# before_filter
+
+`controller` ve `action`'a bağlı işler yapmak istenirse,
+
+    !ruby
+    before_filter { |controller|
+      logger.debug "Running before the #{controller.action_name} action"
+    }
+
+Kaynak: http://stackoverflow.com/a/2747748/1325624
+
+---
+
 # Guide
+
 ---
 
 # Eager Loading
@@ -185,7 +171,51 @@ Kaynak
 
 ---
 
+# Bash
+
+---
+
+# new
+
+Amacım mysql ile başlamak ve test-unit'lerini atlamak
+
+    !bash
+    $ rails help new
+    $ rails new Edessa --skip-test-unit --database=mysql
+
+---
+
+# Generator: model
+
+Model oluştururken,
+
+    !bash
+    $ rails g model QuestionGroup title_tr efp:references
+
+Checklist,
+
+1. Model dosyasını düzenle
+2. Migration dosyasını düzenle
+3. `rake db:migrate`
+4. Gerekiyorsa seed dosyasını düzenle
+5. Gerekiyorsa factorygirl tanımını güncelle
+
+---
+
+# Generator: scaffold: only view
+
+Evet sadece view üretmek istersek,
+
+    !bash
+    $ rails generate scaffold Institution --migration=false --skip
+
+---
+
 # Rake
+
+---
+
+# İpucu
 
 İpuçları,
 
@@ -205,6 +235,10 @@ Kaynak
 
 # Console
 
+---
+
+# Authentication
+
 Authentication,
 
     !ruby
@@ -217,17 +251,7 @@ Environment bilgisi,
 
 ---
 
-# Logger
-
-Controller'da,
-
-    !ruby
-    # foo_controller.rb
-    logger.info { "foo #{variable}" }
-
----
-
-# Sunucu
+# Deploy
 ---
 
 # Heroku
@@ -264,6 +288,20 @@ Başlat/durdur,
 
     !bash
     $ sudo service unicorn start | stop
+
+---
+
+# Etc
+
+---
+
+# Logger
+
+Controller'da,
+
+    !ruby
+    # foo_controller.rb
+    logger.info { "foo #{variable}" }
 
 ---
 

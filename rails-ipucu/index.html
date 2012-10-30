@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -1624,120 +1622,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              1/20
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: rails-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>rails new</h1></header>
-            
-            
-            <section><p>Amacım mysql ile başlamak ve test-unit&#39;lerini atlamak</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>rails <span class="nb">help </span>new
-<span class="nv">$ </span>rails new Edessa --skip-test-unit --database<span class="o">=</span>mysql
-</pre></div>
-</section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              2/20
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: rails-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>Generator: model</h1></header>
-            
-            
-            <section><p>Model oluştururken,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>rails g model QuestionGroup title_tr efp:references
-</pre></div>
-
-
-<p>Checklist,</p>
-
-<ol>
-<li>Model dosyasını düzenle</li>
-<li>Migration dosyasını düzenle</li>
-<li><code>rake db:migrate</code></li>
-<li>Gerekiyorsa seed dosyasını düzenle</li>
-<li>Gerekiyorsa factorygirl tanımını güncelle</li>
-</ol></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              3/20
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: rails-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>Generator: scaffold: only view</h1></header>
-            
-            
-            <section><p>Evet sadece view üretmek istersek,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>rails generate scaffold Institution --migration<span class="o">=</span><span class="nb">false</span> --skip
-</pre></div>
-</section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              4/20
+              1/27
             </aside>
           </footer>
         </div>
@@ -1765,7 +1650,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              5/20
+              2/27
             </aside>
           </footer>
         </div>
@@ -1796,7 +1681,101 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              6/20
+              3/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>View</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Controller</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>before_filter</h1></header>
+            
+            
+            <section><p><code>controller</code> ve <code>action</code>&#39;a bağlı işler yapmak istenirse,</p>
+
+<div class="highlight"><pre><span class="n">before_filter</span> <span class="p">{</span> <span class="o">|</span><span class="n">controller</span><span class="o">|</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;Running before the </span><span class="si">#{</span><span class="n">controller</span><span class="o">.</span><span class="n">action_name</span><span class="si">}</span><span class="s2"> action&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Kaynak: <a href="http://stackoverflow.com/a/2747748/1325624">http://stackoverflow.com/a/2747748/1325624</a></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/27
             </aside>
           </footer>
         </div>
@@ -1824,7 +1803,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              7/20
+              7/27
             </aside>
           </footer>
         </div>
@@ -1886,7 +1865,7 @@ düşer.</p></section>
             </aside>
             
             <aside class="page_number">
-              8/20
+              8/27
             </aside>
           </footer>
         </div>
@@ -1929,7 +1908,7 @@ yükleyeceğim dersek,</p>
             </aside>
             
             <aside class="page_number">
-              9/20
+              9/27
             </aside>
           </footer>
         </div>
@@ -1988,7 +1967,7 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              10/20
+              10/27
             </aside>
           </footer>
         </div>
@@ -2033,7 +2012,7 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              11/20
+              11/27
             </aside>
           </footer>
         </div>
@@ -2081,7 +2060,35 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              12/20
+              12/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Bash</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/27
             </aside>
           </footer>
         </div>
@@ -2092,7 +2099,148 @@ Bunu şöyle sağlarız,</p>
         <div class="slide has_code">
           <div class="inner">
             
+            <header><h1>new</h1></header>
+            
+            
+            <section><p>Amacım mysql ile başlamak ve test-unit&#39;lerini atlamak</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>rails <span class="nb">help </span>new
+<span class="nv">$ </span>rails new Edessa --skip-test-unit --database<span class="o">=</span>mysql
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Generator: model</h1></header>
+            
+            
+            <section><p>Model oluştururken,</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>rails g model QuestionGroup title_tr efp:references
+</pre></div>
+
+
+<p>Checklist,</p>
+
+<ol>
+<li>Model dosyasını düzenle</li>
+<li>Migration dosyasını düzenle</li>
+<li><code>rake db:migrate</code></li>
+<li>Gerekiyorsa seed dosyasını düzenle</li>
+<li>Gerekiyorsa factorygirl tanımını güncelle</li>
+</ol></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Generator: scaffold: only view</h1></header>
+            
+            
+            <section><p>Evet sadece view üretmek istersek,</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>rails generate scaffold Institution --migration<span class="o">=</span><span class="nb">false</span> --skip
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
             <header><h1>Rake</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>İpucu</h1></header>
             
             
             <section><p>İpuçları,</p>
@@ -2124,7 +2272,35 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              13/20
+              18/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Console</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/27
             </aside>
           </footer>
         </div>
@@ -2135,7 +2311,7 @@ Bunu şöyle sağlarız,</p>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Console</h1></header>
+            <header><h1>Authentication</h1></header>
             
             
             <section><p>Authentication,</p>
@@ -2164,7 +2340,153 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              14/20
+              20/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Deploy</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Heroku</h1></header>
+            
+            
+            <section><p>Başlarken</p>
+
+<pre><code>sudo gem install heroku
+heroku keys:add ~/.ssh/id_dsa.pub
+</code></pre>
+
+<p>Depoda tek dal durumu,</p>
+
+<pre><code>heroku create --stack cedar
+git push heroku master
+heroku run rake db:migrate
+</code></pre>
+
+<p>Birden fazla dal durumu,</p>
+
+<pre><code>heroku create APP_NAME --stack cedar --remote heroku_XX
+git push heroku_XX dal_XX:master
+heroku run rake db:migrate --app APP_NAME
+heroku logs --app APP_NAME
+</code></pre>
+
+<p>precompile,</p>
+
+<div class="highlight"><pre><span class="c1"># config/environments/production.rb</span>
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">compile</span> <span class="o">=</span> <span class="kp">true</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Unicorn</h1></header>
+            
+            
+            <section><p>Başlat/durdur,</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>sudo service unicorn start | stop
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/27
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-ipucu/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Etc</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/27
             </aside>
           </footer>
         </div>
@@ -2199,104 +2521,7 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              15/20
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: rails-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            <header><h1>Sunucu</h1></header>
-            
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              16/20
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: rails-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>Heroku</h1></header>
-            
-            
-            <section><p>Başlarken</p>
-
-<div class="highlight"><pre><span class="c1"># config/environments/production.rb</span>
-<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">compile</span> <span class="o">=</span> <span class="kp">true</span>
-</pre></div>
-</section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              17/20
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: rails-ipucu/index.md -->
-      <div class="slide-wrapper">
-        <div class="slide has_code">
-          <div class="inner">
-            
-            <header><h1>Unicorn</h1></header>
-            
-            
-            <section><p>Başlat/durdur,</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>sudo service unicorn start | stop
-</pre></div>
-</section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="rails-ipucu/index.md">rails-ipucu/index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              18/20
+              25/27
             </aside>
           </footer>
         </div>
@@ -2330,7 +2555,7 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              19/20
+              26/27
             </aside>
           </footer>
         </div>
@@ -2364,7 +2589,7 @@ Bunu şöyle sağlarız,</p>
             </aside>
             
             <aside class="page_number">
-              20/20
+              27/27
             </aside>
           </footer>
         </div>
@@ -2386,7 +2611,7 @@ Bunu şöyle sağlarız,</p>
           <footer>
             
             <aside class="page_number">
-              /20
+              /27
             </aside>
           </footer>
         </div>
@@ -2407,31 +2632,31 @@ Bunu şöyle sağlarız,</p>
       
       
       <tr id="toc-row-2">
-        <th><a href="#slide2">rails new</a></th>
+        <th><a href="#slide2">Model</a></th>
         <td><a href="#slide2">2</a></td>
       </tr>
       
       
       <tr id="toc-row-3">
-        <th><a href="#slide3">Generator: model</a></th>
+        <th><a href="#slide3">HABTM + establish_connection</a></th>
         <td><a href="#slide3">3</a></td>
       </tr>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Generator: scaffold: only view</a></th>
+        <th><a href="#slide4">View</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Model</a></th>
+        <th><a href="#slide5">Controller</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">HABTM + establish_connection</a></th>
+        <th><a href="#slide6">before_filter</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
@@ -2473,50 +2698,92 @@ Bunu şöyle sağlarız,</p>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Rake</a></th>
+        <th><a href="#slide13">Bash</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Console</a></th>
+        <th><a href="#slide14">new</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Logger</a></th>
+        <th><a href="#slide15">Generator: model</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Sunucu</a></th>
+        <th><a href="#slide16">Generator: scaffold: only view</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Heroku</a></th>
+        <th><a href="#slide17">Rake</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">Unicorn</a></th>
+        <th><a href="#slide18">İpucu</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">Benchamark</a></th>
+        <th><a href="#slide19">Console</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
       
       <tr id="toc-row-20">
-        <th><a href="#slide20">UTF-8</a></th>
+        <th><a href="#slide20">Authentication</a></th>
         <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Deploy</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Heroku</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Unicorn</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Etc</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Logger</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Benchamark</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">UTF-8</a></th>
+        <td><a href="#slide27">27</a></td>
       </tr>
       
       
