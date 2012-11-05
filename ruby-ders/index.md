@@ -356,7 +356,7 @@ shelr: 5051f6139660801890000023
 
 # 3.1 Sayılar
 
-![](http://i.imgur.com/C4kth.png)
+<img src=http://i.imgur.com/C4kth.png width=750>
 
 - Integer, 31 bit ? Fixnum : Bignum (keyfi uzunluklu)
 
