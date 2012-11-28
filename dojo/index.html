@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Dojotoolkit</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/dojo">http://seyyah.me/p/dojo</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1642,53 +1650,44 @@ div.slide {
 <li><a href="http://blog.markwatson.com/2007/01/using-dojo-javascript-library-in-ruby.html">Using the Dojo Javascript library in Ruby
 Rails</a></li>
 </ul>
-
 <blockquote>
 <p>Dojo is definitely &ldquo;heavier weight&rdquo; than the prototype.js Javascript library
 that is provided with Rails so you may not want to use Dojo for very high
 traffic sites.</p>
 </blockquote>
-
 <ul>
 <li><a href="https://github.com/newfront/hacker-dojo-rails3-code-base">hacker-dojo-rails3-code-base</a></li>
 </ul>
-
 <blockquote>
 <p>This is the sample code repository for the November 2010 Hacker Dojo Rails 3
 with Ruby Hands On Programming Class.</p>
 </blockquote>
-
 <ul>
-<li><a href="http://dojo-pkg.rubyforge.org/">Dojo Packager ‘dojo-pkg’</a></li>
+<li><a href="http://dojo-pkg.rubyforge.org/">Dojo Packager &lsquo;dojo-pkg&rsquo;</a></li>
 </ul>
-
 <blockquote>
 <p>dojo-pkg is a Ruby gem for distributing the Dojo source code and provides
 utilities for working with Dojo in your Rails application.</p>
 </blockquote>
-
 <ul>
 <li><a href="http://ajaxodyssey.wordpress.com/2010/07/27/building-dojo/">Building Dojo</a>,
 <a href="http://ajaxodyssey.wordpress.com/2010/07/12/and-dojo-button-in-rails/">And Dojo button in
-Rails…</a></li>
+Rails&hellip;</a></li>
 </ul>
-
 <blockquote>
-<p>Continuing from the previous post, we’ll exercise Dojo button in Rails
+<p>Continuing from the previous post, we&rsquo;ll exercise Dojo button in Rails
 environment without and with Ajax.</p>
 </blockquote>
-
 <ul>
 <li><a href="https://github.com/foobarfighter/drails">drails: A Dojo implementation for the Rails
 helpers</a></li>
 </ul>
-
 <blockquote>
 <p>drails allows you to use RJS with Dojo in your Rails application.
 It
 completely replaces the need for Prototype/Scriptaculous in your
 application
-and let&#39;s you use the powerful Dojo Toolkit as your Javascript
+and let&rsquo;s you use the powerful Dojo Toolkit as your Javascript
 library.</p>
 </blockquote></section>
             

@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Routing</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/rails-routing">http://seyyah.me/p/rails-routing</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1639,25 +1647,17 @@ div.slide {
             
             
             <section><h2>1.1 Connecting URLs to Code</h2>
-
-<p>Şöylesi bir istek,</p>
-
+<p>&#350;&ouml;ylesi bir istek,</p>
 <div class="highlight"><pre><span class="no">GET</span><span class="sr"> /patients/</span><span class="mi">17</span>
 </pre></div>
 
-
-<p>şöyle eşleştirilir,</p>
-
+<p>&#351;&ouml;yle e&#351;le&#351;tirilir,</p>
 <div class="highlight"><pre><span class="n">match</span> <span class="s2">&quot;/patients/:id&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;patients#show&quot;</span>
 </pre></div>
 
-
-<p>ve <code>{ id: 17 }</code> parametresini aktarır.</p>
-
+<p>ve <code>{ id: 17 }</code> parametresini aktar&#305;r.</p>
 <h2>1.2 Generating Paths and URLs from Code</h2>
-
-<p>Path ve URL&#39;leri şöyle üretiriz,</p>
-
+<p>Path ve URL&rsquo;leri &#351;&ouml;yle &uuml;retiriz,</p>
 <div class="highlight"><pre><span class="c1"># controller</span>
 <span class="vi">@patient</span> <span class="o">=</span> <span class="no">Patient</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 
@@ -1665,8 +1665,7 @@ div.slide {
 <span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Patient Record&quot;</span><span class="p">,</span> <span class="n">patient_path</span><span class="p">(</span><span class="vi">@patient</span><span class="p">)</span> <span class="o">%&gt;</span>
 </pre></div>
 
-
-<p>bu şöyle bir path üretir: <code>/patients/17</code></p></section>
+<p>bu &#351;&ouml;yle bir path &uuml;retir: <code>/patients/17</code></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1696,27 +1695,20 @@ div.slide {
             <header><h1>2 Resource Routing: the Rails Default</h1></header>
             
             
-            <section><p>Tek kalemde tüm route&#39;ları tanımla</p>
-
+            <section><p>Tek kalemde t&uuml;m route&rsquo;lar&#305; tan&#305;mla</p>
 <div class="highlight"><pre><span class="n">index</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="kp">new</span><span class="p">,</span> <span class="n">edit</span><span class="p">,</span> <span class="n">create</span><span class="p">,</span> <span class="n">update</span> <span class="ow">and</span> <span class="n">destroy</span>
 </pre></div>
 
-
 <h2>2.1 Resources on the Web</h2>
-
-<p>Herhangi bir HTTP isteği (GET, POST, PUT and DELETE) geldiğinde,</p>
-
+<p>Herhangi bir HTTP iste&#287;i (GET, POST, PUT and DELETE) geldi&#287;inde,</p>
 <div class="highlight"><pre><span class="no">DELETE</span><span class="sr"> /photos/</span><span class="mi">17</span>
 </pre></div>
 
-
-<p>routing&#39;de şöyle bir satır yazıldıysa,</p>
-
+<p>routing&rsquo;de &#351;&ouml;yle bir sat&#305;r yaz&#305;ld&#305;ysa,</p>
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:photos</span>
 </pre></div>
 
-
-<p>buna karşılık controller&#39;da <code>destroy</code> yöntemine <code>{ id: 17 }</code> argümanını geçer.</p></section>
+<p>buna kar&#351;&#305;l&#305;k controller&rsquo;da <code>destroy</code> y&ouml;ntemine <code>{ id: 17 }</code> arg&uuml;man&#305;n&#305; ge&ccedil;er.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1746,11 +1738,9 @@ div.slide {
             <header><h1>2.2 CRUD, Verbs, and Actions</h1></header>
             
             
-            <section><p>Her bir eylemin veritabanında bir işleme karşılık düşer,</p>
-
-<p><img src="http://i.imgur.com/dnwSk.png" alt=""/></p>
-
-<p>Yönlendirme tablosu yukarıdan aşağıya eşleşme düzenindedir.</p></section>
+            <section><p>Her bir eylemin veritaban&#305;nda bir i&#351;leme kar&#351;&#305;l&#305;k d&uuml;&#351;er,</p>
+<p><img alt="" src="http://i.imgur.com/dnwSk.png" /></p>
+<p>Y&ouml;nlendirme tablosu yukar&#305;dan a&#351;a&#287;&#305;ya e&#351;le&#351;me d&uuml;zenindedir.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1780,24 +1770,20 @@ div.slide {
             <header><h1>2.3 Paths and URLs</h1></header>
             
             
-            <section><p><code>resources :photos</code> path&#39;e aşağıda ki girdileri ekler,</p>
-
+            <section><p><code>resources :photos</code> path&rsquo;e a&#351;a&#287;&#305;da ki girdileri ekler,</p>
 <div class="highlight"><pre><span class="n">photos_path</span>          <span class="o">=&gt;</span> <span class="sr">/photos</span>
 <span class="sr">new_photo_path       =&gt; /</span><span class="n">photos</span><span class="o">/</span><span class="kp">new</span>
 <span class="n">edit_photo_path</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="sr">/photos/</span><span class="ss">:id</span><span class="o">/</span><span class="n">edit</span>
 <span class="n">photo_path</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>      <span class="o">=&gt;</span> <span class="sr">/photos/</span><span class="ss">:id</span>
 </pre></div>
 
-
-<p>Ayrıntılar,</p>
-
+<p>Ayr&#305;nt&#305;lar,</p>
 <ul>
 <li><code>edit_photo_path(10) =&gt; /photos/10/edit</code></li>
 <li><code>photo_path(10) =&gt; /photos/10</code></li>
 </ul>
-
-<p>Diğer taraftan <code>_path</code> yerine <code>_url</code> kullanılırsa full-path sağlar.
-Örneğin <code>edit_photo_url(10) =&gt; http://ustad.us/photos/10/edit</code></p></section>
+<p>Di&#287;er taraftan <code>_path</code> yerine <code>_url</code> kullan&#305;l&#305;rsa full-path sa&#287;lar.
+&Ouml;rne&#287;in <code>edit_photo_url(10) =&gt; http://ustad.us/photos/10/edit</code></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1827,8 +1813,7 @@ div.slide {
             <header><h1>2.4 Multiple Resources</h1></header>
             
             
-            <section><p>çok sayıda yönlendirme tek satırda,</p>
-
+            <section><p>&ccedil;ok say&#305;da y&ouml;nlendirme tek sat&#305;rda,</p>
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:photos</span><span class="p">,</span> <span class="ss">:books</span><span class="p">,</span> <span class="ss">:videos</span>
 </pre></div>
 </section>
@@ -1861,8 +1846,7 @@ div.slide {
             <header><h1>2.5 Singular Resources</h1></header>
             
             
-            <section><p>ID kullanmak istemeyebilirsiniz. Ör. login olmuş kullanıcının <code>profile</code> sayfası</p>
-
+            <section><p>ID kullanmak istemeyebilirsiniz. &Ouml;r. login olmu&#351; kullan&#305;c&#305;n&#305;n <code>profile</code> sayfas&#305;</p>
 <div class="highlight"><pre><span class="n">match</span> <span class="s2">&quot;profile&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;users#show&quot;</span>
 </pre></div>
 </section>
@@ -1892,18 +1876,15 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>2.5 Singular Resources: çoğul X tekil</h1></header>
+            <header><h1>2.5 Singular Resources: &ccedil;o&#287;ul X tekil</h1></header>
             
             
-            <section><p>Ayrıca <code>resources</code> cümlesinde nesnenin çoğul <strong>değil</strong> tekil hali kullanılırsa,</p>
-
+            <section><p>Ayr&#305;ca <code>resources</code> c&uuml;mlesinde nesnenin &ccedil;o&#287;ul <strong>de&#287;il</strong> tekil hali kullan&#305;l&#305;rsa,</p>
 <div class="highlight"><pre><span class="n">resource</span> <span class="ss">:geocoder</span>
 </pre></div>
 
-
-<p>bu durumda yönlendirme tablosu</p>
-
-<p><img src="http://i.imgur.com/s8Zd5.png" alt=""/></p></section>
+<p>bu durumda y&ouml;nlendirme tablosu</p>
+<p><img alt="" src="http://i.imgur.com/s8Zd5.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1930,18 +1911,15 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>çoğul durum yönlendirme tablosu</h1></header>
+            <header><h1>&ccedil;o&#287;ul durum y&ouml;nlendirme tablosu</h1></header>
             
             
-            <section><p>Bunu #slide4 ile karşılaştırın, (Burada ID&#39;nin yer almadığına dikkat ediniz)</p>
-
+            <section><p>Bunu #slide4 ile kar&#351;&#305;la&#351;t&#305;r&#305;n, (Burada ID&rsquo;nin yer almad&#305;&#287;&#305;na dikkat ediniz)</p>
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:photos</span>
 </pre></div>
 
-
-<p>buna dair yönlendirme tablosu şöyleydi,</p>
-
-<p><img src="http://i.imgur.com/dnwSk.png" alt=""/></p></section>
+<p>buna dair y&ouml;nlendirme tablosu &#351;&ouml;yleydi,</p>
+<p><img alt="" src="http://i.imgur.com/dnwSk.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1972,15 +1950,20 @@ div.slide {
             
             
             <section><ul>
-<li><p>Controller&#39;ları gruplamak için namespace kullanabilirsiniz.</p></li>
-<li><p>Örnek <code>Admin::</code> namespace, tüm buna dair controller&#39;lar <code>app/controller/admin/</code>
-klasörü altında tutulur</p></li>
-<li><p>yönlendirme tablosunda</p>
-
+<li>
+<p>Controller&rsquo;lar&#305; gruplamak i&ccedil;in namespace kullanabilirsiniz.</p>
+</li>
+<li>
+<p>&Ouml;rnek <code>Admin::</code> namespace, t&uuml;m buna dair controller&rsquo;lar <code>app/controller/admin/</code>
+  klas&ouml;r&uuml; alt&#305;nda tutulur</p>
+</li>
+<li>
+<p>y&ouml;nlendirme tablosunda</p>
 <div class="highlight"><pre><span class="n">namespace</span> <span class="ss">:admin</span> <span class="k">do</span>
   <span class="n">resources</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:comments</span>
 <span class="k">end</span>
 </pre></div>
+
 </li>
 </ul></section>
             
@@ -2009,12 +1992,11 @@ klasörü altında tutulur</p></li>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>namespace yönlendirme tablosu</h1></header>
+            <header><h1>namespace y&ouml;nlendirme tablosu</h1></header>
             
             
-            <section><p>Ör. <code>Admin::PostsController</code> için,</p>
-
-<p><img src="http://i.imgur.com/wHKAo.png" alt=""/></p></section>
+            <section><p>&Ouml;r. <code>Admin::PostsController</code> i&ccedil;in,</p>
+<p><img alt="" src="http://i.imgur.com/wHKAo.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2044,30 +2026,23 @@ klasörü altında tutulur</p></li>
             <header><h1>prefix: namespace + scope | module</h1></header>
             
             
-            <section><p>Eğer url&#39;de prefix (<code>/admin/</code>) kullanmak istemezseniz</p>
-
+            <section><p>E&#287;er url&rsquo;de prefix (<code>/admin/</code>) kullanmak istemezseniz</p>
 <div class="highlight"><pre><span class="n">scope</span> <span class="n">module</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span> <span class="k">do</span>
   <span class="n">resources</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:comments</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>ya da tek durum için,</p>
-
+<p>ya da tek durum i&ccedil;in,</p>
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:posts</span><span class="p">,</span> <span class="n">module</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
 </pre></div>
 
-
-<p>Eğer controller&#39;da ki prefix&#39;i kaldırmak isterseniz</p>
-
+<p>E&#287;er controller&rsquo;da ki prefix&rsquo;i kald&#305;rmak isterseniz</p>
 <div class="highlight"><pre><span class="n">scope</span> <span class="s2">&quot;/admin&quot;</span> <span class="k">do</span>
   <span class="n">resources</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:comments</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>ya da tek durum için,</p>
-
+<p>ya da tek durum i&ccedil;in,</p>
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:posts</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;/admin/posts&quot;</span>
 </pre></div>
 </section>
@@ -2097,12 +2072,11 @@ klasörü altında tutulur</p></li>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>namespace: prefix olmaksızın</h1></header>
+            <header><h1>namespace: prefix olmaks&#305;z&#305;n</h1></header>
             
             
-            <section><p>prefix olmaması durumları (son ikisi) için yönlendirme tablosu,</p>
-
-<p><img src="http://i.imgur.com/xIUVl.png" alt=""/></p></section>
+            <section><p>prefix olmamas&#305; durumlar&#305; (son ikisi) i&ccedil;in y&ouml;nlendirme tablosu,</p>
+<p><img alt="" src="http://i.imgur.com/xIUVl.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2132,8 +2106,7 @@ klasörü altında tutulur</p></li>
             <header><h1>Me: OSCE: namespace</h1></header>
             
             
-            <section><p>Bizde olması planlanan namespace</p>
-
+            <section><p>Bizde olmas&#305; planlanan namespace</p>
 <pre><code>manage/questions/
       /examinations/
 statistics/
@@ -2169,8 +2142,7 @@ report/examinations/
             <header><h1>2.7 Nested Resources</h1></header>
             
             
-            <section><p>Bir resources diğerinin çocuğu ise,</p>
-
+            <section><p>Bir resources di&#287;erinin &ccedil;ocu&#287;u ise,</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Magazine</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">has_many</span> <span class="ss">:ads</span>
 <span class="k">end</span>
@@ -2180,9 +2152,7 @@ report/examinations/
 <span class="k">end</span>
 </pre></div>
 
-
 <p>Bu durumda,</p>
-
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:magazines</span> <span class="k">do</span>
   <span class="n">resources</span> <span class="ss">:ads</span>
 <span class="k">end</span>
@@ -2214,12 +2184,11 @@ report/examinations/
         <div class="slide">
           <div class="inner">
             
-            <header><h1>nested: yönlendirme tablosu</h1></header>
+            <header><h1>nested: y&ouml;nlendirme tablosu</h1></header>
             
             
             <section><p>helper: magazine_ads_url(@magazine), edit_magazine_ad_path,</p>
-
-<p><img src=http://i.imgur.com/80iRo.png height=500></p></section>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/80iRo.png height=500></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2250,7 +2219,6 @@ report/examinations/
             
             
             <section><p>bu duruma aday olanlar:</p>
-
 <ul>
 <li>examinations - questions</li>
 </ul></section>
@@ -2283,34 +2251,25 @@ report/examinations/
             <header><h1>2.8 Creating Paths From Objects</h1></header>
             
             
-            <section><p>şöyle bir yönlendirmemiz olsun,</p>
-
+            <section><p>&#351;&ouml;yle bir y&ouml;nlendirmemiz olsun,</p>
 <div class="highlight"><pre><span class="n">resources</span> <span class="ss">:magazines</span> <span class="k">do</span>
   <span class="n">resources</span> <span class="ss">:ads</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>sayısal ID yerine instance geçebilirsiniz,</p>
-
+<p>say&#305;sal ID yerine instance ge&ccedil;ebilirsiniz,</p>
 <div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Ad details&quot;</span><span class="p">,</span> <span class="n">magazine_ad_path</span><span class="p">(</span><span class="vi">@magazine</span><span class="p">,</span> <span class="vi">@ad</span><span class="p">)</span> <span class="o">%&gt;</span>
 </pre></div>
 
-
 <p>VEYA <code>url_for</code> kullanarak (diziye dikkat!),</p>
-
 <div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Ad details&quot;</span><span class="p">,</span> <span class="n">url_for</span><span class="p">(</span><span class="o">[</span><span class="vi">@magazine</span><span class="p">,</span> <span class="vi">@ad</span><span class="o">]</span><span class="p">)</span> <span class="o">%&gt;</span>
 </pre></div>
 
-
-<p>VEYA kısaltarak,</p>
-
+<p>VEYA k&#305;saltarak,</p>
 <div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Ad details&quot;</span><span class="p">,</span> <span class="o">[</span><span class="vi">@magazine</span><span class="p">,</span> <span class="vi">@ad</span><span class="o">]</span> <span class="o">%&gt;</span>
 </pre></div>
 
-
-<p>Eğer ebeveyn resources&#39;a link vermek istiyorsanız (dizi değil!),</p>
-
+<p>E&#287;er ebeveyn resources&rsquo;a link vermek istiyorsan&#305;z (dizi de&#287;il!),</p>
 <div class="highlight"><pre><span class="o">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Magazine details&quot;</span><span class="p">,</span> <span class="vi">@magazine</span> <span class="o">%&gt;</span>
 </pre></div>
 </section>
@@ -2416,13 +2375,13 @@ report/examinations/
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">2.5 Singular Resources: çoğul X tekil</a></th>
+        <th><a href="#slide8">2.5 Singular Resources: &ccedil;o&#287;ul X tekil</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">çoğul durum yönlendirme tablosu</a></th>
+        <th><a href="#slide9">&ccedil;o&#287;ul durum y&ouml;nlendirme tablosu</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
@@ -2434,7 +2393,7 @@ report/examinations/
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">namespace yönlendirme tablosu</a></th>
+        <th><a href="#slide11">namespace y&ouml;nlendirme tablosu</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
@@ -2446,7 +2405,7 @@ report/examinations/
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">namespace: prefix olmaksızın</a></th>
+        <th><a href="#slide13">namespace: prefix olmaks&#305;z&#305;n</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
@@ -2464,7 +2423,7 @@ report/examinations/
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">nested: yönlendirme tablosu</a></th>
+        <th><a href="#slide16">nested: y&ouml;nlendirme tablosu</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       

@@ -714,3 +714,505 @@ Genişleyen diziler,
 ---
 
 # 3.4 Çırpı
+
+- anahtar - değer çiftleri
+
+- map: anahtar'lara karşılık gelen değerleri haritalar
+
+- SQL: associative arrays
+
+Örnek,
+
+    !ruby
+    h = Hash.new
+    h["samsun"] = 55
+    h["istanbul"] = 34
+    h["çorum"] = 19
+
+---
+
+# Hash Literals
+
+Literal: dizgi veya sembol olabilir,
+
+    !ruby
+    h = { "samsun" => 55, "istanbul" => 34 }
+    h = { :samsun => 55, :istanbul => 34 }
+    h = { samsun: 55, istanbul: 34 }
+
+Sonuncusunu tercih edin!
+
+---
+
+# 3.5 Range
+
+İki değer aralığını gösterir,
+
+    !ruby
+    r = 1..10     # 10 dahil
+    r = 1.0..10.0 # 10.0 hariç
+
+Bu aralıkta bir değer olup-olmadığını sınamak için `include?`,
+
+    !ruby
+    cold_war = 1945..1989
+    cold_war.include? birthdate.year
+
+---
+
+# Range Dolaşım
+
+Elemanları üzerinde dolaşırken `each`,
+
+    !ruby
+    r = 'a'..'z'
+    r.each{|c| p c} # => 'a', 'b', ..., 'z'
+
+Adımlamak isterseniz `step`,
+
+    !ruby
+    r.step(2){|c| p c} # => 'a', 'c', ..., 'z'
+
+Diziye dönüştürmek isterseniz: `to_a`. Ör. `r.to_a` veya `(1..4).to_a`
+
+---
+
+# 3.6 Semboller
+
+Dizgilere oranla daha az maliyetli olmasından ötürü tercih edilir,
+
+    !ruby
+    :symbol                 # A Symbol literal
+    :"symbol"               # The same literal
+    :'another long symbol'  # Quotes are useful for symbols with spaces
+    s = "string"
+    sym = :"#{s}"           # The Symbol :string
+
+Bir nesnenin herhangi bir yeteneğe (işleve) sahipliğini de bununla kontrol
+ederiz,
+
+    !ruby
+    o.respond_to? :each
+
+`o` nesnesinin `each` metodu var mı?
+
+Tür dönüşümü mümkündür,
+
+    !ruby
+    str = "dizgi"
+    sym = str.to_sym # VEYA sym = str.intern
+    str = sym.to_s   # VEYA str = str.id2name
+
+---
+
+# 3.7 True, False, and Nil
+
+- Mantık değerler: `true` ve `false`
+- `nil` özel bir değerdir
+
+Kod,
+
+    !ruby
+    o == nil # VEYA
+    o.nil?
+
+---
+
+# 3.8 Nesneler
+
+- Ruby'de her şey nesnedir
+
+- Atama eylemi derinlemesine değer kopyalama yerine referans/etiket üretir
+
+Örnek,
+
+    !ruby
+    s = "Ruby"   # s: String nesnesidir
+    t = s        # t: s'ye referansdır
+    t[-1] = 'X'  # t nesnesini güncelle
+    print s      # s'yi yaz => 'RubX'!
+
+    t = "Java"   # t: başka bir String nesnesi oldu
+    p t, s       # "JavaRubX"!
+
+---
+
+# Nesne Ömrü
+
+Oluşturulduklarında ömürleri başlar,
+
+    !ruby
+    o = Klass.new
+
+İhtiyaç duyulmadığı anda öldürülür: garbage collector
+
+---
+
+# Nesne Sınıfları ve Türleri
+
+En kolay yolu kendisine sormak,
+
+    !ruby
+    o = "test"
+    o.class                       # => 'String' sınıfındadır
+    o.class.superclass            # => 'Object'
+    o.class.superclass.superclass # => 'nil'
+
+Türe göre işler yapmak için,
+
+    !ruby
+    o.class == String      # => eğer `o` türü dizgiyse true üretir
+    o.instance_of?(String) # => daha şıktır!
+
+Kendisini buraya kadar getiren tüm sınıflar üzerinden tarama yapmak için,
+
+    !ruby
+    o = 4
+    o.instance_of? Fixnum  # => true
+    o.instance_of? Numeric # => false
+    o.is_a? Fixnum         # => true
+    o.is_a? Integer        # => true
+    o.is_a? Numeric        # => true
+
+---
+
+# Nesne: Karşılaştırma
+
+Karşılaştırma/sınama,
+
+    !ruby
+    Numeric === x          # => x is_a Numeric
+
+`is_a?` yerine okunabilirliği artırmak için kullan!
+
+---
+
+# Nesne Eşitliği
+
+`equal?`: iki nesnenin aynı nesne olup-olmadığını sınar,
+
+    !ruby
+    a = "Ruby"
+    b = c = "Ruby"
+    b.equal?(a)    # false
+    b.equal?(c)    # true
+
+    b.object_id == c.object_id
+
+---
+
+# == İşleci
+
+`==` değer sınaması yapar,
+
+    !ruby
+    a = "Ruby"
+    b = "Ruby"
+    b.equal?(a)    # false
+    a == b         # true
+
+eşit değilse: `!=`
+
+---
+
+# eql? yöntemi
+
+`==` tür dönüşümünü yaparken, `eql?` daha katı davranır,
+
+    !ruby
+    1 == 1.0    # true
+    1.eql?(1.0) # false
+
+---
+
+# Diğer yaygın işleçler
+
+Kodlar,
+
+    !ruby
+    /\d+/ === "123"   # true: düzenli ifade eşleştiğinden
+    1 <=> 5           # -1: küçük (0: eşit, +1: büyük)
+    1.between?(0, 10) # true: 0 <= 1 <= 10  # >
+
+---
+
+# Nesne Dönüşümleri
+
+- Bilinçli `to_s, to_i, to_f, to_a, to_c, to_r`
+
+- İmalı: `"Foo" + v + "Bar"`
+
+---
+
+# Dondurma
+
+Nesneleri dondurabilirsiniz,
+
+    !ruby
+    s = "ice"
+    s.freeze
+    s.frozen?
+    s.upcase!   # TypeError
+    s[0] = "ni" # TypeError
+
+---
+
+# Bölüm 4: İfadeler ve İşleçler
+
+Kod,
+
+    !ruby
+    2                # sayısal sabit (literal)
+    x                # yerel değişkene referans
+    Math.sqrt(2)     # işlev çağrısı
+    x = Math.sqrt(2) # atama
+    x * x            # çarpma-`*` işleci
+
+---
+
+# Sabitler
+
+- `1.0, 'hello', []` birer sabittir.
+
+- Bunlar dışında bazı anahtar kelimeler (sabitleri) vardır
+
+   + nil
+   + true | false
+   + self
+   + __FILE__
+   + __LINE__
+   + __ENCODING__
+
+---
+
+# Kısa kısa
+
+Kodlar,
+
+    !ruby
+    o.m += 1
+    o.m=(o.m() + 1)
+
+    o[x] -= 2
+    o.[]=(x, o.[](x) - 2)
+
+`||=` işleci ilginçtir,
+
+    !ruby
+    d ||= []
+
+`d` verilmediyse/atanmamışsa bunun sonucunda `[]` olur, atanmışsa değişmez.
+
+---
+
+# Paralel Atama
+
+Kod,
+
+    !ruby
+    x, y, z = 1, 2, 3
+    x = 1, 2, 3        # x = [1,2,3]
+    x, = 1, 2, 3       # x = 1; diğerlerini göz ardı et
+    x, y, z = [1, 2, 3]
+    x = [1,2]
+    x, = [1,2]         # x = 1
+
+    x, y, z = 1, 2     # x=1; y=2; z=nil
+    x, y = 1, 2, 3     # x=1; y=2; 3
+
+    x, y, z = 1, *[2,3] #== (x,y,z = 1,2,3)
+
+    x, *y = 1, 2, 3    # x=1; y=[2,3]
+    x, *y = 1, 2       # x=1; y=[2]
+    x, *y = 1          # x=1; y=[]
+
+    *x, y = 1, 2, 3    # x=[1,2]; y=3
+
+    x, y, *z = 1, *[2,3,4] # x=1; y=2; z=[3,4]
+
+    x,y,z = 1,[2,3]    # x=1; y=[2,3]; z=nil
+    x,(y,z) = 1,[2,3]  # x=1; y=2; z=3
+
+---
+
+# Operator
+
+Kısa kısa,
+
+    !ruby
+    (0b1011 << 1).to_s(2)   # => "10110" 11 << 1 => 22
+    (0b10110 >> 2).to_s(2)  # => "101"   22 >> 2 => 5
+
+---
+
+# Bölüm 5: İfadeler ve Denetim Yapıları
+
+---
+
+# Koşullandırma: if
+
+Koşul: if
+:   genel olarak
+
+        !ruby
+        if ifade
+          code
+        end
+
+Örnek,
+
+    !ruby
+    if x < 10
+      x += 1
+    end
+
+    if x < 10 then z += 1 end
+
+---
+
+# else
+
+Koşul: else
+:   genel olarak
+
+        !ruby
+        if ifade
+          code
+        else
+          code
+        end
+
+Örnek,
+
+    !ruby
+    if data
+      data << x
+    else
+      data = [x]
+    end
+
+---
+
+# elsif
+
+Koşul: elsif
+:   genel olarak
+
+        !ruby
+        if ifade1
+          code
+        elsif ifade2
+          code
+        else
+          code
+        end
+
+Örnek,
+
+    !ruby
+    if x == 1
+      name = "bir"
+    elsif x == 2
+      name = "iki"
+    elsif x == 3 then name = "uc"
+    elsif x == 4; name = "dort"
+    else
+      name = "cok"
+    end
+
+---
+
+# return
+
+Örnek,
+
+    !ruby
+    name =  if    x == 1 then "bir"
+            elsif x == 2 then "iki"
+            elsif x == 3 then "uc"
+            else              "cok"
+            end
+
+---
+
+# Tek satırlı
+
+Kod,
+
+    !ruby
+    # Bunun yerine
+    if expression then code end
+
+    # Bunu kullanabilirsiniz
+    code if expression
+
+Örnek,
+
+    !ruby
+    puts message if message
+
+---
+
+# unless
+
+Şablon,
+
+    !ruby
+    unless ifade
+      kod
+    end
+
+    unless ifade
+      kod
+    else
+      kod
+    end
+
+    kod unless ifade
+
+Örnek,
+
+    !ruby
+    s = unless o.nil?
+          o.to_s
+        end
+
+    s = unless o.nil? then o.to_s end
+
+    s = o.to_s unless o.nil?
+
+---
+
+# case
+
+Örnek,
+
+    !ruby
+    name = case x
+           when 1 then "bir"
+           when 2 then "iki"
+           when 3;     "uc"
+           else        "cok"
+           end
+
+Ayrıca,
+
+- `when 0..7550`
+- `when /^\s*#/`
+- `when nil, [], "", 0`
+
+---
+
+# ternary
+
+Örnek,
+
+    !ruby
+    def how_many_messages(n)
+      "You have " + n.to_s + (n==1 ? " message." : " messages.")
+    end
+
+---
+
+# Döngü
+

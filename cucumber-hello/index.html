@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Cucumber: Hello World!</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/cucumber-hello">http://seyyah.me/p/cucumber-hello</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1639,11 +1647,14 @@ div.slide {
             
             
             <section><ul>
-<li><p>The Cucumber Book: Behaviour-Driven Development for Testers and Developers,</p></li>
-<li><p>Matt Wynne and Aslak Hellesoy</p></li>
+<li>
+<p>The Cucumber Book: Behaviour-Driven Development for Testers and Developers,</p>
+</li>
+<li>
+<p>Matt Wynne and Aslak Hellesoy</p>
+</li>
 </ul>
-
-<p><img src="https://a248.e.akamai.net/camo.github.com/f2fa0567f017aa27f545a34ebc5c1a1546e8855d/687474703a2f2f63756b65732e696e666f2f696d616765732f68776375632d313930783232382e6a7067" alt="book"/></p></section>
+<p><img alt="book" src="https://a248.e.akamai.net/camo.github.com/f2fa0567f017aa27f545a34ebc5c1a1546e8855d/687474703a2f2f63756b65732e696e666f2f696d616765732f68776375632d313930783232382e6a7067" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1674,10 +1685,9 @@ div.slide {
             
             
             <section><p>BDD that talks to domain experts first and code second.</p>
-
-<p><img src="http://cukes.info/images/feature.png" alt="fixme"/>
-<img src="http://cukes.info/images/failing.png" alt="fixme"/> -
-<img src="http://cukes.info/images/pending.png" alt="fixme"/></p></section>
+<p><img alt="fixme" src="http://cukes.info/images/feature.png" />
+<img alt="fixme" src="http://cukes.info/images/failing.png" /> -
+<img alt="fixme" src="http://cukes.info/images/pending.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1704,7 +1714,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Nasıl</h1></header>
+            <header><h1>Nas&#305;l</h1></header>
             
             
           </div>
@@ -1732,11 +1742,10 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h2>Ön Hazırlık</h2></header>
+            <header><h2>&Ouml;n Haz&#305;rl&#305;k</h2></header>
             
             
             <section><p>Gemfile,</p>
-
 <div class="highlight"><pre><span class="n">gem</span> <span class="s1">&#39;mysql2&#39;</span>
 <span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>
   <span class="n">gem</span> <span class="s1">&#39;cucumber-rails&#39;</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>
@@ -1745,8 +1754,7 @@ div.slide {
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Veritabanlarını oluştur: <code>19/x -&gt; &quot;Yönetim Görevleri&quot; -&gt; &quot;Mysql Veritabanı Oluştur&quot;</code></p></section>
+<p>Veritabanlar&#305;n&#305; olu&#351;tur: <code>19/x -&gt; "Y&ouml;netim G&ouml;revleri" -&gt; "Mysql Veritaban&#305; Olu&#351;tur"</code></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1773,7 +1781,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h2>Örnek: config/database.yml</h2></header>
+            <header><h2>&Ouml;rnek: config/database.yml</h2></header>
             
             
             <section><p><script src="https://gist.github.com/2964864.js?"></script></p></section>
@@ -1803,11 +1811,10 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h2>Son vuruşlar</h2></header>
+            <header><h2>Son vuru&#351;lar</h2></header>
             
             
             <section><p>Konsol,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span>rake db:migrate
 <span class="nv">$ </span>rake db:test:prepare
 <span class="nv">$ </span>bundle
@@ -1844,9 +1851,7 @@ div.slide {
             
             
             <section><h2>Feature</h2>
-
 <p>yaz,</p>
-
 <p><script src="https://gist.github.com/2964925.js?"></script></p></section>
             
           </div>
@@ -1878,7 +1883,6 @@ div.slide {
             
             
             <section><p>yaz,</p>
-
 <div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I go to the new institution page$/</span> <span class="k">do</span>
   <span class="n">visit</span> <span class="n">new_institution_path</span>
 <span class="k">end</span>
@@ -1930,13 +1934,18 @@ div.slide {
             
             
             <section><ul>
-<li><p>Test et</p>
-
+<li>
+<p>Test et</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
+
 </li>
-<li><p>Yeşile döndürmek için kodla, tekrar test et.</p></li>
-<li><p>Tümü yeşil olunca bitir.</p></li>
+<li>
+<p>Ye&#351;ile d&ouml;nd&uuml;rmek i&ccedil;in kodla, tekrar test et.</p>
+</li>
+<li>
+<p>T&uuml;m&uuml; ye&#351;il olunca bitir.</p>
+</li>
 </ul></section>
             
           </div>
@@ -1968,8 +1977,12 @@ div.slide {
             
             
             <section><ul>
-<li><p>Hello world: <a href="../cucumber-senaryo-hello">Cucumber-Senaryo</a></p></li>
-<li><p>Factory: [[Cucumber-Senaryo-Factory]]</p></li>
+<li>
+<p>Hello world: <a href="../cucumber-senaryo-hello">Cucumber-Senaryo</a></p>
+</li>
+<li>
+<p>Factory: [[Cucumber-Senaryo-Factory]]</p>
+</li>
 </ul></section>
             
           </div>
@@ -2001,17 +2014,26 @@ div.slide {
             
             
             <section><ul>
-<li><p>Resmi sitesi: <a href="http://cukes.info/">http://cukes.info/</a></p></li>
-<li><p>Rails Gem sayfası: <a href="https://github.com/cucumber/cucumber-rails">https://github.com/cucumber/cucumber-rails</a></p></li>
-<li><p>Gem sayfası: <a href="https://github.com/cucumber/cucumber">https://github.com/cucumber/cucumber</a></p></li>
-<li><p>Wiki sayfası: <a href="https://github.com/cucumber/cucumber/wiki/">https://github.com/cucumber/cucumber/wiki/</a></p></li>
-<li><p>Railscasts:</p></li>
+<li>
+<p>Resmi sitesi: <a href="http://cukes.info/">http://cukes.info/</a></p>
+</li>
+<li>
+<p>Rails Gem sayfas&#305;: <a href="https://github.com/cucumber/cucumber-rails">https://github.com/cucumber/cucumber-rails</a></p>
+</li>
+<li>
+<p>Gem sayfas&#305;: <a href="https://github.com/cucumber/cucumber">https://github.com/cucumber/cucumber</a></p>
+</li>
+<li>
+<p>Wiki sayfas&#305;: <a href="https://github.com/cucumber/cucumber/wiki/">https://github.com/cucumber/cucumber/wiki/</a></p>
+</li>
+<li>
+<p>Railscasts:</p>
+</li>
 </ul>
-
-<p><a href="http://railscasts.com/episodes/155-beginning-with-cucumber"><img src="http://railscasts.com/assets/episodes/stills/155-beginning-with-cucumber.png" alt="Beginning with Cucumber"/></a>
-<a href="http://railscasts.com/episodes/159-more-on-cucumber"><img src="http://railscasts.com/assets/episodes/stills/159-more-on-cucumber.png" alt="More on Cucumber"/></a>
-<a href="http://railscasts.com/episodes/186-pickle-with-cucumber"><img src="http://railscasts.com/assets/episodes/stills/186-pickle-with-cucumber.png" alt="Pickle with Cucumber"/></a>
-<a href="http://railscasts.com/episodes/285-spork"><img src="http://railscasts.com/assets/episodes/stills/285-spork.png" alt="Spork"/></a></p></section>
+<p><a href="http://railscasts.com/episodes/155-beginning-with-cucumber"><img alt="Beginning with Cucumber" src="http://railscasts.com/assets/episodes/stills/155-beginning-with-cucumber.png" /></a>
+<a href="http://railscasts.com/episodes/159-more-on-cucumber"><img alt="More on Cucumber" src="http://railscasts.com/assets/episodes/stills/159-more-on-cucumber.png" /></a>
+<a href="http://railscasts.com/episodes/186-pickle-with-cucumber"><img alt="Pickle with Cucumber" src="http://railscasts.com/assets/episodes/stills/186-pickle-with-cucumber.png" /></a>
+<a href="http://railscasts.com/episodes/285-spork"><img alt="Spork" src="http://railscasts.com/assets/episodes/stills/285-spork.png" /></a></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2060,23 +2082,23 @@ div.slide {
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Nasıl</a></th>
+        <th><a href="#slide4">Nas&#305;l</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
         
         <tr id="toc-row-5" class="sub">
-          <th><a href="#slide5">Ön Hazırlık</a></th>
+          <th><a href="#slide5">&Ouml;n Haz&#305;rl&#305;k</a></th>
           <td><a href="#slide5">5</a></td>
         </tr>
         
         <tr id="toc-row-6" class="sub">
-          <th><a href="#slide6">Örnek: config/database.yml</a></th>
+          <th><a href="#slide6">&Ouml;rnek: config/database.yml</a></th>
           <td><a href="#slide6">6</a></td>
         </tr>
         
         <tr id="toc-row-7" class="sub">
-          <th><a href="#slide7">Son vuruşlar</a></th>
+          <th><a href="#slide7">Son vuru&#351;lar</a></th>
           <td><a href="#slide7">7</a></td>
         </tr>
         

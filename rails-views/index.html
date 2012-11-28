@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Rails - Views</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/rails-views">http://seyyah.me/p/rails-views</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1624,7 +1632,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              1/3
+              1/4
             </aside>
           </footer>
         </div>
@@ -1638,8 +1646,7 @@ div.slide {
             <header><h1>Form: Formtastic</h1></header>
             
             
-            <section><p>Örnek çalışma,</p>
-
+            <section><p>&Ouml;rnek &ccedil;al&#305;&#351;ma,</p>
 <div class="highlight"><pre><span class="nv">$ </span>git branch -t <span class="nb">test</span>
 <span class="nv">$ </span>rails g model Test name:string content:text
 <span class="nv">$ </span>rake db:migrate
@@ -1648,9 +1655,7 @@ div.slide {
   create  app/views/tests/_form.html.slim
 </pre></div>
 
-
 <p>Form,</p>
-
 <pre><code>!slim
 # app/views/tests/_form.html.slim
   = semantic_form_for @test do |f|
@@ -1661,20 +1666,9 @@ div.slide {
     = f.buttons do
       = f.commit_button
 </code></pre>
-
 <ul>
 <li><a href="http://rubydoc.info/github/justinfrench/formtastic/master/Formtastic/FormGenerator">Form
-Generator</a>
-&mdash;</li>
-</ul>
-
-<h1>Form: Design</h1>
-
-<ul>
-<li><p><a href="http://www.slideshare.net/psykoreactor/best-practices-for-form-design">Best Practices for Form
-Design</a></p></li>
-<li><p><a href="http://www.slideshare.net/AaronGustafson/learning-to-love-forms-web-directions-south-07">Learning to Love
-Forms</a></p></li>
+  Generator</a></li>
 </ul></section>
             
           </div>
@@ -1691,7 +1685,46 @@ Forms</a></p></li>
             </aside>
             
             <aside class="page_number">
-              2/3
+              2/4
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: rails-views/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Form: Design</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p><a href="http://www.slideshare.net/psykoreactor/best-practices-for-form-design">Best Practices for Form
+  Design</a></p>
+</li>
+<li>
+<p><a href="http://www.slideshare.net/AaronGustafson/learning-to-love-forms-web-directions-south-07">Learning to Love
+  Forms</a></p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="rails-views/index.md">rails-views/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/4
             </aside>
           </footer>
         </div>
@@ -1707,7 +1740,7 @@ Forms</a></p></li>
             
             <section><ul>
 <li><a href="http://programmers.stackexchange.com/questions/46716/what-should-every-programmer-know-about-web-development">What should every programmer know about web
-development?</a></li>
+  development?</a></li>
 </ul></section>
             
           </div>
@@ -1724,7 +1757,7 @@ development?</a></li>
             </aside>
             
             <aside class="page_number">
-              3/3
+              4/4
             </aside>
           </footer>
         </div>
@@ -1751,8 +1784,14 @@ development?</a></li>
       
       
       <tr id="toc-row-3">
-        <th><a href="#slide3">Genel</a></th>
+        <th><a href="#slide3">Form: Design</a></th>
         <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Genel</a></th>
+        <td><a href="#slide4">4</a></td>
       </tr>
       
       

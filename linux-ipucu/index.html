@@ -27,7 +27,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta id="viewport" name="viewport" content="user-scalable=no" />
-    <title>Linux: İpucu</title>
+    <title>Linux: &#304;pucu</title>
     <!-- Styles -->
     
     <style type="text/css" media="print">
@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1596,18 +1609,13 @@ div.slide {
         <div class="slide first has_qr">
           <div class="inner">
             
-            <header><h1>Linux: İpucu</h1></header>
+            <header><h1>Linux: &#304;pucu</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/linux-ipucu">http://seyyah.me/p/linux-ipucu</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1638,19 +1646,20 @@ div.slide {
             <header><h1>Rsync</h1></header>
             
             
-            <section><p>A makinesine <code>a_klasor</code>&#39;ünü B makinesinde senkronlamak (tek taraflı)</p>
-
+            <section><p>A makinesine <code>a_klasor</code>&lsquo;&uuml;n&uuml; B makinesinde senkronlamak (tek tarafl&#305;)</p>
 <div class="highlight"><pre><span class="c"># Makine A</span>
 <span class="nv">$ </span>rsync -vauz -delete -rsh<span class="o">=</span>ssh -stats a_klasor
   seyyah@example.com:/home/seyyah/b_klasor
 </pre></div>
 
-
 <ul>
-<li><p>bu kod A makinesinde yer alan <code>a_klasor</code>&#39;ünü,</p></li>
-<li><p>B makinesinde <code>b_klasor</code>&#39;ü olarak rsync eder</p></li>
+<li>
+<p>bu kod A makinesinde yer alan <code>a_klasor</code>&lsquo;&uuml;n&uuml;,</p>
+</li>
+<li>
+<p>B makinesinde <code>b_klasor</code>&lsquo;&uuml; olarak rsync eder</p>
+</li>
 </ul>
-
 <p>Kaynak:
 <a href="http://www.arsgeek.com/2006/10/20/quicktips-how-to-rsync-files-and-folders-to-remote-machines-using-ssh/">http://www.arsgeek.com/2006/10/20/quicktips-how-to-rsync-files-and-folders-to-remote-machines-using-ssh/</a></p></section>
             
@@ -1683,7 +1692,6 @@ div.slide {
             
             
             <section><p>Ubuntu Precise Pangolin 12.04 LTS and Ubuntu Oneiric Ocelot 11.10,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install ffmpeg libavcodec-extra-53
 </pre></div>
 </section>
@@ -1716,22 +1724,17 @@ div.slide {
             <header><h1>32 bit X 64 bit</h1></header>
             
             
-            <section><p>İpucu,</p>
-
+            <section><p>&#304;pucu,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cat /proc/cpuinfo | grep lm  <span class="c"># long mode?</span>
 </pre></div>
 
-
-<p>çıktıda varsa <em>64 bit</em> yoksa <em>32 bit</em>&#39;tir.</p>
-
-<p>Diğer taraftan</p>
-
+<p>&ccedil;&#305;kt&#305;da varsa <em>64 bit</em> yoksa <em>32 bit</em>&lsquo;tir.</p>
+<p>Di&#287;er taraftan</p>
 <div class="highlight"><pre><span class="nv">$ </span>uname -a
 ... x86_64
 </pre></div>
 
-
-<p>bu da kernelin 64 bit olup-olmadığı bilgisini sağlar.</p></section>
+<p>bu da kernelin 64 bit olup-olmad&#305;&#287;&#305; bilgisini sa&#287;lar.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1761,22 +1764,17 @@ div.slide {
             <header><h1>SSH</h1></header>
             
             
-            <section><p>Key&#39;i üretip Github&#39;a bu keyi eklemek için,</p>
-
+            <section><p>Key&rsquo;i &uuml;retip Github&rsquo;a bu keyi eklemek i&ccedil;in,</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install xclip
 <span class="nv">$ </span>ssh-keygen -t dsa
 <span class="nv">$ </span>xclip -i ~/.ssh/id_dsa.pub
 </pre></div>
 
-
-<p>Github&#39;da <a href="https://github.com/settings/ssh">Account Settings:ssh</a> &ldquo;Add SSH key&rdquo;. Test edelim,</p>
-
+<p>Github&rsquo;da <a href="https://github.com/settings/ssh">Account Settings:ssh</a> &ldquo;Add SSH key&rdquo;. Test edelim,</p>
 <div class="highlight"><pre><span class="nv">$ </span>ssh -vT git@github.com
 </pre></div>
 
-
-<p>Sanala/sunucuya bağlanmak için kısayol tanımla,</p>
-
+<p>Sanala/sunucuya ba&#287;lanmak i&ccedil;in k&#305;sayol tan&#305;mla,</p>
 <div class="highlight"><pre><span class="c"># ~/.ssh/config</span>
 Host kisa_ad
   HostName 1.2.3.4
@@ -1784,15 +1782,11 @@ Host kisa_ad
   ForwardAgent yes
 </pre></div>
 
-
-<p>Artık kısa adla erişebiliriz,</p>
-
+<p>Art&#305;k k&#305;sa adla eri&#351;ebiliriz,</p>
 <div class="highlight"><pre><span class="nv">$ </span>ssh kisa_ad
 </pre></div>
 
-
-<p>Parolasız erişim için,</p>
-
+<p>Parolas&#305;z eri&#351;im i&ccedil;in,</p>
 <div class="highlight"><pre><span class="nv">$ </span>ssh-copy-id kisa_ad ~/.ssh/id_dsa.pub
 <span class="nv">$ </span>ssh kisa_ad
 </pre></div>
@@ -1827,7 +1821,6 @@ Host kisa_ad
             
             
             <section><p>Find,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span>find . -type f -perm 0755 |
   xargs /bin/chmod 0644
 </pre></div>
@@ -1864,7 +1857,6 @@ Host kisa_ad
             <section><p><a href="http://www.liberiangeek.net/2012/05/install-virtualbox-4-1-14-in-ubuntu-12-04-precise-pangolin/">Install VirtualBox 4.1.14 in Ubuntu 12.04 (Precise
 Pangolin)</a>
 kodlar,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span>wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O-
 | sudo apt-key add -
 <span class="nv">$ </span>sudo sh -c <span class="s1">&#39;echo &quot;deb http://download.virtualbox.org/virtualbox/debian</span>
@@ -1872,10 +1864,8 @@ kodlar,</p>
 <span class="nv">$ </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install virtualbox-4.1
 </pre></div>
 
-
-<p>USB problemini çözmek için <a href="http://seoroot.com/blog/ubuntu-linux/virtualbox-4-failed-to-access-the-usb-subsystem.html/">VirtualBox 4: Failed to access the USB
+<p>USB problemini &ccedil;&ouml;zmek i&ccedil;in <a href="http://seoroot.com/blog/ubuntu-linux/virtualbox-4-failed-to-access-the-usb-subsystem.html/">VirtualBox 4: Failed to access the USB
 subsystem</a>,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span>sudo usermod -a -G vboxusers username
 <span class="c"># logout - login</span>
 </pre></div>
@@ -1910,7 +1900,7 @@ subsystem</a>,</p>
       <caption>Table of Contents</caption>
       
       <tr id="toc-row-1">
-        <th><a href="#slide1">Linux: İpucu</a></th>
+        <th><a href="#slide1">Linux: &#304;pucu</a></th>
         <td><a href="#slide1">1</a></td>
       </tr>
       

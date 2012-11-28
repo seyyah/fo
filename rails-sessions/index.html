@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Rails: Sessions &amp; Cookies</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/rails-sessions">http://seyyah.me/p/rails-sessions</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1639,14 +1647,17 @@ div.slide {
             
             
             <section><ul>
-<li><p>HTTP stateless protokoldür</p></li>
-<li><p>İstemci/tarayıcı ile sunucu arasında ki oturum ID&#39;leri nasıl tutulacak?</p>
-
-<ul>
-<li>URL&#39;ye göm</li>
-<li>Form&#39;a göm</li>
+<li>
+<p>HTTP stateless protokold&uuml;r</p>
+</li>
+<li>
+<p>&#304;stemci/taray&#305;c&#305; ile sunucu aras&#305;nda ki oturum ID&rsquo;leri nas&#305;l tutulacak?</p>
+</li>
+<li>
+<p>URL&rsquo;ye g&ouml;m</p>
+</li>
+<li>Form&rsquo;a g&ouml;m</li>
 <li>cookies kullan</li>
-</ul></li>
 </ul></section>
             
           </div>
@@ -1706,11 +1717,19 @@ div.slide {
             
             
             <section><ul>
-<li><p>Session, hash benzeri yapıda tutulur</p></li>
-<li><p>request&#39;ler arasında veri aktarımını mümkün kılar</p></li>
-<li><p>session_id: 32 hex karakter, MD5, rastgele, sabit. İstemci/tarayıcıda
-saklanır.</p></li>
-<li><p>session storage&#39;da saklanır.</p></li>
+<li>
+<p>Session, hash benzeri yap&#305;da tutulur</p>
+</li>
+<li>
+<p>request&rsquo;ler aras&#305;nda veri aktar&#305;m&#305;n&#305; m&uuml;mk&uuml;n k&#305;lar</p>
+</li>
+<li>
+<p>session_id: 32 hex karakter, MD5, rastgele, sabit. &#304;stemci/taray&#305;c&#305;da
+  saklan&#305;r.</p>
+</li>
+<li>
+<p>session storage&rsquo;da saklan&#305;r.</p>
+</li>
 </ul></section>
             
           </div>
@@ -1742,17 +1761,30 @@ saklanır.</p></li>
             
             
             <section><ul>
-<li><p>farklı tarayıcı istekleri arasında saklanan <strong>bilgi</strong>, <code>Session Data</code></p></li>
-<li><p>Her bir ziyaret için session data, ya sunucuda ya da cooki&#39;lerde saklanır</p></li>
-<li><p>İstemci/tarayıcı sunucudan istekte bulunduğunda,</p>
-
+<li>
+<p>farkl&#305; taray&#305;c&#305; istekleri aras&#305;nda saklanan <strong>bilgi</strong>, <code>Session Data</code></p>
+</li>
+<li>
+<p>Her bir ziyaret i&ccedil;in session data, ya sunucuda ya da cooki&rsquo;lerde saklan&#305;r</p>
+</li>
+<li>
+<p>&#304;stemci/taray&#305;c&#305; sunucudan istekte bulundu&#287;unda,</p>
 <ul>
-<li>session data session storage&#39;den (ör. <code>reddis</code>)</li>
-<li>istemcinin tarayıcısının gönderdiği</li>
-<li>session ID kullanılarak çıkarılır</li>
-</ul></li>
-<li><p>session data&#39;ya en iyi örnek: &ldquo;authentication&rdquo; (yetkilendirme) için kullanıcı
-bilgisidir.</p></li>
+<li>
+<p>session data session storage&rsquo;den (&ouml;r. <code>reddis</code>)</p>
+</li>
+<li>
+<p>istemcinin taray&#305;c&#305;s&#305;n&#305;n g&ouml;nderdi&#287;i</p>
+</li>
+<li>
+<p>session ID kullan&#305;larak &ccedil;&#305;kar&#305;l&#305;r</p>
+</li>
+</ul>
+</li>
+<li>
+<p>session data&rsquo;ya en iyi &ouml;rnek: &ldquo;authentication&rdquo; (yetkilendirme) i&ccedil;in kullan&#305;c&#305;
+  bilgisidir.</p>
+</li>
 </ul></section>
             
           </div>
@@ -1777,41 +1809,36 @@ bilgisidir.</p></li>
       
       <!-- slide source: rails-sessions/index.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Örnek</h1></header>
+            <header><h1>&Ouml;rnek</h1></header>
             
             
             <section><p>Dikkatli incelenmesi gereken bir kod,</p>
+<div class="highlight"><pre>  <span class="k">def</span> <span class="nf">index</span>
+     <span class="n">cookies</span><span class="o">[</span><span class="ss">:key</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;val&quot;</span>
+     <span class="nb">puts</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:key</span><span class="o">]</span>
+     <span class="n">redirect_to</span> <span class="ss">:second_index</span>
+  <span class="k">end</span>
 
-<pre><code>  !ruby
-  def index
-     cookies[:key] = &quot;val&quot;
-     puts cookies[:key]
-     redirect_to :second_index
-  end
-
-  def second_index
-     cookies[:key] = &quot;newval&quot;
-     puts cookies[:key]
-  end
-</code></pre>
+  <span class="k">def</span> <span class="nf">second_index</span>
+     <span class="n">cookies</span><span class="o">[</span><span class="ss">:key</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;newval&quot;</span>
+     <span class="nb">puts</span> <span class="n">cookies</span><span class="o">[</span><span class="ss">:key</span><span class="o">]</span>
+  <span class="k">end</span>
+</pre></div>
 
 <p>Output,</p>
+<div class="highlight"><pre>  <span class="c1">## Open index page for the first time</span>
+  <span class="c1"># nil</span>
+  <span class="c1"># val</span>
 
-<pre><code>  !ruby
-  ## Open index page for the first time
-  # nil
-  # val
-
-  ## Open index page the second time
-  # newval
-  # val
-</code></pre>
+  <span class="c1">## Open index page the second time</span>
+  <span class="c1"># newval</span>
+  <span class="c1"># val</span>
+</pre></div>
 
 <p>Neden?</p>
-
 <blockquote>
 <p>cookies[] gives you value from the <strong>incoming</strong> cookie.
 cookies[]= sets value in the <strong>outgoing</strong> cookie.</p>
@@ -1847,11 +1874,9 @@ cookies[]= sets value in the <strong>outgoing</strong> cookie.</p>
             
             <section><ol>
 <li><a href="http://www.quarkruby.com/2007/10/21/sessions-and-cookies-in-ruby-on-rails">Sessions and cookies in Ruby on
-Rails</a></li>
+   Rails</a></li>
 </ol>
-
-<h2>Okunası Kaynaklar</h2>
-
+<h2>Okunas&#305; Kaynaklar</h2>
 <p>1.
 <a href="http://stackoverflow.com/questions/377137/rails-multiple-top-level-domains-and-a-single-session-cookie">http://stackoverflow.com/questions/377137/rails-multiple-top-level-domains-and-a-single-session-cookie</a></p></section>
             
@@ -1914,7 +1939,7 @@ Rails</a></li>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Örnek</a></th>
+        <th><a href="#slide6">&Ouml;rnek</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       

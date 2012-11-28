@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Cucumber: Book</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/cucumber-ebook">http://seyyah.me/p/cucumber-ebook</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1639,11 +1647,14 @@ div.slide {
             
             
             <section><ul>
-<li><p>The Cucumber Book: Behaviour-Driven Development for Testers and Developers,</p></li>
-<li><p>Matt Wynne and Aslak Hellesoy</p></li>
+<li>
+<p>The Cucumber Book: Behaviour-Driven Development for Testers and Developers,</p>
+</li>
+<li>
+<p>Matt Wynne and Aslak Hellesoy</p>
+</li>
 </ul>
-
-<p><img src="https://a248.e.akamai.net/camo.github.com/f2fa0567f017aa27f545a34ebc5c1a1546e8855d/687474703a2f2f63756b65732e696e666f2f696d616765732f68776375632d313930783232382e6a7067" alt="book"/></p></section>
+<p><img alt="book" src="https://a248.e.akamai.net/camo.github.com/f2fa0567f017aa27f545a34ebc5c1a1546e8855d/687474703a2f2f63756b65732e696e666f2f696d616765732f68776375632d313930783232382e6a7067" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1698,14 +1709,17 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Chapter 1: Tanımlar</h1></header>
+            <header><h1>Chapter 1: Tan&#305;mlar</h1></header>
             
             
             <section><p>Automated Acceptance Test:</p>
-
 <ul>
-<li><p>eXtreme Programlamaya ait bir kavramdır (XP)</p></li>
-<li><p>özellikle de Test Temelli Geliştirme (TDD)</p></li>
+<li>
+<p>eXtreme Programlamaya ait bir kavramd&#305;r (XP)</p>
+</li>
+<li>
+<p>&ouml;zellikle de Test Temelli Geli&#351;tirme (TDD)</p>
+</li>
 </ul></section>
             
           </div>
@@ -1733,7 +1747,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Örnek</h1></header>
+            <header><h1>&Ouml;rnek</h1></header>
             
             
             <section><p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Sign up</span>
@@ -1784,17 +1798,31 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Cucumber Nasıl Çalışır?</h1></header>
+            <header><h1>Cucumber Nas&#305;l &Ccedil;al&#305;&#351;&#305;r?</h1></header>
             
             
             <section><ul>
-<li><p>Cucumber, komut satırı aracıdır</p></li>
-<li><p><code>feature</code>&#39;larda yer alan spec&#39;leri okur</p></li>
-<li><p><code>feature</code>, test edilmesi hedeflenen senayo metnidir</p></li>
-<li><p>her bir senaryo, <code>step</code>&#39;lerden oluşur</p></li>
-<li><p>Cucumber&#39;in bu dosyalarda yazanları anlaması için temel bir sözdizimi vardır</p></li>
-<li><p>Bu söz dizimi kurallarına <code>Gherkin</code> denilir.</p></li>
-<li><p>tüm dosyalar aslında ruby dilinde kodlanırlar</p></li>
+<li>
+<p>Cucumber, komut sat&#305;r&#305; arac&#305;d&#305;r</p>
+</li>
+<li>
+<p><code>feature</code>&lsquo;larda yer alan spec&rsquo;leri okur</p>
+</li>
+<li>
+<p><code>feature</code>, test edilmesi hedeflenen senayo metnidir</p>
+</li>
+<li>
+<p>her bir senaryo, <code>step</code>&lsquo;lerden olu&#351;ur</p>
+</li>
+<li>
+<p>Cucumber&rsquo;in bu dosyalarda yazanlar&#305; anlamas&#305; i&ccedil;in temel bir s&ouml;zdizimi vard&#305;r</p>
+</li>
+<li>
+<p>Bu s&ouml;z dizimi kurallar&#305;na <code>Gherkin</code> denilir.</p>
+</li>
+<li>
+<p>t&uuml;m dosyalar asl&#305;nda ruby dilinde kodlan&#305;rlar</p>
+</li>
 </ul></section>
             
           </div>
@@ -1825,7 +1853,7 @@ div.slide {
             <header><h1>Cucumber Testing Stack</h1></header>
             
             
-            <section><p><img src=http://i.imgur.com/VJ5fW.png height="500"></p></section>
+            <section><p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/VJ5fW.png height=&rdquo;500&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1920,7 +1948,7 @@ div.slide {
             <header><h1>Main Layers of Cucumber Test Suite</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/C0ZxJl.jpg" alt="figure 2"/></p></section>
+            <section><p><img alt="figure 2" src="http://i.imgur.com/C0ZxJl.jpg" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2005,10 +2033,13 @@ div.slide {
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
-<li><p>burada oluşturulan <code>@input</code> daha sonradan kullanılacak/global</p></li>
-<li><p><code>$ cucumber</code> dediğimizde ilk yeşili görürüz</p></li>
+<li>
+<p>burada olu&#351;turulan <code>@input</code> daha sonradan kullan&#305;lacak/global</p>
+</li>
+<li>
+<p><code>$ cucumber</code> dedi&#287;imizde ilk ye&#351;ili g&ouml;r&uuml;r&uuml;z</p>
+</li>
 </ul></section>
             
           </div>
@@ -2039,7 +2070,7 @@ div.slide {
             <header><h1>Cucumber</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/7o4wj.png" alt="figure 2"/></p></section>
+            <section><p><img alt="figure 2" src="http://i.imgur.com/7o4wj.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2083,11 +2114,10 @@ div.slide {
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
-<li>önceki adımda ki <code>@input</code> kullanılabiliyor</li>
-<li>harici kod çalıştır, <code>$?</code> komut satırı çıktısı hakkında bilgi toplar</li>
-<li><code>raise</code>, <code>cucumber</code> çalıştırıldığında yol gösterici hatayla donatılmalıdır</li>
+<li>&ouml;nceki ad&#305;mda ki <code>@input</code> kullan&#305;labiliyor</li>
+<li>harici kod &ccedil;al&#305;&#351;t&#305;r, <code>$?</code> komut sat&#305;r&#305; &ccedil;&#305;kt&#305;s&#305; hakk&#305;nda bilgi toplar</li>
+<li><code>raise</code>, <code>cucumber</code> &ccedil;al&#305;&#351;t&#305;r&#305;ld&#305;&#287;&#305;nda yol g&ouml;sterici hatayla donat&#305;lmal&#305;d&#305;r</li>
 </ul></section>
             
           </div>
@@ -2118,7 +2148,7 @@ div.slide {
             <header><h1>Cucumber</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/0Hxu2.png" alt="figure 2"/></p></section>
+            <section><p><img alt="figure 2" src="http://i.imgur.com/0Hxu2.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2148,8 +2178,7 @@ div.slide {
             <header><h1>2.7 Adding an Assertion</h1></header>
             
             
-            <section><p>Önce dizin yapımıza göz atalım,</p>
-
+            <section><p>&Ouml;nce dizin yap&#305;m&#305;za g&ouml;z atal&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/test/
 <span class="nv">$ </span>ls -R
 features/foo.feature
@@ -2157,9 +2186,7 @@ features/step_definitions/foo_steps.rb
 <span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p>Şimdi <code>calc.rb</code> dosyasını oluşturalım</p>
-
+<p>&#350;imdi <code>calc.rb</code> dosyas&#305;n&#305; olu&#351;tural&#305;m</p>
 <div class="highlight"><pre><span class="nv">$ </span>cat print <span class="s2">&quot;1&quot;</span>&gt; calc.rb
 <span class="nv">$ </span>ls -R
 calc.rb
@@ -2167,9 +2194,7 @@ features/foo.feature
 features/step_definitions/foo_steps.rb
 </pre></div>
 
-
 <p>Test edelim,</p>
-
 <pre><code>$ cucumber
 </code></pre></section>
             
@@ -2198,13 +2223,11 @@ features/step_definitions/foo_steps.rb
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Son adım</h1></header>
+            <header><h1>Son ad&#305;m</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/8VNB4.png" alt="fixme"/></p>
-
-<p>Tatmin edecek step&#39;i yazalım,</p>
-
+            <section><p><img alt="fixme" src="http://i.imgur.com/8VNB4.png" /></p>
+<p>Tatmin edecek step&rsquo;i yazal&#305;m,</p>
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^the output should be &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">expected_output</span><span class="o">|</span>
   <span class="vi">@output</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="n">expected_output</span>
 <span class="k">end</span>
@@ -2236,13 +2259,11 @@ features/step_definitions/foo_steps.rb
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Son adım</h1></header>
+            <header><h1>Son ad&#305;m</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/WeyN4.png" alt="fixme"/></p>
-
-<p>Sebebi tahmin edilebilir, <code>calc.rb</code> dosya içeriğinin,</p>
-
+            <section><p><img alt="fixme" src="http://i.imgur.com/WeyN4.png" /></p>
+<p>Sebebi tahmin edilebilir, <code>calc.rb</code> dosya i&ccedil;eri&#287;inin,</p>
 <div class="highlight"><pre><span class="nb">print</span> <span class="s2">&quot;1&quot;</span>
 </pre></div>
 </section>
@@ -2272,18 +2293,15 @@ features/step_definitions/foo_steps.rb
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Yine yeşillendi &hellip; Hepsi yeşillendi</h1></header>
+            <header><h1>Yine ye&#351;illendi &hellip; Hepsi ye&#351;illendi</h1></header>
             
             
-            <section><p><code>calc.rb</code> dosya içeriğini şöyle güncellersek,</p>
-
+            <section><p><code>calc.rb</code> dosya i&ccedil;eri&#287;ini &#351;&ouml;yle g&uuml;ncellersek,</p>
 <div class="highlight"><pre><span class="nb">print</span> <span class="s2">&quot;4&quot;</span>
 </pre></div>
 
-
-<p>Tümünün yeşillendiği görülecektir,</p>
-
-<p><img src="http://i.imgur.com/nq7pz.png" alt="fixme"/></p></section>
+<p>T&uuml;m&uuml;n&uuml;n ye&#351;illendi&#287;i g&ouml;r&uuml;lecektir,</p>
+<p><img alt="fixme" src="http://i.imgur.com/nq7pz.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2338,11 +2356,10 @@ features/step_definitions/foo_steps.rb
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Çok girdi için genişlet</h1></header>
+            <header><h1>&Ccedil;ok girdi i&ccedil;in geni&#351;let</h1></header>
             
             
-            <section><p>Şöyle başladık,</p>
-
+            <section><p>&#350;&ouml;yle ba&#351;lad&#305;k,</p>
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Adding</span>
 
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Add two numbers</span>
@@ -2351,9 +2368,7 @@ features/step_definitions/foo_steps.rb
 <span class="nf">    </span><span class="k">Then </span><span class="nf">the output should be &quot;</span><span class="s">4</span><span class="nf">&quot;</span>
 </pre></div>
 </p>
-
-<p><code>Examples</code> kalıbı yardımıyla test uzayını genişletelim,</p>
-
+<p><code>Examples</code> kal&#305;b&#305; yard&#305;m&#305;yla test uzay&#305;n&#305; geni&#351;letelim,</p>
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Adding</span>
 
 <span class="nf">  </span><span class="k">Scenario Outline:</span><span class="nf"> Add two numbers</span>
@@ -2367,7 +2382,6 @@ features/step_definitions/foo_steps.rb
 <span class="k">      |</span><span class="s"> 98+1</span><span class="k">  |</span><span class="s"> 99</span><span class="k">     |</span>
 </pre></div>
 </p>
-
 <p>Test edelim: <code>$ cucumber</code></p></section>
             
           </div>
@@ -2398,12 +2412,10 @@ features/step_definitions/foo_steps.rb
             <header><h1>Cucumber</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/TRwzB.png" alt="fixme"/></p>
-
+            <section><p><img alt="fixme" src="http://i.imgur.com/TRwzB.png" /></p>
 <ul>
-<li>hatayı gidermek için <code>calc.rb</code>&#39;yi güncelle,</li>
+<li>hatay&#305; gidermek i&ccedil;in <code>calc.rb</code>&lsquo;yi g&uuml;ncelle,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nb">print</span> <span class="nb">eval</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)</span>
 </pre></div>
 </p></section>
@@ -2433,10 +2445,10 @@ features/step_definitions/foo_steps.rb
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Cucumber: tamamı yeşillendi</h1></header>
+            <header><h1>Cucumber: tamam&#305; ye&#351;illendi</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/AP3wP.png" alt="fixme"/></p></section>
+            <section><p><img alt="fixme" src="http://i.imgur.com/AP3wP.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2522,9 +2534,7 @@ features/step_definitions/foo_steps.rb
             
             
             <section><h2>Keywords</h2>
-
 <p>Gherkin anahtar kelimeleri</p>
-
 <pre><code>!feature
 Feature
 Background
@@ -2538,8 +2548,7 @@ But
 Scenario Outline
 Examples
 </code></pre>
-
-<p><strong>Anahtar kelimeler insan içindir, Cucumber göz ardı eder</strong></p></section>
+<p><strong>Anahtar kelimeler insan i&ccedil;indir, Cucumber g&ouml;z ard&#305; eder</strong></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2570,28 +2579,29 @@ Examples
             
             
             <section><p>Scenarios all follow the same pattern:</p>
-
 <ol>
 <li><strong>context</strong>: Get the system into a particular state.</li>
 <li><strong>action</strong>: Poke it (or tickle it, or &hellip;).</li>
 <li><strong>outcome</strong>: Examine the new state.</li>
 </ol>
-
-<p>Örnek,</p>
-
+<p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="no">Scenario</span><span class="p">:</span> <span class="no">Successful</span> <span class="n">withdrawal</span> <span class="n">from</span> <span class="n">an</span> <span class="n">account</span> <span class="k">in</span> <span class="n">credit</span>
   <span class="no">Given</span> <span class="n">I</span> <span class="n">have</span> <span class="vg">$100</span> <span class="k">in</span> <span class="n">my</span> <span class="n">account</span> <span class="c1"># the context</span>
   <span class="no">When</span> <span class="n">I</span> <span class="n">request</span> <span class="vg">$20</span>        <span class="c1"># the event(s)</span>
   <span class="no">Then</span> <span class="vg">$20</span> <span class="n">should</span> <span class="n">be</span> <span class="n">dispensed</span>  <span class="c1"># the outcome(s)</span>
 </pre></div>
 
-
 <p>So, we use</p>
-
 <ul>
-<li><p><code>Given</code> to set up the <strong>context</strong> where the scenario happens,</p></li>
-<li><p><code>When</code> to <strong>interact</strong> with the system somehow, and</p></li>
-<li><p><code>Then</code> to check that the <strong>outcome</strong> of that interaction was what we expected.</p></li>
+<li>
+<p><code>Given</code> to set up the <strong>context</strong> where the scenario happens,</p>
+</li>
+<li>
+<p><code>When</code> to <strong>interact</strong> with the system somehow, and</p>
+</li>
+<li>
+<p><code>Then</code> to check that the <strong>outcome</strong> of that interaction was what we expected.</p>
+</li>
 </ul></section>
             
           </div>
@@ -2623,18 +2633,14 @@ Examples
             
             
             <section><h2>:From the Outside</h2>
-
-<p>Örnek</p>
-
+<p>&Ouml;rnek</p>
 <div class="highlight"><pre><span class="no">Given</span> <span class="n">I</span> <span class="n">have</span> <span class="vg">$100</span> <span class="k">in</span> <span class="n">my</span> <span class="no">Account</span>
 </pre></div>
 
-
-<p>Step tanımında şunların yapılması gerekir,</p>
-
+<p>Step tan&#305;m&#305;nda &#351;unlar&#305;n yap&#305;lmas&#305; gerekir,</p>
 <ul>
-<li>daha önceden oluşturulmadıysa, bir account oluştur</li>
-<li>kasasına 100$ koy</li>
+<li>daha &ouml;nceden olu&#351;turulmad&#305;ysa, bir account olu&#351;tur</li>
+<li>kasas&#305;na 100$ koy</li>
 </ul></section>
             
           </div>
@@ -2665,7 +2671,7 @@ Examples
             <header><h1>Step definitions are translators</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/IastL.png" height="500"></p></section>
+            <section><p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/IastL.png&rdquo; height=&rdquo;500&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2731,15 +2737,12 @@ Examples
             <header><h1>4.4 Flexibility: singular x plural</h1></header>
             
             
-            <section><p>Feature&#39;da yazılan şu iki ifade için,</p>
-
+            <section><p>Feature&rsquo;da yaz&#305;lan &#351;u iki ifade i&ccedil;in,</p>
 <div class="highlight"><pre><span class="no">Given</span> <span class="n">I</span> <span class="n">have</span>   <span class="mi">1</span> <span class="n">cucumber</span>  <span class="k">in</span> <span class="n">my</span> <span class="n">basket</span>
 <span class="no">Given</span> <span class="n">I</span> <span class="n">have</span> <span class="mi">256</span> <span class="n">cucumbers</span> <span class="k">in</span> <span class="n">my</span> <span class="n">basket</span>
 </pre></div>
 
-
-<p>Step tanımı şöyle olmalıdır,</p>
-
+<p>Step tan&#305;m&#305; &#351;&ouml;yle olmal&#305;d&#305;r,</p>
 <div class="highlight"><pre><span class="no">Given</span><span class="sr"> /I have (\d+) cucumbers? in my basket/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
   <span class="c1"># TODO: code goes here</span>
 <span class="k">end</span>
@@ -2774,15 +2777,12 @@ Examples
             <header><h1>Alternation</h1></header>
             
             
-            <section><p>Feature&#39;da yazılan şu iki ifade için,</p>
-
+            <section><p>Feature&rsquo;da yaz&#305;lan &#351;u iki ifade i&ccedil;in,</p>
 <div class="highlight"><pre><span class="no">When</span> <span class="n">I</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">homepage</span>
 <span class="no">When</span> <span class="n">I</span> <span class="n">go</span> <span class="n">to</span> <span class="n">the</span> <span class="n">homepage</span>
 </pre></div>
 
-
-<p>Step tanımı şöyle olmalıdır,</p>
-
+<p>Step tan&#305;m&#305; &#351;&ouml;yle olmal&#305;d&#305;r,</p>
 <div class="highlight"><pre><span class="no">When</span><span class="sr"> /I (?:visit|go to) the homepage/</span> <span class="k">do</span>
   <span class="c1"># TODO: code goes here</span>
 <span class="k">end</span>
@@ -2818,9 +2818,7 @@ Examples
             
             
             <section><p>TODO: sayfa 53, figure 5</p>
-
-<p>Burada senaryo için dört duruma dikkat:</p>
-
+<p>Burada senaryo i&ccedil;in d&ouml;rt duruma dikkat:</p>
 <ul>
 <li><font color=yellow>Undefined, Pending,</font></li>
 <li><font color=red>Failed</font>, <font color=green>Passed</font></li>
@@ -2854,8 +2852,7 @@ Examples
             <header><h1>Choosing Your Assertion Library</h1></header>
             
             
-            <section><p>Step tanımında farklı kitaplık seçenekleri vardır: RSpec, MiniTest, Wrong</p>
-
+            <section><p>Step tan&#305;m&#305;nda farkl&#305; kitapl&#305;k se&ccedil;enekleri vard&#305;r: RSpec, MiniTest, Wrong</p>
 <div class="highlight"><pre><span class="c1"># RSpec</span>
 <span class="o">&gt;&gt;</span> <span class="nb">require</span> <span class="s1">&#39;rspec/expectations&#39;</span>
 <span class="o">&gt;&gt;</span> <span class="s2">&quot;green&quot;</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s2">&quot;cucumber&quot;</span>
@@ -2894,9 +2891,15 @@ Examples
             
             
             <section><ul>
-<li><p>Önce kurulama yapalım.</p></li>
-<li><p>araçlar: <code>scenario outlines</code> ve <code>data tables</code></p></li>
-<li><p>ve <code>Background</code></p></li>
+<li>
+<p>&Ouml;nce kurulama yapal&#305;m.</p>
+</li>
+<li>
+<p>ara&ccedil;lar: <code>scenario outlines</code> ve <code>data tables</code></p>
+</li>
+<li>
+<p>ve <code>Background</code></p>
+</li>
 </ul></section>
             
           </div>
@@ -2928,19 +2931,23 @@ Examples
             
             
             <section><ul>
-<li><p>Tümüne ait ortak adımlar</p></li>
-<li><p>Background&#39;da genelde <code>Given</code> (bazen <code>When</code>) oluşur</p>
-
+<li>
+<p>T&uuml;m&uuml;ne ait ortak ad&#305;mlar</p>
+</li>
+<li>
+<p>Background&rsquo;da genelde <code>Given</code> (bazen <code>When</code>) olu&#351;ur</p>
 <ul>
-<li><p>Senaryolar üç paternden oluşuyordu: conext, action, outcome (bkz: 3.4
-Scenario)</p>
-
+<li>
+<p>Senaryolar &uuml;&ccedil; paternden olu&#351;uyordu: conext, action, outcome (bkz: 3.4
+  Scenario)</p>
 <ul>
-<li><code>Given</code>: context&#39;i oturtmak için</li>
-<li><code>When</code>: action&#39;ı seçmede</li>
-<li><code>Then</code>: outcome&#39;ı görmede</li>
-</ul></li>
-</ul></li>
+<li><code>Given</code>: context&rsquo;i oturtmak i&ccedil;in</li>
+<li><code>When</code>: action&rsquo;&#305; se&ccedil;mede</li>
+<li><code>Then</code>: outcome&rsquo;&#305; g&ouml;rmede</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul></section>
             
           </div>
@@ -2972,7 +2979,6 @@ Scenario)</p>
             
             
             <section><p>before,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Change PIN</span>
 <span class="nf">  Customers being issued new cards are supplied with a Personal</span>
 <span class="nf">  Identification Number (PIN) that is randomly generated by the</span>
@@ -2998,8 +3004,7 @@ Scenario)</p>
 <span class="nf">    </span><span class="k">And </span><span class="nf">the system should not have changed my PIN</span>
 </pre></div>
 </p>
-
-<p>her bir adımda ilk üç satır aynı/ortak</p></section>
+<p>her bir ad&#305;mda ilk &uuml;&ccedil; sat&#305;r ayn&#305;/ortak</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3030,7 +3035,6 @@ Scenario)</p>
             
             
             <section><p>after,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Change PIN</span>
 <span class="nf">  As soon as the bank issues new cards to customers, they are</span>
 <span class="nf">  supplied with a Personal Identification Number (PIN) that</span>
@@ -3085,7 +3089,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"></span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"></span>
 <span class="k">    Given </span><span class="nf">a board like this:</span>
@@ -3131,7 +3134,6 @@ Scenario)</p>
             
             
             <section><p>Step,</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="c1"># table is a Cucumber::Ast::Table</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
@@ -3147,8 +3149,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><img src="http://i.imgur.com/7OARZ.png" height="250"></p></section>
+<p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/7OARZ.png&rdquo; height=&rdquo;250&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3179,7 +3180,6 @@ Scenario)</p>
             
             
             <section><p>Step,</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="vi">@board</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">raw</span>
 <span class="k">end</span>
@@ -3195,8 +3195,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><img src="http://i.imgur.com/lUkDz.png" height="250"></p></section>
+<p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/lUkDz.png&rdquo; height=&rdquo;250&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3227,7 +3226,6 @@ Scenario)</p>
             
             
             <section><p>Step,</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="vi">@board</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">raw</span>
 <span class="k">end</span>
@@ -3242,8 +3240,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><img src="http://i.imgur.com/FFKSf.png" height="250"></p></section>
+<p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/FFKSf.png&rdquo; height=&rdquo;250&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3274,7 +3271,6 @@ Scenario)</p>
             
             
             <section><p>Step,</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a board like this:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
   <span class="vi">@board</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">raw</span>
 <span class="k">end</span>
@@ -3289,8 +3285,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><img src="http://i.imgur.com/aNDMI.png" height="250"></p></section>
+<p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/aNDMI.png&rdquo; height=&rdquo;250&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3349,7 +3344,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Withdraw Fixed Amount</span>
 <span class="nf">  The &quot;Withdraw Cash&quot; menu contains several fixed amounts to</span>
 <span class="nf">  speed up transactions for users.</span>
@@ -3403,7 +3397,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Withdraw Fixed Amount</span>
 <span class="nf">  The &quot;Withdraw Cash&quot; menu contains several fixed amounts to</span>
 <span class="nf">  speed up transactions for users.</span>
@@ -3451,7 +3444,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="nf">  </span><span class="k">Scenario Outline:</span><span class="nf"> Withdraw fixed amount</span>
 <span class="k">    Given </span><span class="nf">I have </span><span class="nv">&lt;Balance&gt;</span><span class="nf"> in my account</span>
 <span class="nf">    </span><span class="k">When </span><span class="nf">I choose to withdraw the fixed amount of </span><span class="nv">&lt;Withdrawal&gt;</span><span class="nf"></span>
@@ -3495,7 +3487,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="nf">  </span><span class="k">Scenario Outline:</span><span class="nf"> Withdraw fixed amount</span>
 <span class="k">    Given </span><span class="nf">I have </span><span class="nv">&lt;Balance&gt;</span><span class="nf"> in my account</span>
 <span class="nf">    </span><span class="k">When </span><span class="nf">I choose to withdraw the fixed amount of </span><span class="nv">&lt;Withdrawal&gt;</span><span class="nf"></span>
@@ -3510,8 +3501,7 @@ Scenario)</p>
 <span class="k">      |</span><span class="s"> $100</span><span class="k">    |</span><span class="s"> $200</span><span class="k">       |</span><span class="s"> $100</span><span class="k">      |</span><span class="s"> seed an error message</span><span class="k"> |</span>
 </pre></div>
 </p>
-
-<p>Özellikle en <strong>alt</strong> satırda ki hata mesajına bakın.</p></section>
+<p>&Ouml;zellikle en <strong>alt</strong> sat&#305;rda ki hata mesaj&#305;na bak&#305;n.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3542,7 +3532,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Scenario Outline:</span><span class="nf"> Withdraw fixed amount</span>
 <span class="k">  Given </span><span class="nf">I have </span><span class="nv">&lt;Balance&gt;</span><span class="nf"> in my account</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">I choose to withdraw the fixed amount of </span><span class="nv">&lt;Withdrawal&gt;</span><span class="nf"></span>
@@ -3590,7 +3579,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Account Creation</span>
 <span class="nf">  </span><span class="k">Scenario Outline:</span><span class="nf"> Password validation</span>
 <span class="k">    Given </span><span class="nf">I try to create an account with password &quot;</span><span class="nv">&lt;Password&gt;</span><span class="nf">&quot;</span>
@@ -3635,7 +3623,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Account Creation</span>
 <span class="nf">  </span><span class="k">Scenario Outline:</span><span class="nf"> Password validation</span>
 <span class="k">    Given </span><span class="nf">I try to create an account with password &quot;</span><span class="nv">&lt;Password&gt;</span><span class="nf">&quot;</span>
@@ -3714,7 +3701,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"></span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Withdraw fixed amount of $50</span>
 <span class="k">    Given </span><span class="nf">I have $</span><span class="s">500</span><span class="nf"> in my account</span>
@@ -3726,9 +3712,7 @@ Scenario)</p>
 <span class="nf">    </span><span class="k">And </span><span class="nf">the balance of my account should be $</span><span class="s">450</span><span class="nf"></span>
 </pre></div>
 </p>
-
-<p>Burada şu feature tekrarlıyor,</p>
-
+<p>Burada &#351;u feature tekrarl&#305;yor,</p>
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"></span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Successful login with PIN</span>
 <span class="k">    Given </span><span class="nf">I have pushed my card in the slot</span>
@@ -3767,7 +3751,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="lineno">1</span> <span class="k">Feature:</span><span class="nf"></span>
 <span class="lineno">2</span> <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Withdraw fixed amount of $50</span>
 <span class="lineno">3</span> <span class="k">    Given </span><span class="nf">I have $</span><span class="s">500</span><span class="nf"> in my account</span>
@@ -3777,18 +3760,13 @@ Scenario)</p>
 <span class="lineno">7</span> <span class="nf">    </span><span class="k">And </span><span class="nf">the balance of my account should be $</span><span class="s">450</span><span class="nf"></span>
 </pre></div>
 </p>
-
-<p><code>Given I have authenticated with the correct PIN</code> üst düzey adımına dikkat!</p>
-
-<p>Step&#39;ler şöyle olur,</p>
-
+<p><code>Given I have authenticated with the correct PIN</code> &uuml;st d&uuml;zey ad&#305;m&#305;na dikkat!</p>
+<p>Step&rsquo;ler &#351;&ouml;yle olur,</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have pushed my card in the slot$/</span> <span class="k">do</span>
 </pre></div>
 </p>
-
 <pre><code>...
 </code></pre>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have authenticated with the correct PIN$/</span> <span class="k">do</span>
   <span class="n">steps</span> <span class="sx">%{</span>
 <span class="sx">    And I have pushed my card into the slot</span>
@@ -3824,11 +3802,10 @@ Scenario)</p>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Argümanlar</h1></header>
+            <header><h1>Arg&uuml;manlar</h1></header>
             
             
-            <section><p>Step örneği 1: ruby kodu</p>
-
+            <section><p>Step &ouml;rne&#287;i 1: ruby kodu</p>
 <div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^an activated customer (\w+) exists$/</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
   <span class="n">steps</span> <span class="sx">%{</span>
 <span class="sx">    Given I create a customer with login </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="sx"></span>
@@ -3838,9 +3815,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Data Tables&#39;ı böyle geçebiliriz, +bonus: tek step durumu</p>
-
+<p>Data Tables&rsquo;&#305; b&ouml;yle ge&ccedil;ebiliriz, +bonus: tek step durumu</p>
 <div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^a (\w+) widget with the following details:$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">color</span><span class="p">,</span> <span class="n">details_table</span><span class="o">|</span>
   <span class="n">step</span> <span class="s2">&quot;I create a </span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2"> widget with the following details:&quot;</span><span class="p">,</span> <span class="n">details_table</span>
   <span class="n">steps</span> <span class="sx">%{</span>
@@ -3880,7 +3855,6 @@ Scenario)</p>
             
             
             <section><p>Feature,</p>
-
 <div class="highlight"><pre><span class="no">Scenario</span><span class="p">:</span> <span class="no">Ban</span> <span class="no">Unscrupulous</span> <span class="no">Users</span>
   <span class="no">When</span> <span class="n">I</span> <span class="n">behave</span> <span class="n">unscrupulously</span>
   <span class="no">Then</span> <span class="n">I</span> <span class="n">should</span> <span class="n">receive</span> <span class="n">an</span> <span class="n">email</span> <span class="n">containing</span><span class="p">:</span>
@@ -3923,8 +3897,7 @@ Scenario)</p>
             <header><h1>5.6 Tags and Subfolders</h1></header>
             
             
-            <section><p>Features dizininde alt dizinler oluşturulabilir,</p>
-
+            <section><p>Features dizininde alt dizinler olu&#351;turulabilir,</p>
 <div class="highlight"><pre>features/
   admins/
   logged_in_users/
@@ -3933,20 +3906,15 @@ Scenario)</p>
   reading_reports/
 </pre></div>
 
-
-<p>Bu alt klasörde ki features&#39;u çalıştırmak için,</p>
-
+<p>Bu alt klas&ouml;rde ki features&rsquo;u &ccedil;al&#305;&#351;t&#305;rmak i&ccedil;in,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber features/reading_reports/widget_report.feature
 </pre></div>
 
-
-<p>step tanımlarını tek bir yerde tutacaksanız (ki tavsiye edilen budur),</p>
-
+<p>step tan&#305;mlar&#305;n&#305; tek bir yerde tutacaksan&#305;z (ki tavsiye edilen budur),</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber features/reading_reports/widget_report.feature -r features/
 </pre></div>
 
-
-<p>root klasörünü hatırlat ki <code>features/step_definitions/</code> a baksın</p></section>
+<p>root klas&ouml;r&uuml;n&uuml; hat&#305;rlat ki <code>features/step_definitions/</code> a baks&#305;n</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3977,12 +3945,14 @@ Scenario)</p>
             
             
             <section><ul>
-<li><p>Alt klasörler eğer kitabın bölümleriyse,</p></li>
-<li><p>Tag&#39;ler sayfalara yerleştirilen not kağıtlarıdır</p></li>
+<li>
+<p>Alt klas&ouml;rler e&#287;er kitab&#305;n b&ouml;l&uuml;mleriyse,</p>
+</li>
+<li>
+<p>Tag&rsquo;ler sayfalara yerle&#351;tirilen not ka&#287;&#305;tlar&#305;d&#305;r</p>
+</li>
 </ul>
-
-<p>Test sırasında şöyle belirtilecek</p>
-
+<p>Test s&#305;ras&#305;nda &#351;&ouml;yle belirtilecek</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber --tags @javascript
 </pre></div>
 </section>
@@ -4012,29 +3982,24 @@ Scenario)</p>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Tags: Örnekler</h1></header>
+            <header><h1>Tags: &Ouml;rnekler</h1></header>
             
             
-            <section><p>Tag örnekleri,</p>
-
+            <section><p>Tag &ouml;rnekleri,</p>
 <div class="highlight"><pre><span class="vi">@widgets</span>
 <span class="no">Scenario</span><span class="p">:</span> <span class="no">Generate</span> <span class="n">report</span>
   <span class="no">Given</span> <span class="n">I</span> <span class="n">am</span> <span class="n">logged</span> <span class="k">in</span>
   <span class="no">And</span> <span class="n">there</span> <span class="n">is</span> <span class="n">a</span> <span class="n">report</span> <span class="s2">&quot;Best selling widgets&quot;</span>
 </pre></div>
 
-
 <p>Birden fazla tag,</p>
-
 <div class="highlight"><pre><span class="vi">@slow</span> <span class="vi">@widgets</span> <span class="vi">@nightly</span>
 <span class="no">Scenario</span><span class="p">:</span> <span class="no">Generate</span> <span class="n">overnight</span> <span class="n">report</span>
   <span class="no">Given</span> <span class="n">I</span> <span class="n">am</span> <span class="n">logged</span> <span class="k">in</span>
   <span class="no">And</span> <span class="n">there</span> <span class="n">is</span> <span class="n">a</span> <span class="n">report</span> <span class="s2">&quot;Total widget sales history&quot;</span>
 </pre></div>
 
-
-<p>Senaryo düzeyinde tag&#39;leme,</p>
-
+<p>Senaryo d&uuml;zeyinde tag&rsquo;leme,</p>
 <div class="highlight"><pre><span class="vi">@nightly</span> <span class="vi">@slow</span>
 <span class="no">Feature</span><span class="p">:</span> <span class="no">Nightly</span> <span class="no">Reports</span>
   <span class="vi">@widgets</span>
@@ -4074,7 +4039,7 @@ Scenario)</p>
             <header><h1>Chapter 6: When Cucumbers Go Bad</h1></header>
             
             
-            <section><p>Tarandı fakat not tutulmadı</p></section>
+            <section><p>Tarand&#305; fakat not tutulmad&#305;</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4139,19 +4104,14 @@ Scenario)</p>
 <span class="nf">    </span><span class="k">Then </span><span class="nf">$</span><span class="s">20</span><span class="nf"> should be dispensed</span>
 </pre></div>
 </p>
-
 <p><strong>Step 1:</strong> <font color=red>KIRMIZI</font>,</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="no">Account</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p><strong>Test Sonucu</strong>:</p>
-
-<p><img src=http://i.imgur.com/nhwxb.png height="200"></p>
-
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/nhwxb.png height=&rdquo;200&rdquo;></p>
 <p><strong>Problem</strong>: <code>uninitialized constant Account (NameError)</code></p></section>
             
           </div>
@@ -4182,8 +4142,7 @@ Scenario)</p>
             <header><h1>7.1 Sketching Out the Domain Model</h1></header>
             
             
-            <section><p>Step dosyasına <strong>Model</strong> bilgisini gömelim,</p>
-
+            <section><p>Step dosyas&#305;na <strong>Model</strong> bilgisini g&ouml;melim,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="k">end</span>
@@ -4194,11 +4153,8 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><strong>Step 1:</strong> <font color=green>YEŞİL</font>,</p>
-
-<p><img src=http://i.imgur.com/JoWqT.png height="200"></p>
-
+<p><strong>Step 1:</strong> <font color=green>YE&#350;&#304;L</font>,</p>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/JoWqT.png height=&rdquo;200&rdquo;></p>
 <p><strong>Problem</strong>: <code>Pending</code> + <code>amount</code></p></section>
             
           </div>
@@ -4229,8 +4185,7 @@ Scenario)</p>
             <header><h1>Model: attribute</h1></header>
             
             
-            <section><p><strong>Step 2:</strong> <font color=red>KIRMIZI</font>: <code>amount</code>&#39;u dikkate al,</p>
-
+            <section><p><strong>Step 2:</strong> <font color=red>KIRMIZI</font>: <code>amount</code>&lsquo;u dikkate al,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="k">end</span>
@@ -4242,8 +4197,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><strong>Test Sonucu</strong>: değişmedi. İyileştirmeye devam edelim.</p></section>
+<p><strong>Test Sonucu</strong>: de&#287;i&#351;medi. &#304;yile&#351;tirmeye devam edelim.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4273,10 +4227,8 @@ Scenario)</p>
             <header><h1>Model: method</h1></header>
             
             
-            <section><p><strong>Step 2:</strong> <font color=red>KIRMIZI</font>: <code>balance</code> yöntemi ekle + <code>RSpec</code></p>
-
+            <section><p><strong>Step 2:</strong> <font color=red>KIRMIZI</font>: <code>balance</code> y&ouml;ntemi ekle + <code>RSpec</code></p>
 <p><strong>Step 1:</strong> tekrar <font color=red>KIRMIZI</font>,</p>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="k">end</span>
@@ -4293,8 +4245,7 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><img src=http://i.imgur.com/oSD9L.png height="200"></p></section>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/oSD9L.png height=&rdquo;200&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4324,18 +4275,15 @@ Scenario)</p>
             <header><h1>RSpec</h1></header>
             
             
-            <section><p>Kontrolde kullanılan RSpec kodları,</p>
-
+            <section><p>Kontrolde kullan&#305;lan RSpec kodlar&#305;,</p>
 <p><div class="highlight"><pre>  <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="o">.</span><span class="n">to_i</span><span class="p">),</span> 
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </p>
-
 <p>mealen der ki,</p>
-
 <blockquote>
-<p><code>balance</code> değişkeni (yöntem dönütü), <code>amount</code> olmalıdır (<code>should</code>)</p>
+<p><code>balance</code> de&#287;i&#351;keni (y&ouml;ntem d&ouml;n&uuml;t&uuml;), <code>amount</code> olmal&#305;d&#305;r (<code>should</code>)</p>
 </blockquote></section>
             
           </div>
@@ -4363,11 +4311,10 @@ Scenario)</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Model: iç değişken</h1></header>
+            <header><h1>Model: i&ccedil; de&#287;i&#351;ken</h1></header>
             
             
-            <section><p>Model&#39;e <code>@balance</code> iç değişkeni ekleyelim,</p>
-
+            <section><p>Model&rsquo;e <code>@balance</code> i&ccedil; de&#287;i&#351;keni ekleyelim,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@balance</span> <span class="o">=</span> <span class="n">amount</span>
@@ -4379,10 +4326,8 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p><strong>Test Sonucu</strong>:</p>
-
-<p><img src=http://i.imgur.com/qBIiW.png width="700"></p></section>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/qBIiW.png width=&rdquo;700&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4441,20 +4386,21 @@ Scenario)</p>
             
             
             <section><ul>
-<li><p>Tekrarlayan <code>to_i</code>&#39;ler göz tırmalıyor</p></li>
-<li><p>Bunun için Step tanımında <code>Transform</code> tanımlayalım,</p></li>
+<li>
+<p>Tekrarlayan <code>to_i</code>&lsquo;ler g&ouml;z t&#305;rmal&#305;yor</p>
+</li>
+<li>
+<p>Bunun i&ccedil;in Step tan&#305;m&#305;nda <code>Transform</code> tan&#305;mlayal&#305;m,</p>
+</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">Transform</span><span class="sr"> /^\d+$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
   <span class="n">number</span><span class="o">.</span><span class="n">to_i</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
-<li>Artık <code>to_i</code>&#39;siz yazabiliriz</li>
+<li>Art&#305;k <code>to_i</code>&lsquo;siz yazabiliriz</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited \$(\d+) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
@@ -4463,9 +4409,8 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
-<li><code>Transform</code>, herhang bir yerde tanıma uyan düzenli ifadeyi yakalar ve çevirir</li>
+<li><code>Transform</code>, herhang bir yerde tan&#305;ma uyan d&uuml;zenli ifadeyi yakalar ve &ccedil;evirir</li>
 </ul></section>
             
           </div>
@@ -4496,8 +4441,7 @@ Scenario)</p>
             <header><h1>Transform: Alias / Constant</h1></header>
             
             
-            <section><p>Bir sabit olarak tanımlayıpta kullanabiliriz,</p>
-
+            <section><p>Bir sabit olarak tan&#305;mlay&#305;pta kullanabiliriz,</p>
 <p><div class="highlight"><pre><span class="no">CAPTURE_A_NUMBER</span> <span class="o">=</span> <span class="no">Transform</span><span class="sr"> /^\d+$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
   <span class="n">number</span><span class="o">.</span><span class="n">to_i</span>
 <span class="k">end</span>
@@ -4510,7 +4454,6 @@ Scenario)</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p><code>CAPTURE_A_NUMBER</code> yerine <code>CAPTURE_CASH_AMOUNT</code> daha iyi.</p></section>
             
           </div>
@@ -4541,7 +4484,7 @@ Scenario)</p>
             <header><h1>Transforms: how do they work?</h1></header>
             
             
-            <section><p><img src=http://i.imgur.com/GUh9m.png height="500"></p></section>
+            <section><p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/GUh9m.png height=&rdquo;500&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4572,19 +4515,14 @@ Scenario)</p>
             
             
             <section><p>En son test durumumuz,</p>
-
-<p><img src=http://i.imgur.com/TVfB2.png width="700"></p>
-
-<p>Step en son şöyle idi,</p>
-
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/TVfB2.png width=&rdquo;700&rdquo;></p>
+<p>Step en son &#351;&ouml;yle idi,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I request \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Transform+Constant kullanarak Step&#39;i tekrardan yazalım,</p>
-
+<p>Transform+Constant kullanarak Step&rsquo;i tekrardan yazal&#305;m,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I request (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
@@ -4619,18 +4557,15 @@ Scenario)</p>
             <header><h1>Model: Teller</h1></header>
             
             
-            <section><p>Banka memuru (<em>teller</em>), hesabımızdan çeksin (<em>withdraw</em>),</p>
-
+            <section><p>Banka memuru (<em>teller</em>), hesab&#305;m&#305;zdan &ccedil;eksin (<em>withdraw</em>),</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I request (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>madem <em>request</em> yerine <em>withdraw</em> kullanıyoruz Feature&#39;u güncelleyelim (<code>I
+<p>madem <em>request</em> yerine <em>withdraw</em> kullan&#305;yoruz Feature&rsquo;u g&uuml;ncelleyelim (<code>I
 request</code> &gt; <code>I withdraw</code>),</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Cash Withdrawal</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Successful withdrawal from an account in credit</span>
 <span class="k">    Given </span><span class="nf">I have deposited $</span><span class="s">100</span><span class="nf"> in my account</span>
@@ -4638,9 +4573,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 <span class="nf">    </span><span class="k">Then </span><span class="nf">$</span><span class="s">20</span><span class="nf"> should be dispensed</span>
 </pre></div>
 </p>
-
-<p>Bunun step&#39;ini güncelleyelim,</p>
-
+<p>Bunun step&rsquo;ini g&uuml;ncelleyelim,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
@@ -4676,20 +4609,16 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Teller: withdrawal_from</h1></header>
             
             
-            <section><p>Teller için <code>withdrawal_from</code> yöntemini oluştur,</p>
-
+            <section><p>Teller i&ccedil;in <code>withdrawal_from</code> y&ouml;ntemini olu&#351;tur,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Teller</span>
   <span class="k">def</span> <span class="nf">withdraw_from</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p><strong>Test Sonucu</strong>:</p>
-
-<p><img src=http://i.imgur.com/5gOqf.png width="700"></p>
-
-<p><strong>Problem</strong>: <code>my_account</code>: step&#39;ler arasında nasıl taşıyacağız?</p></section>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/5gOqf.png width=&rdquo;700&rdquo;></p>
+<p><strong>Problem</strong>: <code>my_account</code>: step&rsquo;ler aras&#305;nda nas&#305;l ta&#351;&#305;yaca&#287;&#305;z?</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4719,8 +4648,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Storing State in the World</h1></header>
             
             
-            <section><p>instance&#39;a dönüştrmek gerek (normal ruby davranışı),</p>
-
+            <section><p>instance&rsquo;a d&ouml;n&uuml;&#351;trmek gerek (normal ruby davran&#305;&#351;&#305;),</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="vi">@my_account</span> <span class="o">=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="vi">@my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
@@ -4734,10 +4662,8 @@ request</code> &gt; <code>I withdraw</code>),</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p><strong>Test Sonucu</strong>:</p>
-
-<p><img src=http://i.imgur.com/or4yp.png width="700"></p></section>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/or4yp.png width=&rdquo;700&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4767,16 +4693,13 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Creating Custom Helper Methods</h1></header>
             
             
-            <section><p><code>my_account</code>&#39;u accessor&#39;un arkasına gizleyerek <code>nil</code>&#39;i önleyebiliriz,</p>
-
+            <section><p><code>my_account</code>&lsquo;u accessor&rsquo;un arkas&#305;na gizleyerek <code>nil</code>&lsquo;i &ouml;nleyebiliriz,</p>
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">my_account</span>
     <span class="vi">@my_account</span> <span class="o">||=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Bir modüle dönüştürebiliriz,</p>
-
+<p>Bir mod&uuml;le d&ouml;n&uuml;&#351;t&uuml;rebiliriz,</p>
 <p><div class="highlight"><pre><span class="k">module</span> <span class="nn">KnowsMyAccount</span>
   <span class="k">def</span> <span class="nf">my_account</span>
     <span class="vi">@my_account</span> <span class="o">||=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
@@ -4784,9 +4707,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Cucumber dünyasına (<em>World</em>) bunu mixed ederek söyleriz,</p>
-
+<p>Cucumber d&uuml;nyas&#305;na (<em>World</em>) bunu mixed ederek s&ouml;yleriz,</p>
 <p><div class="highlight"><pre><span class="no">World</span><span class="p">(</span><span class="no">KnowsMyAccount</span><span class="p">)</span>
 </pre></div>
 </p></section>
@@ -4819,8 +4740,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Creating Custom Helper Methods: Step</h1></header>
             
             
-            <section><p>Step&#39;leri tekrar güncelle (<code>@my_account &gt; my_account</code>),</p>
-
+            <section><p>Step&rsquo;leri tekrar g&uuml;ncelle (<code>@my_account &gt; my_account</code>),</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
@@ -4859,27 +4779,22 @@ request</code> &gt; <code>I withdraw</code>),</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Altın vuruş zamanı</h1></header>
+            <header><h1>Alt&#305;n vuru&#351; zaman&#305;</h1></header>
             
             
             <section><p>Son Step,</p>
-
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^\$(\d+) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Önce Transform:Constant&#39;ını devreye alalım,</p>
-
+<p>&Ouml;nce Transform:Constant&rsquo;&#305;n&#305; devreye alal&#305;m,</p>
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Şöyle yazabiliriz,</p>
-
+<p>&#350;&ouml;yle yazabiliriz,</p>
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">cash_slot</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="n">amount</span>
 <span class="k">end</span>
@@ -4914,16 +4829,13 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Module: cash_slot</h1></header>
             
             
-            <section><p>Module&#39;e (<code>module KnowsTheDomain</code>) <code>cash_slot</code>&#39;u ekleyelim,</p>
-
+            <section><p>Module&rsquo;e (<code>module KnowsTheDomain</code>) <code>cash_slot</code>&lsquo;u ekleyelim,</p>
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">cash_slot</span>
     <span class="vi">@cash_slot</span> <span class="o">||=</span> <span class="no">CashSlot</span><span class="o">.</span><span class="n">new</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Tahmin edileceği üzere bir de bankomat sınıfı/modeli gerekiyor,</p>
-
+<p>Tahmin edilece&#287;i &uuml;zere bir de bankomat s&#305;n&#305;f&#305;/modeli gerekiyor,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">CashSlot</span>
   <span class="k">def</span> <span class="nf">contents</span>
     <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;I&#39;m empty!&quot;</span><span class="p">)</span>
@@ -4931,12 +4843,9 @@ request</code> &gt; <code>I withdraw</code>),</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>bir exception atıyor. <strong>Test Sonucu</strong>:</p>
-
-<p><img src=http://i.imgur.com/WWKa9.png width="700"></p>
-
-<p><strong>Problem</strong>: <code>I&#39;m empty! (RuntimeError)</code></p></section>
+<p>bir exception at&#305;yor. <strong>Test Sonucu</strong>:</p>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/WWKa9.png width=&rdquo;700&rdquo;></p>
+<p><strong>Problem</strong>: <code>I'm empty! (RuntimeError)</code></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -4966,17 +4875,14 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Teller: initialize + withdrawal_from</h1></header>
             
             
-            <section><p>Teller şöyleydi,</p>
-
+            <section><p>Teller &#351;&ouml;yleydi,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Teller</span>
   <span class="k">def</span> <span class="nf">withdraw_from</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>ihtiyacı karşılayacak biçimde geliştirelim,</p>
-
+<p>ihtiyac&#305; kar&#351;&#305;layacak bi&ccedil;imde geli&#351;tirelim,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Teller</span> <span class="c1"># kasiyer</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">cash_slot</span><span class="p">)</span>
     <span class="vi">@cash_slot</span> <span class="o">=</span> <span class="n">cash_slot</span>
@@ -5017,25 +4923,20 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>Step</h1></header>
             
             
-            <section><p>Step&#39;in önceki hali,</p>
-
+            <section><p>Step&rsquo;in &ouml;nceki hali,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span> <span class="o">=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>güncellersek,</p>
-
+<p>g&uuml;ncellersek,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><code>teller</code> accessor üzerinden erişilecek,</p>
-
+<p><code>teller</code> accessor &uuml;zerinden eri&#351;ilecek,</p>
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">teller</span>
     <span class="vi">@teller</span> <span class="o">||=</span> <span class="no">Teller</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">cash_slot</span><span class="p">)</span>
   <span class="k">end</span>
@@ -5070,8 +4971,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
             <header><h1>CashSlot</h1></header>
             
             
-            <section><p>CashSlot önceden,</p>
-
+            <section><p>CashSlot &ouml;nceden,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">CashSlot</span>
   <span class="k">def</span> <span class="nf">contents</span>
     <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;I&#39;m empty!&quot;</span><span class="p">)</span>
@@ -5079,9 +4979,7 @@ request</code> &gt; <code>I withdraw</code>),</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p>yeni hali,</p>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">CashSlot</span> <span class="c1"># atm</span>
   <span class="k">def</span> <span class="nf">contents</span>
     <span class="vi">@contents</span> <span class="ow">or</span> <span class="k">raise</span><span class="p">(</span><span class="s2">&quot;I&#39;m empty!&quot;</span><span class="p">)</span>
@@ -5119,10 +5017,10 @@ request</code> &gt; <code>I withdraw</code>),</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Timü yeşillendi&hellip;</h1></header>
+            <header><h1>Tim&uuml; ye&#351;illendi&hellip;</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/IqPlN.png" alt="f"/></p></section>
+            <section><p><img alt="f" src="http://i.imgur.com/IqPlN.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -5153,10 +5051,18 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             
             <section><ul>
-<li><p>uygulama domain&#39;ine dair modeller <code>lib</code> dizinine</p></li>
-<li><p><code>KnowsTheDomain</code> modülü kendi dosyasına taşınacak</p></li>
-<li><p><code>Transform</code> kendi dosyasına taşınacak</p></li>
-<li><p>Step dosyası bölünecek</p></li>
+<li>
+<p>uygulama domain&rsquo;ine dair modeller <code>lib</code> dizinine</p>
+</li>
+<li>
+<p><code>KnowsTheDomain</code> mod&uuml;l&uuml; kendi dosyas&#305;na ta&#351;&#305;nacak</p>
+</li>
+<li>
+<p><code>Transform</code> kendi dosyas&#305;na ta&#351;&#305;nacak</p>
+</li>
+<li>
+<p>Step dosyas&#305; b&ouml;l&uuml;necek</p>
+</li>
 </ul></section>
             
           </div>
@@ -5188,21 +5094,24 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             
             <section><ul>
-<li><p>Uygulamaya dair kodlar: <code>Account</code>, <code>Teller</code>, <code>CashSlot</code></p></li>
-<li><p>bunları <code>lib/nice_bank.rb</code>&#39;ye taşı</p>
-
+<li>
+<p>Uygulamaya dair kodlar: <code>Account</code>, <code>Teller</code>, <code>CashSlot</code></p>
+</li>
+<li>
+<p>bunlar&#305; <code>lib/nice_bank.rb</code>&lsquo;ye ta&#351;&#305;</p>
 <ul>
-<li>Rails&#39;de buna gerek yok!</li>
-</ul></li>
-<li><p>step dosyasında yolu belirt,</p></li>
+<li>Rails&rsquo;de buna gerek yok!</li>
 </ul>
-
+</li>
+<li>
+<p>step dosyas&#305;nda yolu belirt,</p>
+</li>
+</ul>
 <p><div class="highlight"><pre><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">,</span> <span class="s1">&#39;nice_bank&#39;</span><span class="p">)</span>
 </pre></div>
 </p>
-
 <ul>
-<li>bu der ki <code>./../../lib/nice_bank.rb</code>&#39;ye de bak/require et.</li>
+<li>bu der ki <code>./../../lib/nice_bank.rb</code>&lsquo;ye de bak/require et.</li>
 </ul></section>
             
           </div>
@@ -5234,11 +5143,16 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             
             <section><ul>
-<li><p>cucumber başlamadan önce <code>features/support</code> klasörü altında ki dosyaları da yükler.</p></li>
-<li><p>Step tanımlarına destek/support buradan gelecek.</p></li>
-<li><p>uygulama kodlarına da erişmek hedeflediğimizden <code>support/env.rb</code>&#39;de,</p></li>
+<li>
+<p>cucumber ba&#351;lamadan &ouml;nce <code>features/support</code> klas&ouml;r&uuml; alt&#305;nda ki dosyalar&#305; da y&uuml;kler.</p>
+</li>
+<li>
+<p>Step tan&#305;mlar&#305;na destek/support buradan gelecek.</p>
+</li>
+<li>
+<p>uygulama kodlar&#305;na da eri&#351;mek hedefledi&#287;imizden <code>support/env.rb</code>&lsquo;de,</p>
+</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;lib&#39;</span><span class="p">,</span> <span class="s1">&#39;nice_bank&#39;</span><span class="p">)</span>
 </pre></div>
 </p></section>
@@ -5272,8 +5186,12 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             
             <section><ul>
-<li><p>Transforms: <code>support/transforms.rb</code></p></li>
-<li><p>World Module: <code>support/world_extensions.rb</code></p></li>
+<li>
+<p>Transforms: <code>support/transforms.rb</code></p>
+</li>
+<li>
+<p>World Module: <code>support/world_extensions.rb</code></p>
+</li>
 </ul></section>
             
           </div>
@@ -5305,15 +5223,20 @@ request</code> &gt; <code>I withdraw</code>),</p>
             
             
             <section><ul>
-<li><p>her bir model/domain başına bir dosya oluşturarak organize et</p></li>
-<li><p>Bu durumda,</p>
-
+<li>
+<p>her bir model/domain ba&#351;&#305;na bir dosya olu&#351;turarak organize et</p>
+</li>
+<li>
+<p>Bu durumda,</p>
 <div class="highlight"><pre>features/step_definitions/account_steps.rb
 features/step_definitions/teller_steps.rb
 features/step_definitions/cash_slot_steps.rb
 </pre></div>
+
 </li>
-<li><p>hızlı bakış: <code>cucumber --dry-run</code></p></li>
+<li>
+<p>h&#305;zl&#305; bak&#305;&#351;: <code>cucumber --dry-run</code></p>
+</li>
 </ul></section>
             
           </div>
@@ -5344,8 +5267,7 @@ features/step_definitions/cash_slot_steps.rb
             <header><h1>Chapter 8: Support Code</h1></header>
             
             
-            <section><p>Önceki bölümün Automated Teller Machine (ATM) feature,</p>
-
+            <section><p>&Ouml;nceki b&ouml;l&uuml;m&uuml;n Automated Teller Machine (ATM) feature,</p>
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Cash Withdrawal</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Successful withdrawal from an account in credit</span>
 <span class="k">    Given </span><span class="nf">I have deposited $</span><span class="s">100</span><span class="nf"> in my account</span>
@@ -5382,16 +5304,13 @@ features/step_definitions/cash_slot_steps.rb
             <header><h1>8.1 Fixing the Bug</h1></header>
             
             
-            <section><p>Kasa&#39;dan düşen böyle sınanıyor,</p>
-
+            <section><p>Kasa&rsquo;dan d&uuml;&#351;en b&ouml;yle s&#305;nan&#305;yor,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p>Feature,</p>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Cash Withdrawal</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Successful withdrawal from an account in credit</span>
 <span class="k">    Given </span><span class="nf">I have deposited $</span><span class="s">100</span><span class="nf"> in my account</span>
@@ -5399,10 +5318,8 @@ features/step_definitions/cash_slot_steps.rb
 <span class="nf">    </span><span class="k">Then </span><span class="nf">$</span><span class="s">20</span><span class="nf"> should be dispensed</span>
 </pre></div>
 </p>
-
-<p>tanımında hesabımda kalanla ilgili eksiklik var! <code>80$</code>&#39;ımın kaldığını nasıl test
-edeceğim?</p>
-
+<p>tan&#305;m&#305;nda hesab&#305;mda kalanla ilgili eksiklik var! <code>80$</code>&lsquo;&#305;m&#305;n kald&#305;&#287;&#305;n&#305; nas&#305;l test
+edece&#287;im?</p>
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Cash Withdrawal</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Successful withdrawal from an account in credit</span>
 <span class="k">    Given </span><span class="nf">I have deposited $</span><span class="s">100</span><span class="nf"> in my account</span>
@@ -5410,7 +5327,6 @@ edeceğim?</p>
 <span class="nf">    </span><span class="k">Then </span><span class="nf">$</span><span class="s">20</span><span class="nf"> should be dispensed</span>
 </pre></div>
 </p>
-
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">And </span><span class="nf">the balance of my account should be $</span><span class="s">80</span><span class="nf"></span>
 </pre></div>
 </p></section>
@@ -5444,13 +5360,10 @@ edeceğim?</p>
             
             
             <section><p>Buna,</p>
-
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">And </span><span class="nf">the balance of my account should be $</span><span class="s">80</span><span class="nf"></span>
 </pre></div>
 </p>
-
-<p>dair adım,</p>
-
+<p>dair ad&#305;m,</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
@@ -5488,30 +5401,24 @@ edeceğim?</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Gerekli adım</h1></header>
+            <header><h1>Gerekli ad&#305;m</h1></header>
             
             
-            <section><p>Böyle başladık,</p>
-
+            <section><p>B&ouml;yle ba&#351;lad&#305;k,</p>
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^the balance of my account should be \$(\d+)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg1</span><span class="o">|</span>
   <span class="n">pending</span> <span class="c1"># express the regexp above with the code you wish you had</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>şöyle yapıyoruz,</p>
-
+<p>&#351;&ouml;yle yap&#305;yoruz,</p>
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^the balance of my account should be (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
     <span class="s2">&quot;Expected the balance to be </span><span class="si">#{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> but it was </span><span class="si">#{</span><span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p><strong>Test Sonucu</strong>:</p>
-
-<p><img src="http://i.imgur.com/biwjU.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/biwjU.png" /></p>
 <p><strong>Problem</strong>: <code>Expected the balance to be 80 but it was 100</code></p></section>
             
           </div>
@@ -5539,11 +5446,10 @@ edeceğim?</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Modeli güncelle</h1></header>
+            <header><h1>Modeli g&uuml;ncelle</h1></header>
             
             
-            <section><p>Modelimiz şöyleydi,</p>
-
+            <section><p>Modelimiz &#351;&ouml;yleydi,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Teller</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">cash_slot</span><span class="p">)</span>
     <span class="vi">@cash_slot</span> <span class="o">=</span> <span class="n">cash_slot</span>
@@ -5554,9 +5460,7 @@ edeceğim?</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>şöyle güncelliyoruz,</p>
-
+<p>&#351;&ouml;yle g&uuml;ncelliyoruz,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Teller</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">cash_slot</span><span class="p">)</span>
     <span class="vi">@cash_slot</span> <span class="o">=</span> <span class="n">cash_slot</span>
@@ -5568,8 +5472,7 @@ edeceğim?</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>burada kritik satır: <code>account.debit(amount)</code></p></section>
+<p>burada kritik sat&#305;r: <code>account.debit(amount)</code></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -5600,26 +5503,19 @@ edeceğim?</p>
             
             
             <section><p><strong>Test Sonucu</strong>:</p>
-
-<p><img src="http://i.imgur.com/LOlRc.png" alt="f"/></p>
-
-<p>Kritik satır: <code>undefined method</code>debit&#39; for #<Account ...>. Bu satırı
-tetikleyen feature satırı,</p>
-
+<p><img alt="f" src="http://i.imgur.com/LOlRc.png" /></p>
+<p>Kritik sat&#305;r: <code>undefined method</code>debit&rsquo; for #<Account ...>`. Bu sat&#305;r&#305;
+tetikleyen feature sat&#305;r&#305;,</p>
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">When </span><span class="nf">I withdraw $</span><span class="s">20</span><span class="nf"></span>
 </pre></div>
 </p>
-
 <p>buna ait step,</p>
-
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <p>burada <code>my_account</code>,</p>
-
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">my_account</span>
     <span class="vi">@my_account</span> <span class="o">||=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="k">end</span>
@@ -5654,26 +5550,20 @@ tetikleyen feature satırı,</p>
             <header><h1>Account modeli: debit</h1></header>
             
             
-            <section><p>dolayısıyla <code>my_account</code>, Account instance&#39;ıdır.</p>
-
+            <section><p>dolay&#305;s&#305;yla <code>my_account</code>, Account instance&rsquo;&#305;d&#305;r.</p>
 <p><div class="highlight"><pre>  <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p>
-
-<p>ve <code>teller</code>&#39;da bir Teller instance&#39;ı olduğundan, <code>withdrawal_from</code> işlevinde,</p>
-
+<p>ve <code>teller</code>&lsquo;da bir Teller instance&rsquo;&#305; oldu&#287;undan, <code>withdrawal_from</code> i&#351;levinde,</p>
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">withdraw_from</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">account</span><span class="o">.</span><span class="n">debit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@cash_slot</span><span class="o">.</span><span class="n">dispense</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><code>account.debit</code> çağrısı Account modelinde <code>debit</code> (deftere kaydedilen borç)
-yöntemini arar. Bulamayınca: <code>undefined method &#39;debit&#39; for #&lt;Account ...&gt;</code></p>
-
+<p><code>account.debit</code> &ccedil;a&#287;r&#305;s&#305; Account modelinde <code>debit</code> (deftere kaydedilen bor&ccedil;)
+y&ouml;ntemini arar. Bulamay&#305;nca: <code>undefined method 'debit' for #&lt;Account ...&gt;</code></p>
 <p>Ki <code>Account</code> modeli,</p>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@balance</span> <span class="o">=</span> <span class="n">amount</span>
@@ -5714,8 +5604,7 @@ yöntemini arar. Bulamayınca: <code>undefined method &#39;debit&#39; for #&lt;A
             <header><h1>Account modeli: debit: eklentisi</h1></header>
             
             
-            <section><p>Başlarken,</p>
-
+            <section><p>Ba&#351;larken,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@balance</span> <span class="o">=</span> <span class="n">amount</span>
@@ -5727,9 +5616,7 @@ yöntemini arar. Bulamayınca: <code>undefined method &#39;debit&#39; for #&lt;A
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><code>debit</code>&#39;le,</p>
-
+<p><code>debit</code>&lsquo;le,</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@balance</span> <span class="o">=</span> <span class="n">amount</span>
@@ -5769,12 +5656,11 @@ yöntemini arar. Bulamayınca: <code>undefined method &#39;debit&#39; for #&lt;A
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Tümü yeşillendi</h1></header>
+            <header><h1>T&uuml;m&uuml; ye&#351;illendi</h1></header>
             
             
             <section><p><strong>Test Sonucu</strong>:</p>
-
-<p><img src="http://i.imgur.com/WOEzq.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/WOEzq.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -5804,17 +5690,23 @@ yöntemini arar. Bulamayınca: <code>undefined method &#39;debit&#39; for #&lt;A
             <header><h1>Reviewing and Refactoring</h1></header>
             
             
-            <section><p>Extreme Programming Explained kitabında Kent Beck, basit tasarımla alakalı
-olarak dört kriter belirlemiştir,</p>
-
+            <section><p>Extreme Programming Explained kitab&#305;nda Kent Beck, basit tasar&#305;mla alakal&#305;
+olarak d&ouml;rt kriter belirlemi&#351;tir,</p>
 <ol>
-<li><p>Tüm testler geçmeli</p></li>
-<li><p>Niyetin açık olsun</p></li>
-<li><p>Tekrarları önle</p></li>
-<li><p>En az sayıda nesne veya yöntem kullan</p></li>
+<li>
+<p>T&uuml;m testler ge&ccedil;meli</p>
+</li>
+<li>
+<p>Niyetin a&ccedil;&#305;k olsun</p>
+</li>
+<li>
+<p>Tekrarlar&#305; &ouml;nle</p>
+</li>
+<li>
+<p>En az say&#305;da nesne veya y&ouml;ntem kullan</p>
+</li>
 </ol>
-
-<p><img src="http://www.extremeprogramming.org/map/images/project.gif" alt="f"/></p></section>
+<p><img alt="f" src="http://www.extremeprogramming.org/map/images/project.gif" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -5845,10 +5737,18 @@ olarak dört kriter belirlemiştir,</p>
             
             
             <section><ol>
-<li><p>&ldquo;Tüm testler geçmeli&rdquo;. EVET</p></li>
-<li><p>&ldquo;Niyetin açık olsun&rdquo;. Bu biraz sıkıntılı!</p></li>
-<li><p>?</p></li>
-<li><p>?</p></li>
+<li>
+<p>&ldquo;T&uuml;m testler ge&ccedil;meli&rdquo;. EVET</p>
+</li>
+<li>
+<p>&ldquo;Niyetin a&ccedil;&#305;k olsun&rdquo;. Bu biraz s&#305;k&#305;nt&#305;l&#305;!</p>
+</li>
+<li>
+<p>?</p>
+</li>
+<li>
+<p>?</p>
+</li>
 </ol></section>
             
           </div>
@@ -5876,25 +5776,32 @@ olarak dört kriter belirlemiştir,</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>XP: Niyetin açık olsun</h1></header>
+            <header><h1>XP: Niyetin a&ccedil;&#305;k olsun</h1></header>
             
             
             <section><h2>Feature: Step 1</h2>
-
 <ul>
-<li>Feature hatırlanırsa</li>
+<li>Feature hat&#305;rlan&#305;rsa</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Successful withdrawal from an account in credit</span>
 </pre></div>
 </p>
-
 <ul>
-<li><p><code>deposit</code> X <code>withdraw</code> yoksa <code>credit</code> X <code>debit</code></p></li>
-<li><p>finansal işlemlerde <code>credit</code> (Cr) ve <code>debit</code> (Dr) kullanıldığından</p></li>
-<li><p><code>deposit -&gt; credit</code> geçişi yapıyoruz</p></li>
-<li><p><strong>debit card</strong>: kişinin kendi parasıyla alış veriş yapması</p></li>
-<li><p><strong>credit card</strong>: ödünç parayla alış veriş yapması</p></li>
+<li>
+<p><code>deposit</code> X <code>withdraw</code> yoksa <code>credit</code> X <code>debit</code></p>
+</li>
+<li>
+<p>finansal i&#351;lemlerde <code>credit</code> (Cr) ve <code>debit</code> (Dr) kullan&#305;ld&#305;&#287;&#305;ndan</p>
+</li>
+<li>
+<p><code>deposit -&gt; credit</code> ge&ccedil;i&#351;i yap&#305;yoruz</p>
+</li>
+<li>
+<p><strong>debit card</strong>: ki&#351;inin kendi paras&#305;yla al&#305;&#351; veri&#351; yapmas&#305;</p>
+</li>
+<li>
+<p><strong>credit card</strong>: &ouml;d&uuml;n&ccedil; parayla al&#305;&#351; veri&#351; yapmas&#305;</p>
+</li>
 </ul></section>
             
           </div>
@@ -5922,20 +5829,17 @@ olarak dört kriter belirlemiştir,</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>deposit -&gt; credit geçişi: Model</h1></header>
+            <header><h1>deposit -&gt; credit ge&ccedil;i&#351;i: Model</h1></header>
             
             
-            <section><p>Model (önce),</p>
-
+            <section><p>Model (&ouml;nce),</p>
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@balance</span> <span class="o">=</span> <span class="n">amount</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
 <p>Model (sonra),</p>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Account</span>
   <span class="k">def</span> <span class="nf">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
     <span class="vi">@balance</span> <span class="o">=</span> <span class="n">amount</span>
@@ -5968,18 +5872,15 @@ olarak dört kriter belirlemiştir,</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>deposit -&gt; credit geçişi: Step</h1></header>
+            <header><h1>deposit -&gt; credit ge&ccedil;i&#351;i: Step</h1></header>
             
             
-            <section><p>Step (önce),</p>
-
+            <section><p>Step (&ouml;nce),</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p>
-
 <p>Step (sonra),</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
@@ -6013,27 +5914,20 @@ olarak dört kriter belirlemiştir,</p>
             <header><h1>Feature: Step 2</h1></header>
             
             
-            <section><p>Feature (önce),</p>
-
+            <section><p>Feature (&ouml;nce),</p>
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">Given </span><span class="nf">I have deposited $</span><span class="s">100</span><span class="nf"> in my account</span>
 </pre></div>
 </p>
-
 <p>Feature (sonra),</p>
-
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">Given </span><span class="nf">my account has been credited with $</span><span class="s">100</span><span class="nf"></span>
 </pre></div>
 </p>
-
-<p>Buna dair Step (önce),</p>
-
+<p>Buna dair Step (&ouml;nce),</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I have deposited (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) in my account$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
 </p>
-
 <p>Step (sonra),</p>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 </pre></div>
@@ -6064,11 +5958,10 @@ olarak dört kriter belirlemiştir,</p>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>XP: &ldquo;Tekrarları önle&rdquo;</h1></header>
+            <header><h1>XP: &ldquo;Tekrarlar&#305; &ouml;nle&rdquo;</h1></header>
             
             
-            <section><p>Bu iki adım,</p>
-
+            <section><p>Bu iki ad&#305;m,</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">balance</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span>
@@ -6081,9 +5974,7 @@ olarak dört kriter belirlemiştir,</p>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Evet&hellip; kod tekrarı içeriyor fakat zaten ilk adım, görevi olmayan işe girişmiş,</p>
-
+<p>Evet&hellip; kod tekrar&#305; i&ccedil;eriyor fakat zaten ilk ad&#305;m, g&ouml;revi olmayan i&#351;e giri&#351;mi&#351;,</p>
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^my account has been credited with (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">my_account</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
@@ -6124,8 +6015,12 @@ olarak dört kriter belirlemiştir,</p>
             
             
             <section><ul>
-<li><p>Sinatra ve Capybara</p></li>
-<li><p>TODO: 141-142 sayfalarında Sinatra nasıl?</p></li>
+<li>
+<p>Sinatra ve Capybara</p>
+</li>
+<li>
+<p>TODO: 141-142 sayfalar&#305;nda Sinatra nas&#305;l?</p>
+</li>
 </ul></section>
             
           </div>
@@ -6156,7 +6051,7 @@ olarak dört kriter belirlemiştir,</p>
             <header><h1>What skills do you need to write tests?</h1></header>
             
             
-            <section><p><img src=http://i.imgur.com/Q1KxX.png height=550></p></section>
+            <section><p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/Q1KxX.png height=550></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -6186,9 +6081,8 @@ olarak dört kriter belirlemiştir,</p>
             <header><h1>8.3 Making the Switch</h1></header>
             
             
-            <section><p>Amacımız,</p>
-
-<p><img src=http://i.imgur.com/xyEaO.png height=550></p></section>
+            <section><p>Amac&#305;m&#305;z,</p>
+<p><img <a href="http://src=http://i.imgur.com">src=http://i.imgur.com</a>/xyEaO.png height=550></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -6218,26 +6112,21 @@ olarak dört kriter belirlemiştir,</p>
             <header><h1>world_extensions ui</h1></header>
             
             
-            <section><p>Peki nasıl? İlgili step&#39;te teller (kasiyer)&#39;in hesaptan nasıl düşeceğini
+            <section><p>Peki nas&#305;l? &#304;lgili step&rsquo;te teller (kasiyer)&rsquo;in hesaptan nas&#305;l d&uuml;&#351;ece&#287;ini
 bilmiyoruz,</p>
-
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Bunun UI ile yaptıracağız. world_extensions (önce),</p>
-
+<p>Bunun UI ile yapt&#305;raca&#287;&#305;z. world_extensions (&ouml;nce),</p>
 <p><div class="highlight"><pre><span class="k">module</span> <span class="nn">KnowsTheDomain</span>
   <span class="k">def</span> <span class="nf">my_account</span>
     <span class="vi">@my_account</span> <span class="o">||=</span> <span class="no">Account</span><span class="o">.</span><span class="n">new</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
 <p>world_extensions (sonra),</p>
-
 <p><div class="highlight"><pre><span class="k">module</span> <span class="nn">KnowsTheUserInterface</span>
   <span class="k">class</span> <span class="nc">UserInterface</span>
     <span class="k">def</span> <span class="nf">withdraw_from</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
@@ -6279,19 +6168,14 @@ bilmiyoruz,</p>
             
             
             <section><p><strong>Test Sonucu</strong>:</p>
-
-<p><img src="http://i.imgur.com/VVH9O.png" alt="f"/></p>
-
-<p>Neden? İlgili Step,</p>
-
+<p><img alt="f" src="http://i.imgur.com/VVH9O.png" /></p>
+<p>Neden? &#304;lgili Step,</p>
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^(</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">) should be dispensed$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">cash_slot</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="n">amount</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>burada <code>cash_slot</code>, CashSlot türünden,</p>
-
+<p>burada <code>cash_slot</code>, CashSlot t&uuml;r&uuml;nden,</p>
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">cash_slot</span>
     <span class="vi">@cash_slot</span> <span class="o">||=</span> <span class="no">CashSlot</span><span class="o">.</span><span class="n">new</span>
   <span class="k">end</span>
@@ -6326,24 +6210,19 @@ bilmiyoruz,</p>
             <header><h1>cash_slot</h1></header>
             
             
-            <section><p>Bu ise bir önceki adımda,</p>
-
+            <section><p>Bu ise bir &ouml;nceki ad&#305;mda,</p>
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I withdraw (</span><span class="si">#{</span><span class="no">CAPTURE_CASH_AMOUNT</span><span class="si">}</span><span class="sr">)$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">amount</span><span class="o">|</span>
   <span class="n">teller</span><span class="o">.</span><span class="n">withdraw_from</span><span class="p">(</span><span class="n">my_account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>teller üzerinden,</p>
-
+<p>teller &uuml;zerinden,</p>
 <p><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">teller</span>
     <span class="vi">@teller</span> <span class="o">||=</span> <span class="no">UserInterface</span><span class="o">.</span><span class="n">new</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
-<p><code>UserInterface</code> sınıfı/modelinin <code>withdrawal_from</code> işlevi,</p>
-
+<p><code>UserInterface</code> s&#305;n&#305;f&#305;/modelinin <code>withdrawal_from</code> i&#351;levi,</p>
 <p><div class="highlight"><pre><span class="k">module</span> <span class="nn">KnowsTheUserInterface</span>
   <span class="k">class</span> <span class="nc">UserInterface</span>
     <span class="k">def</span> <span class="nf">withdraw_from</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
@@ -6351,8 +6230,7 @@ bilmiyoruz,</p>
   <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Yani, hiç bir şey yapmıyor!</p></section>
+<p>Yani, hi&ccedil; bir &#351;ey yapm&#305;yor!</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -6382,8 +6260,7 @@ bilmiyoruz,</p>
             <header><h1>UI: withdrawal_from</h1></header>
             
             
-            <section><p>UI:withdrawal_from (önce),</p>
-
+            <section><p>UI:withdrawal_from (&ouml;nce),</p>
 <p><div class="highlight"><pre><span class="k">module</span> <span class="nn">KnowsTheUserInterface</span>
   <span class="k">class</span> <span class="nc">UserInterface</span>
     <span class="k">def</span> <span class="nf">withdraw_from</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
@@ -6391,9 +6268,7 @@ bilmiyoruz,</p>
   <span class="k">end</span>
 </pre></div>
 </p>
-
 <p>withdrawal_from (sonra,</p>
-
 <p><div class="highlight"><pre><span class="k">module</span> <span class="nn">KnowsTheUserInterface</span>
 
   <span class="k">class</span> <span class="nc">UserInterface</span>
@@ -6437,12 +6312,9 @@ bilmiyoruz,</p>
             
             
             <section><p><strong>Test Sonucu</strong>:</p>
-
-<p><img src="http://i.imgur.com/6iB5X.png" alt="f"/></p>
-
-<p>Fill edilecek bir şey yok. UI:view, böyle bir şey olmalı,</p>
-
-<p><img src="http://i.imgur.com/VbeTv.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/6iB5X.png" /></p>
+<p>Fill edilecek bir &#351;ey yok. UI:view, b&ouml;yle bir &#351;ey olmal&#305;,</p>
+<p><img alt="f" src="http://i.imgur.com/VbeTv.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -6472,8 +6344,7 @@ bilmiyoruz,</p>
             <header><h1>Hooks</h1></header>
             
             
-            <section><p>Senaryonun başında ve sonunda bir şeyler yapmak istersek: <code>hooks</code></p>
-
+            <section><p>Senaryonun ba&#351;&#305;nda ve sonunda bir &#351;eyler yapmak istersek: <code>hooks</code></p>
 <div class="highlight"><pre><span class="c1"># features/support/hooks.rb</span>
 <span class="no">Before</span> <span class="k">do</span>
   <span class="nb">puts</span> <span class="s2">&quot;Go!&quot;</span>
@@ -6484,9 +6355,7 @@ bilmiyoruz,</p>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Bu haliyle global&#39;dir, belli tag&#39;ler için özelleştirebilirsiniz,</p>
-
+<p>Bu haliyle global&rsquo;dir, belli tag&rsquo;ler i&ccedil;in &ouml;zelle&#351;tirebilirsiniz,</p>
 <div class="highlight"><pre><span class="c1"># foo.feature</span>
 <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 <span class="vi">@admin</span>
@@ -6530,7 +6399,6 @@ bilmiyoruz,</p>
             
             
             <section><p>Examining the Scenario,</p>
-
 <div class="highlight"><pre><span class="no">Before</span> <span class="k">do</span> <span class="o">|</span><span class="n">scenario</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">&quot;Starting scenario </span><span class="si">#{</span><span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
@@ -6540,9 +6408,7 @@ bilmiyoruz,</p>
 <span class="k">end</span>
 </pre></div>
 
-
 <p>Around Hooks,</p>
-
 <div class="highlight"><pre><span class="no">Around</span> <span class="k">do</span> <span class="o">|</span><span class="n">scenario</span><span class="p">,</span> <span class="n">block</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">&quot;About to run </span><span class="si">#{</span><span class="n">scenario</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
   <span class="n">block</span><span class="o">.</span><span class="n">call</span>
@@ -6586,16 +6452,13 @@ bilmiyoruz,</p>
             <header><h1>Building the User Interface</h1></header>
             
             
-            <section><p>Önce debugging kodu eklemekle başla,</p>
-
+            <section><p>&Ouml;nce debugging kodu eklemekle ba&#351;la,</p>
 <p><div class="highlight"><pre><span class="no">After</span> <span class="k">do</span> <span class="o">|</span><span class="n">scenario</span><span class="o">|</span>
   <span class="n">save_and_open_page</span> <span class="k">if</span> <span class="n">scenario</span><span class="o">.</span><span class="n">failed?</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p>Burada kritik gem <code>launchy</code>, hata durumunda browser açılır. Gemfile&#39;ı ayarla,</p>
-
+<p>Burada kritik gem <code>launchy</code>, hata durumunda browser a&ccedil;&#305;l&#305;r. Gemfile&rsquo;&#305; ayarla,</p>
 <p><div class="highlight"><pre>source :rubygems
 
 gem &#39;sinatra&#39;, &#39;1.3.1&#39;
@@ -6608,7 +6471,6 @@ group :development do
 end
 </pre></div>
 </p>
-
 <p>TODO: sayfa 150-156</p></section>
             
           </div>
@@ -6789,17 +6651,14 @@ end
             <header><h1>Chapter 14: Bootstrapping Rails</h1></header>
             
             
-            <section><p>Hikaye/senaryo şöyle başlar,</p>
-
+            <section><p>Hikaye/senaryo &#351;&ouml;yle ba&#351;lar,</p>
 <blockquote>
-<p>I’ve got an amazing idea! We’re going to build a blogging platform, a micro-
-blogging platform. It’s like blogging, right, but your messages are limited to
+<p>I&rsquo;ve got an amazing idea! We&rsquo;re going to build a blogging platform, a micro-
+blogging platform. It&rsquo;s like blogging, right, but your messages are limited to
 140 characters. So, you could send them from a phone even! This is going to
-change the world! We’re going to call it&hellip;Squeaker.</p>
+change the world! We&rsquo;re going to call it&hellip;Squeaker.</p>
 </blockquote>
-
-<p>İlk feature yazılır,</p>
-
+<p>&#304;lk feature yaz&#305;l&#305;r,</p>
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> See Messages</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> See another user&#39;s messages</span>
 <span class="k">    Given </span><span class="nf">there is a User</span>
@@ -6837,14 +6696,11 @@ change the world! We’re going to call it&hellip;Squeaker.</p>
             <header><h1>Rails</h1></header>
             
             
-            <section><p>Rails uygulamanı oluştur,</p>
-
+            <section><p>Rails uygulaman&#305; olu&#351;tur,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails new squeaker --skip-test-unit
 </pre></div>
 
-
-<p>Gemfile&#39;ını düzenle,</p>
-
+<p>Gemfile&rsquo;&#305;n&#305; d&uuml;zenle,</p>
 <p><div class="highlight"><pre>source &#39;http://rubygems.org&#39;
 
 gem &#39;rails&#39;, &#39;3.1.3&#39;
@@ -6897,24 +6753,27 @@ end
             <header><h1>Cucumber</h1></header>
             
             
-            <section><p>ilk adımlar,</p>
-
+            <section><p>ilk ad&#305;mlar,</p>
 <div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>squeaker
 <span class="nv">$ </span>rails generate cucumber:install
 </pre></div>
 
-
-<p>Generator&#39;ün oluşturduğu üç kritik dosya var,</p>
-
+<p>Generator&rsquo;&uuml;n olu&#351;turdu&#287;u &uuml;&ccedil; kritik dosya var,</p>
 <ul>
-<li><p><code>config/cucumber.yml</code>: profiller burada. Öntanımlı olarak: <code>default, wip,
-rerun</code> geliyor. Bkz: &ldquo;11.6 Using Profiles&rdquo;,
-<a href="https://github.com/cucumber/cucumber/wiki/cucumber.yml">https://github.com/cucumber/cucumber/wiki/cucumber.yml</a></p></li>
-<li><p><code>features/support/env.rb</code>: testler başladığında <strong>önce</strong> bu çalıştırılır.
-Rails ortamını, gereksinimleri (Cucumber, Capybara kitaplıkları vs) yükler.</p></li>
-<li><p><code>lib/tasks/cucumber.rake</code>: Rake görevleri. <code>$ rake -T cucumber</code>. Bkz: &ldquo;11.7
-Running Cucumber from Rake&rdquo;,
-<a href="https://github.com/cucumber/cucumber/wiki/Using-Rake">https://github.com/cucumber/cucumber/wiki/Using-Rake</a></p></li>
+<li>
+<p><code>config/cucumber.yml</code>: profiller burada. &Ouml;ntan&#305;ml&#305; olarak: <code>default, wip,
+  rerun</code> geliyor. Bkz: &ldquo;11.6 Using Profiles&rdquo;,
+  <a href="https://github.com/cucumber/cucumber/wiki/cucumber.yml">https://github.com/cucumber/cucumber/wiki/cucumber.yml</a></p>
+</li>
+<li>
+<p><code>features/support/env.rb</code>: testler ba&#351;lad&#305;&#287;&#305;nda <strong>&ouml;nce</strong> bu &ccedil;al&#305;&#351;t&#305;r&#305;l&#305;r.
+  Rails ortam&#305;n&#305;, gereksinimleri (Cucumber, Capybara kitapl&#305;klar&#305; vs) y&uuml;kler.</p>
+</li>
+<li>
+<p><code>lib/tasks/cucumber.rake</code>: Rake g&ouml;revleri. <code>$ rake -T cucumber</code>. Bkz: &ldquo;11.7
+  Running Cucumber from Rake&rdquo;,
+  <a href="https://github.com/cucumber/cucumber/wiki/Using-Rake">https://github.com/cucumber/cucumber/wiki/Using-Rake</a></p>
+</li>
 </ul></section>
             
           </div>
@@ -6948,7 +6807,6 @@ Running Cucumber from Rake&rdquo;,
             <section><ul>
 <li>Feature,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> See Messages</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> See another user&#39;s messages</span>
 <span class="k">    Given </span><span class="nf">there is a User</span>
@@ -6957,23 +6815,18 @@ Running Cucumber from Rake&rdquo;,
 <span class="nf">    </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">this is my message</span><span class="nf">&quot;</span>
 </pre></div>
 </p>
-
 <ul>
-<li>İlk adım,</li>
+<li>&#304;lk ad&#305;m,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">Given </span><span class="nf">there is a User</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/n9YkV.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/n9YkV.png" /></p>
 <ul>
-<li>User oluşturmalıyız.</li>
+<li>User olu&#351;turmal&#305;y&#305;z.</li>
 </ul></section>
             
           </div>
@@ -7005,9 +6858,8 @@ Running Cucumber from Rake&rdquo;,
             
             
             <section><ul>
-<li>FactoryGirl&#39;ü kullanacağız (sign-up vs girmiyoruz),</li>
+<li>FactoryGirl&rsquo;&uuml; kullanaca&#287;&#305;z (sign-up vs girmiyoruz),</li>
 </ul>
-
 <p><div class="highlight"><pre>gem &#39;jquery-rails&#39;
 
 group :test do
@@ -7018,26 +6870,20 @@ group :test do
 end
 </pre></div>
 </p>
-
-<p class="notes">FactoryGirl ise rails uygulamaları için <code>factory_girl_rails</code>&#39;i öneriyor.</p>
-
+<p class="notes">FactoryGirl ise rails uygulamalar&#305; i&ccedil;in <code>factory_girl_rails</code>&lsquo;i &ouml;neriyor.</p>
 <ul>
-<li>Adım tanımını oluşturalım,</li>
+<li>Ad&#305;m tan&#305;m&#305;n&#305; olu&#351;tural&#305;m,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^there is a User$/</span> <span class="k">do</span>
   <span class="no">Factory</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p class="notes">burada <code>Factory(:user)</code>, <code>Factory.create(:user)</code> kısaltmasıdır. Bunu kullanın.</p>
-
+<p class="notes">burada <code>Factory(:user)</code>, <code>Factory.create(:user)</code> k&#305;saltmas&#305;d&#305;r. Bunu kullan&#305;n.</p>
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/K35V6.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/K35V6.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7070,7 +6916,6 @@ end
             <section><ul>
 <li>FactoryGirl</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;factory_girl&#39;</span>
 
 <span class="no">FactoryGirl</span><span class="o">.</span><span class="n">define</span> <span class="k">do</span>
@@ -7080,16 +6925,12 @@ end
 <span class="k">end</span>
 </pre></div>
 </p>
-
-<p class="notes">her bir factory tanımı ayrı dosyada ve <code>test/factories/*.rb</code> olarak tutuluyor.</p>
-
-<p class="notes">Cucumber&#39;in FactoryGirl&#39;ü görebilmesi için, <code>features/support/env.rb</code>&#39;de <code>require &#39;factory_girl&#39;</code> yeterli!</p>
-
+<p class="notes">her bir factory tan&#305;m&#305; ayr&#305; dosyada ve <code>test/factories/*.rb</code> olarak tutuluyor.</p>
+<p class="notes">Cucumber&rsquo;in FactoryGirl&rsquo;&uuml; g&ouml;rebilmesi i&ccedil;in, <code>features/support/env.rb</code>&lsquo;de <code>require 'factory_girl'</code> yeterli!</p>
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/JFUx8.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/JFUx8.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7120,24 +6961,30 @@ end
             
             
             <section><ul>
-<li><p><code>User</code> modeli,</p>
-
+<li>
+<p><code>User</code> modeli,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails generate model User username:string
 </pre></div>
-</li>
-<li><p>migrate + prepares,</p>
 
+</li>
+<li>
+<p>migrate + prepares,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rake db:migrate db:test:prepare
 </pre></div>
+
 </li>
-<li><p><strong>Test</strong> edelim: <code>$ cucumber</code></p></li>
+<li>
+<p><strong>Test</strong> edelim: <code>$ cucumber</code></p>
+</li>
 </ul>
-
-<p><img src="http://i.imgur.com/IIKpk.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/IIKpk.png" /></p>
 <ul>
-<li><p>Step 1: YEŞİL</p></li>
-<li><p>Step 2: SARI/UNDEFINED</p></li>
+<li>
+<p>Step 1: YE&#350;&#304;L</p>
+</li>
+<li>
+<p>Step 2: SARI/UNDEFINED</p>
+</li>
 </ul></section>
             
           </div>
@@ -7169,29 +7016,24 @@ end
             
             
             <section><ul>
-<li>İlgili Feature girdisi,</li>
+<li>&#304;lgili Feature girdisi,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">And </span><span class="nf">the User has posted the message &quot;</span><span class="s">this is my message</span><span class="nf">&quot;</span>
 </pre></div>
 </p>
-
 <ul>
-<li>Adım tanımını oluşturalım,</li>
+<li>Ad&#305;m tan&#305;m&#305;n&#305; olu&#351;tural&#305;m,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^the User has posted the message &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">message_text</span><span class="o">|</span>
   <span class="no">User</span><span class="o">.</span><span class="n">count</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1</span>
   <span class="no">Factory</span><span class="p">(</span><span class="ss">:message</span><span class="p">,</span> <span class="ss">:content</span> <span class="o">=&gt;</span> <span class="n">message_text</span><span class="p">,</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/DeLXP.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/DeLXP.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7224,19 +7066,16 @@ end
             <section><ul>
 <li>FactoryGirl,</li>
 </ul>
-
 <p><div class="highlight"><pre>  <span class="n">factory</span> <span class="ss">:message</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
     <span class="n">f</span><span class="o">.</span><span class="n">association</span> <span class="ss">:user</span>
     <span class="n">f</span><span class="o">.</span><span class="n">content</span> <span class="s1">&#39;Test message content&#39;</span>
   <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/BTsjC.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/BTsjC.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7267,20 +7106,23 @@ end
             
             
             <section><ul>
-<li><p><code>Message</code> modeli,</p>
-
+<li>
+<p><code>Message</code> modeli,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails g model Message user_id:integer content:string
 </pre></div>
-</li>
-<li><p>migrate + prepares,</p>
 
+</li>
+<li>
+<p>migrate + prepares,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rake db:migrate db:test:prepare
 </pre></div>
-</li>
-<li><p><strong>Test</strong> edelim: <code>$ cucumber</code></p></li>
-</ul>
 
-<p><img src="http://i.imgur.com/b38gU.png" alt="f"/></p></section>
+</li>
+<li>
+<p><strong>Test</strong> edelim: <code>$ cucumber</code></p>
+</li>
+</ul>
+<p><img alt="f" src="http://i.imgur.com/b38gU.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7311,24 +7153,24 @@ end
             
             
             <section><ul>
-<li>Model&#39;de user - message ilişkisini kur,</li>
+<li>Model&rsquo;de user - message ili&#351;kisini kur,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">Message</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">belongs_to</span> <span class="ss">:user</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/9bpwQ.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/9bpwQ.png" /></p>
 <ul>
-<li><p>STEP 2: YEŞİL</p></li>
-<li><p>STEP 3: SARI/UNDEFINED</p></li>
+<li>
+<p>STEP 2: YE&#350;&#304;L</p>
+</li>
+<li>
+<p>STEP 3: SARI/UNDEFINED</p>
+</li>
 </ul></section>
             
           </div>
@@ -7360,29 +7202,24 @@ end
             
             
             <section><ul>
-<li>İlgili Feature girdisi,</li>
+<li>&#304;lgili Feature girdisi,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="nf">    </span><span class="k">When </span><span class="nf">I visit the page for the User</span>
 </pre></div>
 </p>
-
 <ul>
-<li>Adım tanımını oluşturalım,</li>
+<li>Ad&#305;m tan&#305;m&#305;n&#305; olu&#351;tural&#305;m,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">When</span><span class="sr"> /^I visit the page for the User$/</span> <span class="k">do</span>
   <span class="no">User</span><span class="o">.</span><span class="n">count</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">1</span>
   <span class="n">visit</span><span class="p">(</span><span class="n">user_path</span><span class="p">(</span><span class="no">User</span><span class="o">.</span><span class="n">first</span><span class="p">))</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/MhHVc.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/MhHVc.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7413,37 +7250,30 @@ end
             
             
             <section><ul>
-<li>Router&#39;u tanımla,</li>
+<li>Router&rsquo;u tan&#305;mla,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">Squeaker</span><span class="o">::</span><span class="no">Application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
   <span class="n">resources</span> <span class="ss">:users</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/TwVN4.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/TwVN4.png" /></p>
 <ul>
-<li>Controller&#39;u ayarla,</li>
+<li>Controller&rsquo;u ayarla,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">show</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/TSvay.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/TSvay.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7474,22 +7304,22 @@ end
             
             
             <section><ul>
-<li>View&#39;i ayarla,</li>
+<li>View&rsquo;i ayarla,</li>
 </ul>
-
 <p><div class="highlight"><pre>Hello
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/NiGOS.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/NiGOS.png" /></p>
 <ul>
-<li><p>STEP 3: YEŞİL (ama geri dönmemiz gerekecek)</p></li>
-<li><p>STEP 4: SARI/UNDEFINED</p></li>
+<li>
+<p>STEP 3: YE&#350;&#304;L (ama geri d&ouml;nmemiz gerekecek)</p>
+</li>
+<li>
+<p>STEP 4: SARI/UNDEFINED</p>
+</li>
 </ul></section>
             
           </div>
@@ -7521,36 +7351,29 @@ end
             
             
             <section><ul>
-<li>View: Adım tanımını oluşturalım,</li>
+<li>View: Ad&#305;m tan&#305;m&#305;n&#305; olu&#351;tural&#305;m,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="no">Then</span><span class="sr"> /^I should see &quot;([^&quot;]*)&quot;$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">text</span><span class="o">|</span>
   <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/Pq1py.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/Pq1py.png" /></p>
 <ul>
 <li>View,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="err">&lt;</span>% @user.messages.each do |message| %&gt;
   <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= message.content %&gt;<span class="nt">&lt;/p&gt;</span>
 <span class="err">&lt;</span>% end %&gt;
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/GPWvn.png" alt="f"/></p></section>
+<p><img alt="f" src="http://i.imgur.com/GPWvn.png" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -7583,7 +7406,6 @@ end
             <section><ul>
 <li>Controller,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">show</span>
     <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
@@ -7591,25 +7413,20 @@ end
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li>Model,</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">has_many</span> <span class="ss">:messages</span>
 <span class="k">end</span>
 </pre></div>
 </p>
-
 <ul>
 <li><strong>Test</strong> edelim: <code>$ cucumber</code></li>
 </ul>
-
-<p><img src="http://i.imgur.com/tARmE.png" alt="f"/></p>
-
+<p><img alt="f" src="http://i.imgur.com/tARmE.png" /></p>
 <ul>
-<li>Tümü: YEŞİL</li>
+<li>T&uuml;m&uuml;: YE&#350;&#304;L</li>
 </ul></section>
             
           </div>
@@ -7747,19 +7564,19 @@ end
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">Chapter 1: Tanımlar</a></th>
+        <th><a href="#slide4">Chapter 1: Tan&#305;mlar</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Örnek</a></th>
+        <th><a href="#slide5">&Ouml;rnek</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Cucumber Nasıl Çalışır?</a></th>
+        <th><a href="#slide6">Cucumber Nas&#305;l &Ccedil;al&#305;&#351;&#305;r?</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
@@ -7825,19 +7642,19 @@ end
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Son adım</a></th>
+        <th><a href="#slide17">Son ad&#305;m</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">Son adım</a></th>
+        <th><a href="#slide18">Son ad&#305;m</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">Yine yeşillendi &hellip; Hepsi yeşillendi</a></th>
+        <th><a href="#slide19">Yine ye&#351;illendi &hellip; Hepsi ye&#351;illendi</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
@@ -7849,7 +7666,7 @@ end
       
       
       <tr id="toc-row-21">
-        <th><a href="#slide21">Çok girdi için genişlet</a></th>
+        <th><a href="#slide21">&Ccedil;ok girdi i&ccedil;in geni&#351;let</a></th>
         <td><a href="#slide21">21</a></td>
       </tr>
       
@@ -7861,7 +7678,7 @@ end
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">Cucumber: tamamı yeşillendi</a></th>
+        <th><a href="#slide23">Cucumber: tamam&#305; ye&#351;illendi</a></th>
         <td><a href="#slide23">23</a></td>
       </tr>
       
@@ -8047,7 +7864,7 @@ end
       
       
       <tr id="toc-row-54">
-        <th><a href="#slide54">Argümanlar</a></th>
+        <th><a href="#slide54">Arg&uuml;manlar</a></th>
         <td><a href="#slide54">54</a></td>
       </tr>
       
@@ -8071,7 +7888,7 @@ end
       
       
       <tr id="toc-row-58">
-        <th><a href="#slide58">Tags: Örnekler</a></th>
+        <th><a href="#slide58">Tags: &Ouml;rnekler</a></th>
         <td><a href="#slide58">58</a></td>
       </tr>
       
@@ -8119,7 +7936,7 @@ end
       
       
       <tr id="toc-row-66">
-        <th><a href="#slide66">Model: iç değişken</a></th>
+        <th><a href="#slide66">Model: i&ccedil; de&#287;i&#351;ken</a></th>
         <td><a href="#slide66">66</a></td>
       </tr>
       
@@ -8185,7 +8002,7 @@ end
       
       
       <tr id="toc-row-77">
-        <th><a href="#slide77">Altın vuruş zamanı</a></th>
+        <th><a href="#slide77">Alt&#305;n vuru&#351; zaman&#305;</a></th>
         <td><a href="#slide77">77</a></td>
       </tr>
       
@@ -8215,7 +8032,7 @@ end
       
       
       <tr id="toc-row-82">
-        <th><a href="#slide82">Timü yeşillendi&hellip;</a></th>
+        <th><a href="#slide82">Tim&uuml; ye&#351;illendi&hellip;</a></th>
         <td><a href="#slide82">82</a></td>
       </tr>
       
@@ -8269,13 +8086,13 @@ end
       
       
       <tr id="toc-row-91">
-        <th><a href="#slide91">Gerekli adım</a></th>
+        <th><a href="#slide91">Gerekli ad&#305;m</a></th>
         <td><a href="#slide91">91</a></td>
       </tr>
       
       
       <tr id="toc-row-92">
-        <th><a href="#slide92">Modeli güncelle</a></th>
+        <th><a href="#slide92">Modeli g&uuml;ncelle</a></th>
         <td><a href="#slide92">92</a></td>
       </tr>
       
@@ -8299,7 +8116,7 @@ end
       
       
       <tr id="toc-row-96">
-        <th><a href="#slide96">Tümü yeşillendi</a></th>
+        <th><a href="#slide96">T&uuml;m&uuml; ye&#351;illendi</a></th>
         <td><a href="#slide96">96</a></td>
       </tr>
       
@@ -8317,19 +8134,19 @@ end
       
       
       <tr id="toc-row-99">
-        <th><a href="#slide99">XP: Niyetin açık olsun</a></th>
+        <th><a href="#slide99">XP: Niyetin a&ccedil;&#305;k olsun</a></th>
         <td><a href="#slide99">99</a></td>
       </tr>
       
       
       <tr id="toc-row-100">
-        <th><a href="#slide100">deposit -&gt; credit geçişi: Model</a></th>
+        <th><a href="#slide100">deposit -&gt; credit ge&ccedil;i&#351;i: Model</a></th>
         <td><a href="#slide100">100</a></td>
       </tr>
       
       
       <tr id="toc-row-101">
-        <th><a href="#slide101">deposit -&gt; credit geçişi: Step</a></th>
+        <th><a href="#slide101">deposit -&gt; credit ge&ccedil;i&#351;i: Step</a></th>
         <td><a href="#slide101">101</a></td>
       </tr>
       
@@ -8341,7 +8158,7 @@ end
       
       
       <tr id="toc-row-103">
-        <th><a href="#slide103">XP: &ldquo;Tekrarları önle&rdquo;</a></th>
+        <th><a href="#slide103">XP: &ldquo;Tekrarlar&#305; &ouml;nle&rdquo;</a></th>
         <td><a href="#slide103">103</a></td>
       </tr>
       

@@ -321,6 +321,12 @@ pre, .gist .gist-file .gist-data {
   background: #dedede;
 }
 
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
+}
+
 li {
   padding: 10px 0;
   font-size: 20px;
@@ -1524,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1569,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1597,17 +1612,11 @@ div.slide {
             <header><h1>Ruby: Ders</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me/p">http://seyyah.me/p</a></p>
-
 <p><a href="http://shelr.tv/users/5051947696608018680000de">http://shelr.tv/users/5051947696608018680000de</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/ruby-ders">http://seyyah.me/p/ruby-ders</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1624,7 +1633,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              1/49
+              1/79
             </aside>
           </footer>
         </div>
@@ -1635,10 +1644,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Bölüm 1: INTRODUCTION</h1></header>
+            <header><h1>B&ouml;l&uuml;m 1: INTRODUCTION</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/5QnK9.png" height="500"></p></section>
+            <section><p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/5QnK9.png&rdquo; height=&rdquo;500&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1654,7 +1663,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              2/49
+              2/79
             </aside>
           </footer>
         </div>
@@ -1671,26 +1680,22 @@ div.slide {
             <section><ul>
 <li>dinamik programlama dilidir</li>
 </ul>
-
 <blockquote>
 <ul>
 <li>dinamik mi? derlemeli mi?</li>
 <li>kod ekleme</li>
 </ul>
 </blockquote>
-
 <ul>
-<li>Lisp, Smalltalk, Perl&#39;den ilham alır FAKAT</li>
+<li>Lisp, Smalltalk, Perl&rsquo;den ilham al&#305;r FAKAT</li>
 </ul>
-
 <blockquote>
 <ul>
 <li>List: LISt Processing</li>
 </ul>
 </blockquote>
-
 <ul>
-<li>C&#39;nin kolaylığında grameri vardır</li>
+<li>C&rsquo;nin kolayl&#305;&#287;&#305;nda grameri vard&#305;r</li>
 </ul></section>
             
           </div>
@@ -1707,7 +1712,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              3/49
+              3/79
             </aside>
           </footer>
         </div>
@@ -1724,10 +1729,13 @@ div.slide {
             <section><p><div class="highlight"><pre><span class="nb">print</span> <span class="s2">&quot;hello world!&quot;</span>
 </pre></div>
 </p>
-
 <ul>
-<li><p><code>print</code>: standart giriş/çıkış/error</p></li>
-<li><p>tırnak: karakter =&gt; dizgi</p></li>
+<li>
+<p><code>print</code>: standart giri&#351;/&ccedil;&#305;k&#305;&#351;/error</p>
+</li>
+<li>
+<p>t&#305;rnak: karakter =&gt; dizgi</p>
+</li>
 </ul></section>
             
           </div>
@@ -1744,7 +1752,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              4/49
+              4/79
             </aside>
           </footer>
         </div>
@@ -1779,7 +1787,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              5/49
+              5/79
             </aside>
           </footer>
         </div>
@@ -1812,7 +1820,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              6/49
+              6/79
             </aside>
           </footer>
         </div>
@@ -1823,7 +1831,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Ruby Turu: İfadeler ve İşleçler</h1></header>
+            <header><h1>Ruby Turu: &#304;fadeler ve &#304;&#351;le&ccedil;ler</h1></header>
             
             
             <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>                                                                  
@@ -1857,7 +1865,6 @@ div.slide {
 <span class="lineno">29</span> <span class="o">=&gt;</span> <span class="mi">5</span>
 </pre></div>
 </p>
-
 <p>shelr: 5051de1e96608010b3000025</p></section>
             
           </div>
@@ -1874,7 +1881,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              7/49
+              7/79
             </aside>
           </footer>
         </div>
@@ -1885,7 +1892,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Ruby Turu: Yöntemler</h1></header>
+            <header><h1>Ruby Turu: Y&ouml;ntemler</h1></header>
             
             
             <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="k">def</span> <span class="nf">kare</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                                                                  
@@ -1905,7 +1912,6 @@ div.slide {
 <span class="lineno">15</span> <span class="o">&gt;&gt;</span>   
 </pre></div>
 </p>
-
 <p>shelr: 5051de9c966080189000001e</p></section>
             
           </div>
@@ -1922,7 +1928,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              8/49
+              8/79
             </aside>
           </footer>
         </div>
@@ -1973,7 +1979,6 @@ div.slide {
 <span class="lineno">35</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="o">.</span><span class="mi">7853981633974483</span> 
 </pre></div>
 </p>
-
 <p>shelr: 5051dfac96608010b3000026</p></section>
             
           </div>
@@ -1990,7 +1995,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              9/49
+              9/79
             </aside>
           </footer>
         </div>
@@ -2005,10 +2010,13 @@ div.slide {
             
             
             <section><ul>
-<li><p>fonksiyon tanımında <code>!</code> ve <code>?</code> sıklıkla kullanılır</p></li>
-<li><p>öntakı olarak <code>$</code> (global değişken), <code>@</code> (instance değişkeni) ve <code>@@</code> (class değişkeni) kullanılır</p></li>
+<li>
+<p>fonksiyon tan&#305;m&#305;nda <code>!</code> ve <code>?</code> s&#305;kl&#305;kla kullan&#305;l&#305;r</p>
+</li>
+<li>
+<p>&ouml;ntak&#305; olarak <code>$</code> (global de&#287;i&#351;ken), <code>@</code> (instance de&#287;i&#351;keni) ve <code>@@</code> (class de&#287;i&#351;keni) kullan&#305;l&#305;r</p>
+</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span>                                                          
 <span class="lineno"> 2</span> <span class="o">=&gt;</span> <span class="o">[</span>                                                                            
 <span class="lineno"> 3</span>     <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="mi">1</span><span class="p">,</span>                                                                      
@@ -2046,7 +2054,6 @@ div.slide {
 <span class="lineno">35</span> <span class="o">&gt;&gt;</span>   
 </pre></div>
 </p>
-
 <p>shelr: 5051e094966080189000001f</p></section>
             
           </div>
@@ -2063,7 +2070,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              10/49
+              10/79
             </aside>
           </footer>
         </div>
@@ -2111,7 +2118,6 @@ div.slide {
 <span class="lineno">32</span> <span class="o">&gt;&gt;</span>
 </pre></div>
 </p>
-
 <p>shelr: 5051e3039660801890000020</p></section>
             
           </div>
@@ -2128,7 +2134,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              11/49
+              11/79
             </aside>
           </footer>
         </div>
@@ -2139,7 +2145,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Ruby Turu: Class ve Modüller</h1></header>
+            <header><h1>Ruby Turu: Class ve Mod&uuml;ller</h1></header>
             
             
             <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Komplex</span>                                                                
@@ -2182,7 +2188,6 @@ div.slide {
 <span class="lineno">38</span> <span class="sb">=&gt; 4 </span>
 </pre></div>
 </p>
-
 <p>shelr: 5051e41b96608010b3000029</p></section>
             
           </div>
@@ -2199,7 +2204,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              12/49
+              12/79
             </aside>
           </footer>
         </div>
@@ -2214,11 +2219,16 @@ div.slide {
             
             
             <section><ul>
-<li><p>nokta-<code>.</code>: class/modül ile yöntemi ayırır</p></li>
-<li><p>diyez-<code>#</code>: instance yöntemi</p></li>
-<li><p>iki nokta-<code>::</code>: class yöntemi</p></li>
+<li>
+<p>nokta-<code>.</code>: class/mod&uuml;l ile y&ouml;ntemi ay&#305;r&#305;r</p>
+</li>
+<li>
+<p>diyez-<code>#</code>: instance y&ouml;ntemi</p>
+</li>
+<li>
+<p>iki nokta-<code>::</code>: class y&ouml;ntemi</p>
+</li>
 </ul>
-
 <p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="err">$</span> <span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;puts &quot;hello&quot;&#39;</span>                                   
 <span class="lineno"> 2</span> <span class="n">hello</span>
 <span class="lineno"> 3</span> <span class="err">$</span> <span class="n">irb</span>
@@ -2297,7 +2307,6 @@ div.slide {
 <span class="lineno">76</span> <span class="n">seyyah</span><span class="vi">@ustad</span><span class="o">-</span><span class="n">seyyah</span><span class="ss">:~</span>
 </pre></div>
 </p>
-
 <p>shelr: 5051e6ef96608010b300002c</p></section>
             
           </div>
@@ -2314,7 +2323,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              13/49
+              13/79
             </aside>
           </footer>
         </div>
@@ -2325,20 +2334,40 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Müfredat</h1></header>
+            <header><h1>M&uuml;fredat</h1></header>
             
             
             <section><ol>
-<li><p>Hafta: bugün</p></li>
-<li><p>Hafta: karakter kümesi, rezerve kelimeler</p></li>
-<li><p>Hafta: veri türleri</p></li>
-<li><p>Hafta: ifadeler, işleçler</p></li>
-<li><p>Hafta: koşul, döngü</p></li>
-<li><p>Hafta: proc ve lambda; closure, fonksiyonel programlama</p></li>
-<li><p>Hafta: class ve module</p></li>
-<li><p>Hafta: metaprogramlama</p></li>
-<li><p>Hafta: en önemli kitaplıklar</p></li>
-<li><p>Hafta: üst düzey Ruby programlama: global değişkenler vs</p></li>
+<li>
+<p>Hafta: bug&uuml;n</p>
+</li>
+<li>
+<p>Hafta: karakter k&uuml;mesi, rezerve kelimeler</p>
+</li>
+<li>
+<p>Hafta: veri t&uuml;rleri</p>
+</li>
+<li>
+<p>Hafta: ifadeler, i&#351;le&ccedil;ler</p>
+</li>
+<li>
+<p>Hafta: ko&#351;ul, d&ouml;ng&uuml;</p>
+</li>
+<li>
+<p>Hafta: proc ve lambda; closure, fonksiyonel programlama</p>
+</li>
+<li>
+<p>Hafta: class ve module</p>
+</li>
+<li>
+<p>Hafta: metaprogramlama</p>
+</li>
+<li>
+<p>Hafta: en &ouml;nemli kitapl&#305;klar</p>
+</li>
+<li>
+<p>Hafta: &uuml;st d&uuml;zey Ruby programlama: global de&#287;i&#351;kenler vs</p>
+</li>
 </ol></section>
             
           </div>
@@ -2355,7 +2384,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              14/49
+              14/79
             </aside>
           </footer>
         </div>
@@ -2366,10 +2395,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Bölüm 2: Genel</h1></header>
+            <header><h1>B&ouml;l&uuml;m 2: Genel</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/1AhcK.png" height="500"></p></section>
+            <section><p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/1AhcK.png&rdquo; height=&rdquo;500&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2385,7 +2414,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              15/49
+              15/79
             </aside>
           </footer>
         </div>
@@ -2399,11 +2428,10 @@ div.slide {
             <header><h1>Yorum</h1></header>
             
             
-            <section><p>Yorum satırları diyez-<code>#</code> ile başlatılır</p>
-
+            <section><p>Yorum sat&#305;rlar&#305; diyez-<code>#</code> ile ba&#351;lat&#305;l&#305;r</p>
 <div class="highlight"><pre><span class="c1"># Bu satırın tamamı yorum satırıdır</span>
-<span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;#Bu bir katardır&quot;</span>             <span class="c1"># bu ise yorumdur</span>
-<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;/#bu düzenli ifadedir/&quot;</span>   <span class="c1"># bu diğer bir yorumdur</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;#Bu bir katardır&quot;</span>          <span class="c1"># bu ise yorumdur</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;/#bu düzenli ifadedir/&quot;</span>    <span class="c1"># bu diğer bir yorumdur</span>
 </pre></div>
 </section>
             
@@ -2421,7 +2449,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              16/49
+              16/79
             </aside>
           </footer>
         </div>
@@ -2432,11 +2460,10 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Yardım gömme</h1></header>
+            <header><h1>Yard&#305;m g&ouml;mme</h1></header>
             
             
-            <section><p>Markdown&#39;a benzer bir stili vardır,</p>
-
+            <section><p>Markdown&rsquo;a benzer bir stili vard&#305;r,</p>
 <div class="highlight"><pre><span class="c1">#</span>
 <span class="c1"># = Başlık 1</span>
 <span class="c1"># == Başlık 2</span>
@@ -2463,7 +2490,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              17/49
+              17/79
             </aside>
           </footer>
         </div>
@@ -2478,7 +2505,6 @@ div.slide {
             
             
             <section><p>Sabitler,</p>
-
 <div class="highlight"><pre><span class="mi">1</span>         <span class="c1"># Tamsayı</span>
 <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>       <span class="c1"># Gerçel sayı</span>
 <span class="s1">&#39;one&#39;</span>     <span class="c1"># Dizgi</span>
@@ -2501,7 +2527,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              18/49
+              18/79
             </aside>
           </footer>
         </div>
@@ -2512,18 +2538,24 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>İsimlendirme Kuralı</h1></header>
+            <header><h1>&#304;simlendirme Kural&#305;</h1></header>
             
             
             <section><ul>
-<li><p>isimler: değişken, yöntem, sınıf vs</p></li>
-<li><p>harf, sayı ve alt çizgi; sayıyla başlayamaz!</p></li>
-<li><p>küçük-BÜYÜK harf <strong>farklıdır</strong>.</p></li>
-<li><p>Türkçe&#39;ye özel karakter kullanabilirsiniz</p></li>
+<li>
+<p>isimler: de&#287;i&#351;ken, y&ouml;ntem, s&#305;n&#305;f vs</p>
+</li>
+<li>
+<p>harf, say&#305; ve alt &ccedil;izgi; say&#305;yla ba&#351;layamaz!</p>
+</li>
+<li>
+<p>k&uuml;&ccedil;&uuml;k-B&Uuml;Y&Uuml;K harf <strong>farkl&#305;d&#305;r</strong>.</p>
+</li>
+<li>
+<p>T&uuml;rk&ccedil;e&rsquo;ye &ouml;zel karakter kullanabilirsiniz</p>
+</li>
 </ul>
-
-<p>Örnekler,</p>
-
+<p>&Ouml;rnekler,</p>
 <div class="highlight"><pre><span class="c1"># GEÇERLİ</span>
 <span class="n">i</span>
 <span class="n">x2</span>
@@ -2552,7 +2584,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              19/49
+              19/79
             </aside>
           </footer>
         </div>
@@ -2563,11 +2595,10 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Özel karakterler</h1></header>
+            <header><h1>&Ouml;zel karakterler</h1></header>
             
             
-            <section><p>İzin verilen özel karakterler,</p>
-
+            <section><p>&#304;zin verilen &ouml;zel karakterler,</p>
 <div class="highlight"><pre><span class="vg">$files</span>    <span class="c1"># Global değişken</span>
 <span class="vi">@data</span>     <span class="c1"># instance değişkeni</span>
 <span class="vc">@@counter</span> <span class="c1"># class değişkeni</span>
@@ -2591,7 +2622,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              20/49
+              20/79
             </aside>
           </footer>
         </div>
@@ -2605,9 +2636,8 @@ div.slide {
             <header><h1>Anahtar kelimeler</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/v46KF.png" alt=""/></p>
-
-<p>bunları kullanmayın.</p></section>
+            <section><p><img alt="" src="http://i.imgur.com/v46KF.png" /></p>
+<p>bunlar&#305; kullanmay&#305;n.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2623,7 +2653,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              21/49
+              21/79
             </aside>
           </footer>
         </div>
@@ -2634,7 +2664,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Beyaz Boşluklar</h1></header>
+            <header><h1>Beyaz Bo&#351;luklar</h1></header>
             
             
             <section><p><div class="highlight"><pre><span class="lineno"> 1</span> <span class="o">&gt;&gt;</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>                                                                    
@@ -2653,7 +2683,6 @@ div.slide {
 <span class="lineno">14</span> <span class="o">=&gt;</span> <span class="mi">55</span> 
 </pre></div>
 </p>
-
 <p>shelr: 5051f02096608010b3000031</p></section>
             
           </div>
@@ -2670,7 +2699,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              22/49
+              22/79
             </aside>
           </footer>
         </div>
@@ -2681,16 +2710,18 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Beyaz Boşluklar + Fonksiyonlar</h1></header>
+            <header><h1>Beyaz Bo&#351;luklar + Fonksiyonlar</h1></header>
             
             
             <section><ul>
-<li><p>Fonksiyonları çağırırken parantez zorunlu değildir</p></li>
-<li><p>FAKAT dikkatli olmakta yarar var!</p></li>
+<li>
+<p>Fonksiyonlar&#305; &ccedil;a&#287;&#305;r&#305;rken parantez zorunlu de&#287;ildir</p>
+</li>
+<li>
+<p>FAKAT dikkatli olmakta yarar var!</p>
+</li>
 </ul>
-
-<p>Örnek çalışma,</p>
-
+<p>&Ouml;rnek &ccedil;al&#305;&#351;ma,</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
   <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 <span class="k">end</span>
@@ -2702,9 +2733,8 @@ div.slide {
 <span class="nb">p</span> <span class="n">f</span><span class="p">((</span><span class="mi">3</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; ((3+2) + 1) =&gt; 6; f(6) =&gt; 36</span>
 </pre></div>
 
-
 <ul>
-<li><strong>Not</strong>: <code>return</code> kullanmaksızın en son ifade geri döndürülür</li>
+<li><strong>Not</strong>: <code>return</code> kullanmaks&#305;z&#305;n en son ifade geri d&ouml;nd&uuml;r&uuml;l&uuml;r</li>
 </ul></section>
             
           </div>
@@ -2721,7 +2751,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              23/49
+              23/79
             </aside>
           </footer>
         </div>
@@ -2732,28 +2762,31 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Program Kalıpları/Yapıları</h1></header>
+            <header><h1>Program Kal&#305;plar&#305;/Yap&#305;lar&#305;</h1></header>
             
             
-            <section><p>Basit/İlkel İfadeler,</p>
-
+            <section><p>Basit/&#304;lkel &#304;fadeler,</p>
 <ul>
-<li><p>Ruby söz diziminin en basit birimi: <strong>deyim</strong> (expression)</p></li>
-<li><p>deyim yürütüldüğünde değer üretir</p></li>
-<li><p>sayı ve dizgi sabitleri ilkel deyimlerdir</p></li>
-<li><p>bunlara <code>true-false-nil-self</code>&#39;i de ekleyebiliriz</p></li>
+<li>
+<p>Ruby s&ouml;z diziminin en basit birimi: <strong>deyim</strong> (expression)</p>
+</li>
+<li>
+<p>deyim y&uuml;r&uuml;t&uuml;ld&uuml;&#287;&uuml;nde de&#287;er &uuml;retir</p>
+</li>
+<li>
+<p>say&#305; ve dizgi sabitleri ilkel deyimlerdir</p>
+</li>
+<li>
+<p>bunlara <code>true-false-nil-self</code>&lsquo;i de ekleyebiliriz</p>
+</li>
 </ul>
-
-<p>Daha üst düzey yapılar: diziler, hash, range</p>
-
+<p>Daha &uuml;st d&uuml;zey yap&#305;lar: diziler, hash, range</p>
 <div class="highlight"><pre><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>                        <span class="c1"># Dizi</span>
 <span class="p">{</span> <span class="n">tr</span><span class="p">:</span> <span class="s2">&quot;Türkiye&quot;</span><span class="p">,</span> <span class="n">de</span><span class="p">:</span> <span class="s2">&quot;Almanya&quot;</span> <span class="p">}</span> <span class="c1"># Hash</span>
 <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span>                            <span class="c1"># Range</span>
 </pre></div>
 
-
-<p>İşleçler devreye girer,</p>
-
+<p>&#304;&#351;le&ccedil;ler devreye girer,</p>
 <div class="highlight"><pre><span class="mi">1</span>          <span class="c1"># ilkel deyim</span>
 <span class="n">x</span>          <span class="c1"># ilkel deyim</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># atama deyimi</span>
@@ -2775,7 +2808,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              24/49
+              24/79
             </aside>
           </footer>
         </div>
@@ -2786,11 +2819,10 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>İfade X Deyim</h1></header>
+            <header><h1>&#304;fade X Deyim</h1></header>
             
             
-            <section><p>Koşul ve döngü <strong>ifade</strong>leri (statement) ile birleştirilebilir</p>
-
+            <section><p>Ko&#351;ul ve d&ouml;ng&uuml; <strong>ifade</strong>leri (statement) ile birle&#351;tirilebilir</p>
 <div class="highlight"><pre><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">then</span>  <span class="c1"># Eğer bu deyim doğruysa</span>
   <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>     <span class="c1"># bu ifadeyi yürüt</span>
 <span class="k">end</span>             <span class="c1"># koşul sonu</span>
@@ -2816,7 +2848,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              25/49
+              25/79
             </aside>
           </footer>
         </div>
@@ -2830,8 +2862,7 @@ div.slide {
             <header><h1>Bloklar</h1></header>
             
             
-            <section><p>İki biçimi vardır: <code>{...}</code> veya <code>do ... end</code>.</p>
-
+            <section><p>&#304;ki bi&ccedil;imi vard&#305;r: <code>{...}</code> veya <code>do ... end</code>.</p>
 <div class="highlight"><pre><span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span> <span class="nb">print</span> <span class="s2">&quot;Ruby!&quot;</span> <span class="p">}</span>
 
 <span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
@@ -2854,7 +2885,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              26/49
+              26/79
             </aside>
           </footer>
         </div>
@@ -2869,15 +2900,12 @@ div.slide {
             
             
             <section><p>Shebang,</p>
-
 <div class="highlight"><pre><span class="c1"># encoding: utf-8</span>
 </pre></div>
 
-
 <p>shelr: 5051f6139660801890000023</p>
-
 <ul>
-<li>diyez ile başlayan satırlar <em>shebang comment</em> olarak bilinir</li>
+<li>diyez ile ba&#351;layan sat&#305;rlar <em>shebang comment</em> olarak bilinir</li>
 </ul></section>
             
           </div>
@@ -2894,7 +2922,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              27/49
+              27/79
             </aside>
           </footer>
         </div>
@@ -2905,10 +2933,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Bölüm 3: Veri Türleri ve Nesneler</h1></header>
+            <header><h1>B&ouml;l&uuml;m 3: Veri T&uuml;rleri ve Nesneler</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/Wlnp3.png" height="500"></p></section>
+            <section><p><img <a href="http://src="http://i.imgur.com">src=&rdquo;http://i.imgur.com</a>/Wlnp3.png&rdquo; height=&rdquo;500&rdquo;></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2924,7 +2952,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              28/49
+              28/79
             </aside>
           </footer>
         </div>
@@ -2935,11 +2963,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>3.1 Sayılar</h1></header>
+            <header><h1>3.1 Say&#305;lar</h1></header>
             
             
-            <section><p><img src="http://i.imgur.com/C4kth.png" alt=""/></p>
-
+            <section><p><img alt="" src="http://i.imgur.com/C4kth.png" /></p>
 <ul>
 <li>Integer, 31 bit ? Fixnum : Bignum (keyfi uzunluklu)</li>
 </ul></section>
@@ -2958,7 +2985,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              29/49
+              29/79
             </aside>
           </footer>
         </div>
@@ -2969,25 +2996,20 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.1.1 Tamsayı sabitleri</h1></header>
+            <header><h1>3.1.1 Tamsay&#305; sabitleri</h1></header>
             
             
-            <section><p>Örnek,</p>
-
+            <section><p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="mi">0</span>
 <span class="mi">123</span>
 <span class="mi">12345678901234567890</span>
 </pre></div>
 
-
-<p>Binlik ayracı olarak <code>_</code> kullanılabilir,</p>
-
+<p>Binlik ayrac&#305; olarak <code>_</code> kullan&#305;labilir,</p>
 <div class="highlight"><pre><span class="mi">1_000_000</span>
 </pre></div>
 
-
-<p><code>0</code> başlayan sayılar özel anlamlıdır,</p>
-
+<p><code>0</code> ba&#351;layan say&#305;lar &ouml;zel anlaml&#305;d&#305;r,</p>
 <div class="highlight"><pre><span class="mo">0377</span>   <span class="c1"># Octal</span>
 <span class="m-Bin">0b1010</span> <span class="c1"># Binary</span>
 <span class="mh">0xFF</span>   <span class="c1"># Hexadecimal</span>
@@ -3008,7 +3030,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              30/49
+              30/79
             </aside>
           </footer>
         </div>
@@ -3019,11 +3041,10 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.1.2 Gerçel sayı sabitleri</h1></header>
+            <header><h1>3.1.2 Ger&ccedil;el say&#305; sabitleri</h1></header>
             
             
-            <section><p>Örnek,</p>
-
+            <section><p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
 <span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="mi">14</span>
 <span class="mi">6</span><span class="o">.</span><span class="mo">02</span><span class="n">e23</span>
@@ -3045,7 +3066,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              31/49
+              31/79
             </aside>
           </footer>
         </div>
@@ -3056,21 +3077,19 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>3.1.3 Aritmetik işlemler</h1></header>
+            <header><h1>3.1.3 Aritmetik i&#351;lemler</h1></header>
             
             
-            <section><p>Dört işlem (<code>+, -, *, /</code>)</p>
-
+            <section><p>D&ouml;rt i&#351;lem (<code>+, -, *, /</code>)</p>
 <pre><code>Ruby
 [5/2, 5.0/2, 5/2.0]                 # =&gt; [2, 2.5, 2.5]
 [5.0.div(2), 5.0.fdiv(2), 5.quo(2)] # =&gt; [2, 2.5, 5/2 kesri]
 </code></pre>
-
 <ul>
-<li>Sığmadığında otomatik tür dönüşümü</li>
-<li><code>0</code>&#39;a bölme <code>ZeroDivisionError</code> hatası üretir</li>
-<li><code>0.0</code>&#39;a bölme ise <code>Infinity</code> üretir</li>
-<li><code>0.0/0.0</code> ise <code>NaN</code> üretir</li>
+<li>S&#305;&#287;mad&#305;&#287;&#305;nda otomatik t&uuml;r d&ouml;n&uuml;&#351;&uuml;m&uuml;</li>
+<li><code>0</code>&lsquo;a b&ouml;lme <code>ZeroDivisionError</code> hatas&#305; &uuml;retir</li>
+<li><code>0.0</code>&lsquo;a b&ouml;lme ise <code>Infinity</code> &uuml;retir</li>
+<li><code>0.0/0.0</code> ise <code>NaN</code> &uuml;retir</li>
 </ul></section>
             
           </div>
@@ -3087,7 +3106,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              32/49
+              32/79
             </aside>
           </footer>
         </div>
@@ -3098,18 +3117,15 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Modül</h1></header>
+            <header><h1>Mod&uuml;l</h1></header>
             
             
-            <section><p>Modülün yeri ayrıdır,</p>
-
+            <section><p>Mod&uuml;l&uuml;n yeri ayr&#305;d&#305;r,</p>
 <div class="highlight"><pre><span class="mi">5</span> <span class="o">%</span> <span class="mi">2</span>              <span class="c1"># =&gt; 1</span>
 <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">10</span><span class="o">.</span><span class="n">divmod</span> <span class="mi">3</span> <span class="c1"># =&gt; Kesir: 3 tam 1/3</span>
 </pre></div>
 
-
-<p><code>**</code> ise üst almada kullanılır,</p>
-
+<p><code>**</code> ise &uuml;st almada kullan&#305;l&#305;r,</p>
 <div class="highlight"><pre><span class="n">x</span> <span class="o">**</span> <span class="mi">4</span>
 <span class="n">x</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -3129,7 +3145,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              33/49
+              33/79
             </aside>
           </footer>
         </div>
@@ -3140,16 +3156,18 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Bit düzeyi erişim</h1></header>
+            <header><h1>Bit d&uuml;zeyi eri&#351;im</h1></header>
             
             
             <section><ul>
-<li><p>İşleçler: <code>~, &amp;, |, ^, &lt;&lt;, &gt;&gt;</code></p></li>
-<li><p>Tamsayılar için indisleme mümkündür ve bitlerine erişimi sağlar</p></li>
+<li>
+<p>&#304;&#351;le&ccedil;ler: <code>~, &amp;, |, ^, &lt;&lt;, &gt;&gt;</code></p>
+</li>
+<li>
+<p>Tamsay&#305;lar i&ccedil;in indisleme m&uuml;mk&uuml;nd&uuml;r ve bitlerine eri&#351;imi sa&#287;lar</p>
+</li>
 </ul>
-
-<p>Örnek,</p>
-
+<p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">9</span> <span class="c1"># =&gt; ikil: 0b1001</span>
 <span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>  <span class="c1"># =&gt; 1</span>
 <span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>  <span class="c1"># =&gt; 0</span>
@@ -3172,7 +3190,7 @@ div.slide {
             </aside>
             
             <aside class="page_number">
-              34/49
+              34/79
             </aside>
           </footer>
         </div>
@@ -3183,24 +3201,27 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.1.4 İkil kayar noktalı sayılar ve yuvarlama hataları</h1></header>
+            <header><h1>3.1.4 &#304;kil kayar noktal&#305; say&#305;lar ve yuvarlama hatalar&#305;</h1></header>
             
             
             <section><ul>
-<li><p>Çoğu bilgisayar donanımı ve dili (Ruby buna dahildir) gerçel sayıları yaklaşık
-olarak tutar</p></li>
-<li><p>donanımı etkin kullanmak adına, <code>1/2, 1/4, 1/1024</code> gibi ikilleri temsil
-ederken</p></li>
-<li><p><code>1/10, 1/100</code> gibi kesirler yaklaşık tutulur</p></li>
+<li>
+<p>&Ccedil;o&#287;u bilgisayar donan&#305;m&#305; ve dili (Ruby buna dahildir) ger&ccedil;el say&#305;lar&#305; yakla&#351;&#305;k
+olarak tutar</p>
+</li>
+<li>
+<p>donan&#305;m&#305; etkin kullanmak ad&#305;na, <code>1/2, 1/4, 1/1024</code> gibi ikilleri temsil
+  ederken</p>
+</li>
+<li>
+<p><code>1/10, 1/100</code> gibi kesirler yakla&#351;&#305;k tutulur</p>
+</li>
 </ul>
-
-<p>Dolayısıyla,</p>
-
+<p>Dolay&#305;s&#305;yla,</p>
 <div class="highlight"><pre><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">0</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span> <span class="c1"># =&gt; false!</span>
 </pre></div>
 
-
-<p>Bu bir çok dilin (C, Java, JavaScript) ortak sorunudur</p></section>
+<p>Bu bir &ccedil;ok dilin (C, Java, JavaScript) ortak sorunudur</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3216,7 +3237,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              35/49
+              35/79
             </aside>
           </footer>
         </div>
@@ -3230,10 +3251,8 @@ ederken</p></li>
             <header><h1>3.2 Metin ve dizgi sabitleri</h1></header>
             
             
-            <section><h2>3.2.1.1 Tek tırnak dizgi sabitleri</h2>
-
-<p>Örnekler,</p>
-
+            <section><h2>3.2.1.1 Tek t&#305;rnak dizgi sabitleri</h2>
+<p>&Ouml;rnekler,</p>
 <div class="highlight"><pre><span class="s1">&#39;Bu dizgidir&#39;</span>
 <span class="s1">&#39;Bu baska\&#39; bir dizgidir&#39;</span>
 <span class="s1">&#39;a\b&#39;</span> <span class="o">==</span> <span class="s1">&#39;a\\b&#39;</span> <span class="c1"># =&gt; true</span>
@@ -3258,7 +3277,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              36/49
+              36/79
             </aside>
           </footer>
         </div>
@@ -3269,11 +3288,10 @@ ederken</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.1.2 Çift tırnak dizgi sabitleri</h1></header>
+            <header><h1>3.2.1.2 &Ccedil;ift t&#305;rnak dizgi sabitleri</h1></header>
             
             
-            <section><p>Örnekler,</p>
-
+            <section><p>&Ouml;rnekler,</p>
 <div class="highlight"><pre><span class="s2">&quot;</span><span class="se">\t\&quot;</span><span class="s2">Bunda hem sekme hem de çift tırnak var ve yeni satırla biter</span><span class="se">\&quot;\n</span><span class="s2">&quot;</span>
 <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="c1"># ter slaş</span>
 
@@ -3285,14 +3303,11 @@ ederken</p></li>
 <span class="s2">&quot;foo </span><span class="se">\#</span><span class="s2">{&quot;</span> <span class="c1"># =&gt; &#39;foo #{&#39;</span>
 </pre></div>
 
-
-<p>İleri düzey,</p>
-
+<p>&#304;leri d&uuml;zey,</p>
 <div class="highlight"><pre><span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;pi yaklaşık olrak %.4f&quot;</span><span class="p">,</span> <span class="no">Math</span><span class="o">::</span><span class="no">PI</span><span class="p">)</span>
 <span class="s2">&quot;pi yaklaşık olarak %.4f&quot;</span> <span class="o">%</span> <span class="no">Math</span><span class="o">::</span><span class="no">PI</span>
 <span class="s2">&quot;%s: %f&quot;</span> <span class="o">%</span> <span class="o">[</span><span class="s2">&quot;pi&quot;</span><span class="p">,</span> <span class="no">Math</span><span class="o">::</span><span class="no">PI</span><span class="o">]</span>
 </pre></div>
-
 
 <p>Escape sequences: <code>a, b, e, f, n, t, s, u{hexdigits}, ...</code></p></section>
             
@@ -3310,7 +3325,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              37/49
+              37/79
             </aside>
           </footer>
         </div>
@@ -3324,8 +3339,7 @@ ederken</p></li>
             <header><h1>3.2.1.3 Unicode escape</h1></header>
             
             
-            <section><p>Örnek,</p>
-
+            <section><p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="s2">&quot;\u00D7  # =&gt; &quot;</span><span class="n">x</span><span class="s2">&quot;</span>
 <span class="s2">&quot;</span><span class="p">\</span><span class="n">u20ac</span><span class="s2">&quot; # =&gt; &quot;</span><span class="err">€</span><span class="s2">&quot;</span>
 </pre></div>
@@ -3345,7 +3359,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              38/49
+              38/79
             </aside>
           </footer>
         </div>
@@ -3356,17 +3370,15 @@ ederken</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.1.4 Keyfi ayırgaç kullanımı</h1></header>
+            <header><h1>3.2.1.4 Keyfi ay&#305;rga&ccedil; kullan&#305;m&#305;</h1></header>
             
             
-            <section><p>örnek,</p>
-
+            <section><p>&ouml;rnek,</p>
 <div class="highlight"><pre><span class="sx">%q(Bu bir string&#39;dir)</span>
 <span class="sx">%-Bu ise yeni satırla sonlanır\n-</span>
 </pre></div>
 
-
-<p>Eşleşen parantezler: (, [, {, &lt; , vs</p></section>
+<p>E&#351;le&#351;en parantezler: (, [, {, &lt; , vs</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3382,7 +3394,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              39/49
+              39/79
             </aside>
           </footer>
         </div>
@@ -3393,17 +3405,21 @@ ederken</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.1.5 Here dökümanları</h1></header>
+            <header><h1>3.2.1.5 Here d&ouml;k&uuml;manlar&#305;</h1></header>
             
             
             <section><ul>
-<li><p>Uzun bir dizgiye ihtiyaç duyulunca</p></li>
-<li><p>Unix&#39;den mirastır</p></li>
-<li><p><code>&lt;&lt;</code> veya <code>&lt;&lt;-</code> ile başlar</p></li>
+<li>
+<p>Uzun bir dizgiye ihtiya&ccedil; duyulunca</p>
+</li>
+<li>
+<p>Unix&rsquo;den mirast&#305;r</p>
+</li>
+<li>
+<p><code>&lt;&lt;</code> veya <code>&lt;&lt;-</code> ile ba&#351;lar</p>
+</li>
 </ul>
-
-<p>Örnek,</p>
-
+<p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="n">document</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">HERE</span>
 <span class="sh">Bu bir dizgidir.</span>
 <span class="sh">Bu iki satırdan oluşur.</span>
@@ -3425,7 +3441,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              40/49
+              40/79
             </aside>
           </footer>
         </div>
@@ -3436,18 +3452,15 @@ ederken</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.1.6 Ters tırnakla komut yürütme</h1></header>
+            <header><h1>3.2.1.6 Ters t&#305;rnakla komut y&uuml;r&uuml;tme</h1></header>
             
             
-            <section><p>Ters tırnak <code>\</code><code>ile işletim sistemine ait bir komutu çalıştırmaya izin verir.
-Ör. &quot;</code>ls&ldquo;. Keyfi dizgi yapısı %x (execute)</p>
-
+            <section><p>Ters t&#305;rnak <code>\`` ile i&#351;letim sistemine ait bir komutu &ccedil;al&#305;&#351;t&#305;rmaya izin verir.
+&Ouml;r. "</code>`ls&ldquo;&rdquo;. Keyfi dizgi yap&#305;s&#305; %x (execute)</p>
 <div class="highlight"><pre><span class="sx">%x[ls]</span>
 </pre></div>
 
-
-<p>Çift/tek tırnak içerisinden de yürütülebilirler,</p>
-
+<p>&Ccedil;ift/tek t&#305;rnak i&ccedil;erisinden de y&uuml;r&uuml;t&uuml;lebilirler,</p>
 <div class="highlight"><pre><span class="k">if</span> <span class="n">windows</span>
   <span class="n">komut</span> <span class="o">=</span> <span class="s1">&#39;dir&#39;</span>
 <span class="k">else</span>
@@ -3471,7 +3484,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              41/49
+              41/79
             </aside>
           </footer>
         </div>
@@ -3482,18 +3495,20 @@ ederken</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.1.7 Dizgi sabitleri ve değiştirilebilirlik</h1></header>
+            <header><h1>3.2.1.7 Dizgi sabitleri ve de&#287;i&#351;tirilebilirlik</h1></header>
             
             
-            <section><p>Python&#39;un aksine benzer dizgiler aynı nesne değildir!</p>
-
+            <section><p>Python&rsquo;un aksine benzer dizgiler ayn&#305; nesne de&#287;ildir!</p>
 <div class="highlight"><pre><span class="mi">10</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">&quot;foo&quot;</span><span class="o">.</span><span class="n">object_id</span> <span class="p">}</span>
 </pre></div>
 
-
 <ul>
-<li><p>Çıktısı nedir?</p></li>
-<li><p>Bu yüzden döngü içinde dizgi sabitleri kullanmaktan sakının!</p></li>
+<li>
+<p>&Ccedil;&#305;kt&#305;s&#305; nedir?</p>
+</li>
+<li>
+<p>Bu y&uuml;zden d&ouml;ng&uuml; i&ccedil;inde dizgi sabitleri kullanmaktan sak&#305;n&#305;n!</p>
+</li>
 </ul></section>
             
           </div>
@@ -3510,7 +3525,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              42/49
+              42/79
             </aside>
           </footer>
         </div>
@@ -3524,8 +3539,7 @@ ederken</p></li>
             <header><h1>Karakter sabitleri</h1></header>
             
             
-            <section><p>Kısa kısa,</p>
-
+            <section><p>K&#305;sa k&#305;sa,</p>
 <div class="highlight"><pre><span class="sc">?A</span> <span class="c1"># &#39;A&#39; karakter sabiti</span>
 <span class="sc">?€</span>
 <span class="sc">?\t</span>
@@ -3547,7 +3561,7 @@ ederken</p></li>
             </aside>
             
             <aside class="page_number">
-              43/49
+              43/79
             </aside>
           </footer>
         </div>
@@ -3558,26 +3572,28 @@ ederken</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.3 Dizgi işleçleri</h1></header>
+            <header><h1>3.2.3 Dizgi i&#351;le&ccedil;leri</h1></header>
             
             
             <section><ul>
-<li><p><code>+</code> işleci dizginin ardına ekler</p></li>
-<li><p><code>&lt; &lt;</code> benzer göreve sahiptir</p></li>
-<li><p>en önemli fark ilki yeni nesne oluştururken, ikincisi sol işleneni
-günceller/ardına ekler</p></li>
+<li>
+<p><code>+</code> i&#351;leci dizginin ard&#305;na ekler</p>
+</li>
+<li>
+<p><code>&lt; &lt;</code> benzer g&ouml;reve sahiptir</p>
+</li>
+<li>
+<p>en &ouml;nemli fark ilki yeni nesne olu&#351;tururken, ikincisi sol i&#351;leneni
+  g&uuml;nceller/ard&#305;na ekler</p>
+</li>
 </ul>
-
-<p>Örnek,</p>
-
+<p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="n">mesaj</span> <span class="o">=</span> <span class="s2">&quot;Merhaba&quot;</span>
 <span class="n">mesaj</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Dunya&quot;</span>
 <span class="nb">puts</span> <span class="n">mesaj</span> <span class="c1"># =&gt; &quot;Merhaba Dunya&quot;</span>
 </pre></div>
 
-
-<p>İlginç,</p>
-
+<p>&#304;lgin&ccedil;,</p>
 <div class="highlight"><pre><span class="n">alfabe</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
 <span class="n">alfabe</span> <span class="o">&lt;&lt;</span> <span class="sc">?B</span> <span class="c1"># &quot;AB&quot;</span>
 <span class="n">alfabe</span> <span class="o">&lt;&lt;</span> <span class="mi">67</span> <span class="c1"># &quot;ABC&quot;</span>
@@ -3598,7 +3614,7 @@ günceller/ardına ekler</p></li>
             </aside>
             
             <aside class="page_number">
-              44/49
+              44/79
             </aside>
           </footer>
         </div>
@@ -3609,11 +3625,10 @@ günceller/ardına ekler</p></li>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>3.2.4 Karakterlere ve altdizgiere erişim</h1></header>
+            <header><h1>3.2.4 Karakterlere ve altdizgiere eri&#351;im</h1></header>
             
             
-            <section><p><code>[]</code> indislemede kullanılır,</p>
-
+            <section><p><code>[]</code> indislemede kullan&#305;l&#305;r,</p>
 <div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
 <span class="n">s</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="c1"># =&gt; &#39;h&#39;</span>
 
@@ -3622,29 +3637,22 @@ günceller/ardına ekler</p></li>
 <span class="n">s</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;p!&quot;</span> <span class="c1"># =&gt; &#39;Help!&#39;</span>
 </pre></div>
 
-
-<p>Dilimleme: <code>[başla, uzunluk]</code></p>
-
+<p>Dilimleme: <code>[ba&#351;la, uzunluk]</code></p>
 <div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
 <span class="n">s</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">]</span> <span class="c1"># =&gt; &#39;he&#39;</span>
 </pre></div>
 
-
-<p>Dilimle: <code>[başla..bitir]</code>,</p>
-
+<p>Dilimle: <code>[ba&#351;la..bitir]</code>,</p>
 <div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
 <span class="n">s</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="o">]</span> <span class="c1"># =&gt; &#39;ll&#39;</span>
 </pre></div>
 
-
-<p>İndis,</p>
-
+<p>&#304;ndis,</p>
 <div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
 <span class="n">s</span><span class="o">[</span><span class="s1">&#39;l&#39;</span><span class="o">]</span> <span class="c1"># =&gt; true</span>
 </pre></div>
 
-
-<p>Daha fazlası RegExp&#39;de!</p></section>
+<p>Daha fazlas&#305; RegExp&rsquo;de!</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -3660,7 +3668,7 @@ günceller/ardına ekler</p></li>
             </aside>
             
             <aside class="page_number">
-              45/49
+              45/79
             </aside>
           </footer>
         </div>
@@ -3674,8 +3682,7 @@ günceller/ardına ekler</p></li>
             <header><h1>3.2.5 Dizgilerde iterasyon</h1></header>
             
             
-            <section><p><code>each</code> yerine <code>each_byte</code> kullanın,</p>
-
+            <section><p><code>each</code> yerine <code>each_byte</code> kullan&#305;n,</p>
 <div class="highlight"><pre><span class="s2">&quot;€123&quot;</span><span class="o">.</span><span class="n">each_byte</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="p">}</span> <span class="c1"># =&gt; &quot;€ 1 2 3&quot;</span>
 </pre></div>
 </section>
@@ -3694,7 +3701,7 @@ günceller/ardına ekler</p></li>
             </aside>
             
             <aside class="page_number">
-              46/49
+              46/79
             </aside>
           </footer>
         </div>
@@ -3708,8 +3715,7 @@ günceller/ardına ekler</p></li>
             <header><h1>3.3 Diziler</h1></header>
             
             
-            <section><p>Örnek,</p>
-
+            <section><p>&Ouml;rnek,</p>
 <div class="highlight"><pre><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
 <span class="o">[-</span><span class="mi">10</span><span class="o">.</span><span class="n">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="o">]</span>
 <span class="o">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">5</span><span class="o">]]</span>
@@ -3722,9 +3728,7 @@ günceller/ardına ekler</p></li>
 <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># =&gt; [0, 0, 0, 0]</span>
 </pre></div>
 
-
-<p>Ayrıntılar,</p>
-
+<p>Ayr&#305;nt&#305;lar,</p>
 <div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="o">]</span>
 <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
 <span class="n">a</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span>
@@ -3747,7 +3751,7 @@ günceller/ardına ekler</p></li>
             </aside>
             
             <aside class="page_number">
-              47/49
+              47/79
             </aside>
           </footer>
         </div>
@@ -3762,7 +3766,6 @@ günceller/ardına ekler</p></li>
             
             
             <section><p>Dilimleme,</p>
-
 <div class="highlight"><pre><span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="o">.</span><span class="n">.</span><span class="s1">&#39;e&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
 <span class="n">d</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="o">]</span>
 <span class="n">d</span><span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
@@ -3770,9 +3773,7 @@ günceller/ardına ekler</p></li>
 <span class="n">d</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="o">]</span>
 </pre></div>
 
-
-<p>Genişleyen diziler,</p>
-
+<p>Geni&#351;leyen diziler,</p>
 <div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="o">[]</span>
 <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
 <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>
@@ -3780,10 +3781,13 @@ günceller/ardına ekler</p></li>
 <span class="n">a</span><span class="o">.</span><span class="n">concat</span> <span class="o">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span> <span class="c1"># =&gt; [1,2,3,[4,5,6],7,8]</span>
 </pre></div>
 
-
 <ul>
-<li><p><code>-</code> ortak özellikler çıkarılır</p></li>
-<li><p><code>|</code>: birleşim, <code>&amp;</code>: kesişim</p></li>
+<li>
+<p><code>-</code> ortak &ouml;zellikler &ccedil;&#305;kar&#305;l&#305;r</p>
+</li>
+<li>
+<p><code>|</code>: birle&#351;im, <code>&amp;</code>: kesi&#351;im</p>
+</li>
 </ul></section>
             
           </div>
@@ -3800,7 +3804,564 @@ günceller/ardına ekler</p></li>
             </aside>
             
             <aside class="page_number">
-              48/49
+              48/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>3.4 &Ccedil;&#305;rp&#305;</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>anahtar - de&#287;er &ccedil;iftleri</p>
+</li>
+<li>
+<p>map: anahtar&rsquo;lara kar&#351;&#305;l&#305;k gelen de&#287;erleri haritalar</p>
+</li>
+<li>
+<p>SQL: associative arrays</p>
+</li>
+</ul>
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+<span class="n">h</span><span class="o">[</span><span class="s2">&quot;samsun&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="n">h</span><span class="o">[</span><span class="s2">&quot;istanbul&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">34</span>
+<span class="n">h</span><span class="o">[</span><span class="s2">&quot;çorum&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">19</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              49/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Hash Literals</h1></header>
+            
+            
+            <section><p>Literal: dizgi veya sembol olabilir,</p>
+<div class="highlight"><pre><span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;samsun&quot;</span> <span class="o">=&gt;</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">&quot;istanbul&quot;</span> <span class="o">=&gt;</span> <span class="mi">34</span> <span class="p">}</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:samsun</span> <span class="o">=&gt;</span> <span class="mi">55</span><span class="p">,</span> <span class="ss">:istanbul</span> <span class="o">=&gt;</span> <span class="mi">34</span> <span class="p">}</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">{</span> <span class="n">samsun</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span> <span class="n">istanbul</span><span class="p">:</span> <span class="mi">34</span> <span class="p">}</span>
+</pre></div>
+
+<p>Sonuncusunu tercih edin!</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              50/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>3.5 Range</h1></header>
+            
+            
+            <section><p>&#304;ki de&#287;er aral&#305;&#287;&#305;n&#305; g&ouml;sterir,</p>
+<div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span>     <span class="c1"># 10 dahil</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="o">.</span><span class="mi">0</span> <span class="c1"># 10.0 hariç</span>
+</pre></div>
+
+<p>Bu aral&#305;kta bir de&#287;er olup-olmad&#305;&#287;&#305;n&#305; s&#305;namak i&ccedil;in <code>include?</code>,</p>
+<div class="highlight"><pre><span class="n">cold_war</span> <span class="o">=</span> <span class="mi">1945</span><span class="o">.</span><span class="n">.</span><span class="mi">1989</span>
+<span class="n">cold_war</span><span class="o">.</span><span class="n">include?</span> <span class="n">birthdate</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              51/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Range Dola&#351;&#305;m</h1></header>
+            
+            
+            <section><p>Elemanlar&#305; &uuml;zerinde dola&#351;&#305;rken <code>each</code>,</p>
+<div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="o">.</span><span class="n">.</span><span class="s1">&#39;z&#39;</span>
+<span class="n">r</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="nb">p</span> <span class="n">c</span><span class="p">}</span> <span class="c1"># =&gt; &#39;a&#39;, &#39;b&#39;, ..., &#39;z&#39;</span>
+</pre></div>
+
+<p>Ad&#305;mlamak isterseniz <code>step</code>,</p>
+<div class="highlight"><pre><span class="n">r</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="mi">2</span><span class="p">){</span><span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="nb">p</span> <span class="n">c</span><span class="p">}</span> <span class="c1"># =&gt; &#39;a&#39;, &#39;c&#39;, ..., &#39;z&#39;</span>
+</pre></div>
+
+<p>Diziye d&ouml;n&uuml;&#351;t&uuml;rmek isterseniz: <code>to_a</code>. &Ouml;r. <code>r.to_a</code> veya <code>(1..4).to_a</code></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              52/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>3.6 Semboller</h1></header>
+            
+            
+            <section><p>Dizgilere oranla daha az maliyetli olmas&#305;ndan &ouml;t&uuml;r&uuml; tercih edilir,</p>
+<div class="highlight"><pre><span class="ss">:symbol</span>                 <span class="c1"># A Symbol literal</span>
+<span class="ss">:&quot;symbol&quot;</span>               <span class="c1"># The same literal</span>
+<span class="ss">:&#39;another long symbol&#39;</span>  <span class="c1"># Quotes are useful for symbols with spaces</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+<span class="n">sym</span> <span class="o">=</span> <span class="ss">:&quot;</span><span class="si">#{</span><span class="n">s</span><span class="si">}</span><span class="ss">&quot;</span>           <span class="c1"># The Symbol :string</span>
+</pre></div>
+
+<p>Bir nesnenin herhangi bir yetene&#287;e (i&#351;leve) sahipli&#287;ini de bununla kontrol
+ederiz,</p>
+<div class="highlight"><pre><span class="n">o</span><span class="o">.</span><span class="n">respond_to?</span> <span class="ss">:each</span>
+</pre></div>
+
+<p><code>o</code> nesnesinin <code>each</code> metodu var m&#305;?</p>
+<p>T&uuml;r d&ouml;n&uuml;&#351;&uuml;m&uuml; m&uuml;mk&uuml;nd&uuml;r,</p>
+<div class="highlight"><pre><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;dizgi&quot;</span>
+<span class="n">sym</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="n">to_sym</span> <span class="c1"># VEYA sym = str.intern</span>
+<span class="n">str</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">to_s</span>   <span class="c1"># VEYA str = str.id2name</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              53/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>3.7 True, False, and Nil</h1></header>
+            
+            
+            <section><ul>
+<li>Mant&#305;k de&#287;erler: <code>true</code> ve <code>false</code></li>
+<li><code>nil</code> &ouml;zel bir de&#287;erdir</li>
+</ul>
+<p>Kod,</p>
+<div class="highlight"><pre><span class="n">o</span> <span class="o">==</span> <span class="kp">nil</span> <span class="c1"># VEYA</span>
+<span class="n">o</span><span class="o">.</span><span class="n">nil?</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              54/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>3.8 Nesneler</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Ruby&rsquo;de her &#351;ey nesnedir</p>
+</li>
+<li>
+<p>Atama eylemi derinlemesine de&#287;er kopyalama yerine referans/etiket &uuml;retir</p>
+</li>
+</ul>
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>   <span class="c1"># s: String nesnesidir</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">s</span>        <span class="c1"># t: s&#39;ye referansdır</span>
+<span class="n">t</span><span class="o">[-</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>  <span class="c1"># t nesnesini güncelle</span>
+<span class="nb">print</span> <span class="n">s</span>      <span class="c1"># s&#39;yi yaz =&gt; &#39;RubX&#39;!</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;Java&quot;</span>   <span class="c1"># t: başka bir String nesnesi oldu</span>
+<span class="nb">p</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span>       <span class="c1"># &quot;JavaRubX&quot;!</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              55/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Nesne &Ouml;mr&uuml;</h1></header>
+            
+            
+            <section><p>Olu&#351;turulduklar&#305;nda &ouml;m&uuml;rleri ba&#351;lar,</p>
+<div class="highlight"><pre><span class="n">o</span> <span class="o">=</span> <span class="no">Klass</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+
+<p>&#304;htiya&ccedil; duyulmad&#305;&#287;&#305; anda &ouml;ld&uuml;r&uuml;l&uuml;r: garbage collector</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              56/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Nesne S&#305;n&#305;flar&#305; ve T&uuml;rleri</h1></header>
+            
+            
+            <section><p>En kolay yolu kendisine sormak,</p>
+<div class="highlight"><pre><span class="n">o</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="n">o</span><span class="o">.</span><span class="n">class</span>                       <span class="c1"># =&gt; &#39;String&#39; sınıfındadır</span>
+<span class="n">o</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">superclass</span>            <span class="c1"># =&gt; &#39;Object&#39;</span>
+<span class="n">o</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">superclass</span><span class="o">.</span><span class="n">superclass</span> <span class="c1"># =&gt; &#39;nil&#39;</span>
+</pre></div>
+
+<p>T&uuml;re g&ouml;re i&#351;ler yapmak i&ccedil;in,</p>
+<div class="highlight"><pre><span class="n">o</span><span class="o">.</span><span class="n">class</span> <span class="o">==</span> <span class="nb">String</span>      <span class="c1"># =&gt; eğer `o` türü dizgiyse true üretir</span>
+<span class="n">o</span><span class="o">.</span><span class="n">instance_of?</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span> <span class="c1"># =&gt; daha şıktır!</span>
+</pre></div>
+
+<p>Kendisini buraya kadar getiren t&uuml;m s&#305;n&#305;flar &uuml;zerinden tarama yapmak i&ccedil;in,</p>
+<div class="highlight"><pre><span class="n">o</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">o</span><span class="o">.</span><span class="n">instance_of?</span> <span class="no">Fixnum</span>  <span class="c1"># =&gt; true</span>
+<span class="n">o</span><span class="o">.</span><span class="n">instance_of?</span> <span class="no">Numeric</span> <span class="c1"># =&gt; false</span>
+<span class="n">o</span><span class="o">.</span><span class="n">is_a?</span> <span class="no">Fixnum</span>         <span class="c1"># =&gt; true</span>
+<span class="n">o</span><span class="o">.</span><span class="n">is_a?</span> <span class="nb">Integer</span>        <span class="c1"># =&gt; true</span>
+<span class="n">o</span><span class="o">.</span><span class="n">is_a?</span> <span class="no">Numeric</span>        <span class="c1"># =&gt; true</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              57/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Nesne: Kar&#351;&#305;la&#351;t&#305;rma</h1></header>
+            
+            
+            <section><p>Kar&#351;&#305;la&#351;t&#305;rma/s&#305;nama,</p>
+<div class="highlight"><pre><span class="no">Numeric</span> <span class="o">===</span> <span class="n">x</span>          <span class="c1"># =&gt; x is_a Numeric</span>
+</pre></div>
+
+<p><code>is_a?</code> yerine okunabilirli&#287;i art&#305;rmak i&ccedil;in kullan!</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              58/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Nesne E&#351;itli&#287;i</h1></header>
+            
+            
+            <section><p><code>equal?</code>: iki nesnenin ayn&#305; nesne olup-olmad&#305;&#287;&#305;n&#305; s&#305;nar,</p>
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">equal?</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># false</span>
+<span class="n">b</span><span class="o">.</span><span class="n">equal?</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>    <span class="c1"># true</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">object_id</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">object_id</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              59/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>== &#304;&#351;leci</h1></header>
+            
+            
+            <section><p><code>==</code> de&#287;er s&#305;namas&#305; yapar,</p>
+<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;Ruby&quot;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">equal?</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>    <span class="c1"># false</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>         <span class="c1"># true</span>
+</pre></div>
+
+<p>e&#351;it de&#287;ilse: <code>!=</code></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              60/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>eql? y&ouml;ntemi</h1></header>
+            
+            
+            <section><p><code>==</code> t&uuml;r d&ouml;n&uuml;&#351;&uuml;m&uuml;n&uuml; yaparken, <code>eql?</code> daha kat&#305; davran&#305;r,</p>
+<div class="highlight"><pre><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>    <span class="c1"># true</span>
+<span class="mi">1</span><span class="o">.</span><span class="n">eql?</span><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># false</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              61/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Di&#287;er yayg&#305;n i&#351;le&ccedil;ler</h1></header>
+            
+            
+            <section><p>Kodlar,</p>
+<div class="highlight"><pre><span class="sr">/\d+/</span> <span class="o">===</span> <span class="s2">&quot;123&quot;</span>   <span class="c1"># true: düzenli ifade eşleştiğinden</span>
+<span class="mi">1</span> <span class="o">&lt;=&gt;</span> <span class="mi">5</span>           <span class="c1"># -1: küçük (0: eşit, +1: büyük)</span>
+<span class="mi">1</span><span class="o">.</span><span class="n">between?</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># true: 0 &lt;= 1 &lt;= 10  # &gt;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              62/79
             </aside>
           </footer>
         </div>
@@ -3811,7 +4372,293 @@ günceller/ardına ekler</p></li>
         <div class="slide">
           <div class="inner">
             
-            <header><h1>3.4 Çırpı</h1></header>
+            <header><h1>Nesne D&ouml;n&uuml;&#351;&uuml;mleri</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Bilin&ccedil;li <code>to_s, to_i, to_f, to_a, to_c, to_r</code></p>
+</li>
+<li>
+<p>&#304;mal&#305;: <code>"Foo" + v + "Bar"</code></p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              63/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Dondurma</h1></header>
+            
+            
+            <section><p>Nesneleri dondurabilirsiniz,</p>
+<div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;ice&quot;</span>
+<span class="n">s</span><span class="o">.</span><span class="n">freeze</span>
+<span class="n">s</span><span class="o">.</span><span class="n">frozen?</span>
+<span class="n">s</span><span class="o">.</span><span class="n">upcase!</span>   <span class="c1"># TypeError</span>
+<span class="n">s</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;ni&quot;</span> <span class="c1"># TypeError</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              64/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>B&ouml;l&uuml;m 4: &#304;fadeler ve &#304;&#351;le&ccedil;ler</h1></header>
+            
+            
+            <section><p>Kod,</p>
+<div class="highlight"><pre><span class="mi">2</span>                <span class="c1"># sayısal sabit (literal)</span>
+<span class="n">x</span>                <span class="c1"># yerel değişkene referans</span>
+<span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># işlev çağrısı</span>
+<span class="n">x</span> <span class="o">=</span> <span class="no">Math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># atama</span>
+<span class="n">x</span> <span class="o">*</span> <span class="n">x</span>            <span class="c1"># çarpma-`*` işleci</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              65/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Sabitler</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p><code>1.0, 'hello', []</code> birer sabittir.</p>
+</li>
+<li>
+<p>Bunlar d&#305;&#351;&#305;nda baz&#305; anahtar kelimeler (sabitleri) vard&#305;r</p>
+</li>
+<li>
+<p>nil</p>
+</li>
+<li>true | false</li>
+<li>self</li>
+<li><strong>FILE</strong></li>
+<li><strong>LINE</strong></li>
+<li><strong>ENCODING</strong></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              66/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>K&#305;sa k&#305;sa</h1></header>
+            
+            
+            <section><p>Kodlar,</p>
+<div class="highlight"><pre><span class="n">o</span><span class="o">.</span><span class="n">m</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">o</span><span class="o">.</span><span class="n">m</span><span class="o">=</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">m</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">o</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-=</span> <span class="mi">2</span>
+<span class="n">o</span><span class="o">.</span><span class="n">[</span><span class="o">]=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">[</span><span class="o">]</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+<p><code>||=</code> i&#351;leci ilgin&ccedil;tir,</p>
+<div class="highlight"><pre><span class="n">d</span> <span class="o">||=</span> <span class="o">[]</span>
+</pre></div>
+
+<p><code>d</code> verilmediyse/atanmam&#305;&#351;sa bunun sonucunda <code>[]</code> olur, atanm&#305;&#351;sa de&#287;i&#351;mez.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              67/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Paralel Atama</h1></header>
+            
+            
+            <section><p>Kod,</p>
+<div class="highlight"><pre><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>        <span class="c1"># x = [1,2,3]</span>
+<span class="n">x</span><span class="p">,</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>       <span class="c1"># x = 1; diğerlerini göz ardı et</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span>
+<span class="n">x</span><span class="p">,</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span>         <span class="c1"># x = 1</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>     <span class="c1"># x=1; y=2; z=nil</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>     <span class="c1"># x=1; y=2; 3</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span> <span class="c1">#== (x,y,z = 1,2,3)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>    <span class="c1"># x=1; y=[2,3]</span>
+<span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>       <span class="c1"># x=1; y=[2]</span>
+<span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c1"># x=1; y=[]</span>
+
+<span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>    <span class="c1"># x=[1,2]; y=3</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="o">]</span> <span class="c1"># x=1; y=2; z=[3,4]</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>    <span class="c1"># x=1; y=[2,3]; z=nil</span>
+<span class="n">x</span><span class="p">,(</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>  <span class="c1"># x=1; y=2; z=3</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              68/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Operator</h1></header>
+            
+            
+            <section><p>K&#305;sa k&#305;sa,</p>
+<div class="highlight"><pre><span class="p">(</span><span class="m-Bin">0b1011</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># =&gt; &quot;10110&quot; 11 &lt;&lt; 1 =&gt; 22</span>
+<span class="p">(</span><span class="m-Bin">0b10110</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># =&gt; &quot;101&quot;   22 &gt;&gt; 2 =&gt; 5</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              69/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>B&ouml;l&uuml;m 5: &#304;fadeler ve Denetim Yap&#305;lar&#305;</h1></header>
             
             
           </div>
@@ -3828,7 +4675,399 @@ günceller/ardına ekler</p></li>
             </aside>
             
             <aside class="page_number">
-              49/49
+              70/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Ko&#351;ulland&#305;rma: if</h1></header>
+            
+            
+            <section><dl>
+<dt>Ko&#351;ul: if</dt>
+<dd>
+<p>genel olarak</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">ifade</span>
+  <span class="n">code</span>
+<span class="k">end</span>
+</pre></div>
+
+</dd>
+</dl>
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span>
+  <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">then</span> <span class="n">z</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              71/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>else</h1></header>
+            
+            
+            <section><dl>
+<dt>Ko&#351;ul: else</dt>
+<dd>
+<p>genel olarak</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">ifade</span>
+  <span class="n">code</span>
+<span class="k">else</span>
+  <span class="n">code</span>
+<span class="k">end</span>
+</pre></div>
+
+</dd>
+</dl>
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">data</span>
+  <span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="n">x</span>
+<span class="k">else</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              72/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>elsif</h1></header>
+            
+            
+            <section><dl>
+<dt>Ko&#351;ul: elsif</dt>
+<dd>
+<p>genel olarak</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">ifade1</span>
+  <span class="n">code</span>
+<span class="k">elsif</span> <span class="n">ifade2</span>
+  <span class="n">code</span>
+<span class="k">else</span>
+  <span class="n">code</span>
+<span class="k">end</span>
+</pre></div>
+
+</dd>
+</dl>
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span>
+  <span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;bir&quot;</span>
+<span class="k">elsif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span>
+  <span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;iki&quot;</span>
+<span class="k">elsif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">then</span> <span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;uc&quot;</span>
+<span class="k">elsif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">;</span> <span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;dort&quot;</span>
+<span class="k">else</span>
+  <span class="nb">name</span> <span class="o">=</span> <span class="s2">&quot;cok&quot;</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              73/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>return</h1></header>
+            
+            
+            <section><p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="nb">name</span> <span class="o">=</span>  <span class="k">if</span>    <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">then</span> <span class="s2">&quot;bir&quot;</span>
+        <span class="k">elsif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">then</span> <span class="s2">&quot;iki&quot;</span>
+        <span class="k">elsif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">then</span> <span class="s2">&quot;uc&quot;</span>
+        <span class="k">else</span>              <span class="s2">&quot;cok&quot;</span>
+        <span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              74/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Tek sat&#305;rl&#305;</h1></header>
+            
+            
+            <section><p>Kod,</p>
+<div class="highlight"><pre><span class="c1"># Bunun yerine</span>
+<span class="k">if</span> <span class="n">expression</span> <span class="k">then</span> <span class="n">code</span> <span class="k">end</span>
+
+<span class="c1"># Bunu kullanabilirsiniz</span>
+<span class="n">code</span> <span class="k">if</span> <span class="n">expression</span>
+</pre></div>
+
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="nb">puts</span> <span class="n">message</span> <span class="k">if</span> <span class="n">message</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              75/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>unless</h1></header>
+            
+            
+            <section><p>&#350;ablon,</p>
+<div class="highlight"><pre><span class="k">unless</span> <span class="n">ifade</span>
+  <span class="n">kod</span>
+<span class="k">end</span>
+
+<span class="k">unless</span> <span class="n">ifade</span>
+  <span class="n">kod</span>
+<span class="k">else</span>
+  <span class="n">kod</span>
+<span class="k">end</span>
+
+<span class="n">kod</span> <span class="k">unless</span> <span class="n">ifade</span>
+</pre></div>
+
+<p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="k">unless</span> <span class="n">o</span><span class="o">.</span><span class="n">nil?</span>
+      <span class="n">o</span><span class="o">.</span><span class="n">to_s</span>
+    <span class="k">end</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="k">unless</span> <span class="n">o</span><span class="o">.</span><span class="n">nil?</span> <span class="k">then</span> <span class="n">o</span><span class="o">.</span><span class="n">to_s</span> <span class="k">end</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">to_s</span> <span class="k">unless</span> <span class="n">o</span><span class="o">.</span><span class="n">nil?</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              76/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>case</h1></header>
+            
+            
+            <section><p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="nb">name</span> <span class="o">=</span> <span class="k">case</span> <span class="n">x</span>
+       <span class="k">when</span> <span class="mi">1</span> <span class="k">then</span> <span class="s2">&quot;bir&quot;</span>
+       <span class="k">when</span> <span class="mi">2</span> <span class="k">then</span> <span class="s2">&quot;iki&quot;</span>
+       <span class="k">when</span> <span class="mi">3</span><span class="p">;</span>     <span class="s2">&quot;uc&quot;</span>
+       <span class="k">else</span>        <span class="s2">&quot;cok&quot;</span>
+       <span class="k">end</span>
+</pre></div>
+
+<p>Ayr&#305;ca,</p>
+<ul>
+<li><code>when 0..7550</code></li>
+<li><code>when /^\s*#/</code></li>
+<li><code>when nil, [], "", 0</code></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              77/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>ternary</h1></header>
+            
+            
+            <section><p>&Ouml;rnek,</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">how_many_messages</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="s2">&quot;You have &quot;</span> <span class="o">+</span> <span class="n">n</span><span class="o">.</span><span class="n">to_s</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="mi">1</span> <span class="o">?</span> <span class="s2">&quot; message.&quot;</span> <span class="p">:</span> <span class="s2">&quot; messages.&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              78/79
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: ruby-ders/index.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>D&ouml;ng&uuml;</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="ruby-ders/index.md">ruby-ders/index.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              79/79
             </aside>
           </footer>
         </div>
@@ -3849,7 +5088,7 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-2">
-        <th><a href="#slide2">Bölüm 1: INTRODUCTION</a></th>
+        <th><a href="#slide2">B&ouml;l&uuml;m 1: INTRODUCTION</a></th>
         <td><a href="#slide2">2</a></td>
       </tr>
       
@@ -3879,13 +5118,13 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Ruby Turu: İfadeler ve İşleçler</a></th>
+        <th><a href="#slide7">Ruby Turu: &#304;fadeler ve &#304;&#351;le&ccedil;ler</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Ruby Turu: Yöntemler</a></th>
+        <th><a href="#slide8">Ruby Turu: Y&ouml;ntemler</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
@@ -3909,7 +5148,7 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">Ruby Turu: Class ve Modüller</a></th>
+        <th><a href="#slide12">Ruby Turu: Class ve Mod&uuml;ller</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
@@ -3921,13 +5160,13 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Müfredat</a></th>
+        <th><a href="#slide14">M&uuml;fredat</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Bölüm 2: Genel</a></th>
+        <th><a href="#slide15">B&ouml;l&uuml;m 2: Genel</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
@@ -3939,7 +5178,7 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Yardım gömme</a></th>
+        <th><a href="#slide17">Yard&#305;m g&ouml;mme</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
@@ -3951,13 +5190,13 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">İsimlendirme Kuralı</a></th>
+        <th><a href="#slide19">&#304;simlendirme Kural&#305;</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
       
       <tr id="toc-row-20">
-        <th><a href="#slide20">Özel karakterler</a></th>
+        <th><a href="#slide20">&Ouml;zel karakterler</a></th>
         <td><a href="#slide20">20</a></td>
       </tr>
       
@@ -3969,25 +5208,25 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-22">
-        <th><a href="#slide22">Beyaz Boşluklar</a></th>
+        <th><a href="#slide22">Beyaz Bo&#351;luklar</a></th>
         <td><a href="#slide22">22</a></td>
       </tr>
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">Beyaz Boşluklar + Fonksiyonlar</a></th>
+        <th><a href="#slide23">Beyaz Bo&#351;luklar + Fonksiyonlar</a></th>
         <td><a href="#slide23">23</a></td>
       </tr>
       
       
       <tr id="toc-row-24">
-        <th><a href="#slide24">Program Kalıpları/Yapıları</a></th>
+        <th><a href="#slide24">Program Kal&#305;plar&#305;/Yap&#305;lar&#305;</a></th>
         <td><a href="#slide24">24</a></td>
       </tr>
       
       
       <tr id="toc-row-25">
-        <th><a href="#slide25">İfade X Deyim</a></th>
+        <th><a href="#slide25">&#304;fade X Deyim</a></th>
         <td><a href="#slide25">25</a></td>
       </tr>
       
@@ -4005,49 +5244,49 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-28">
-        <th><a href="#slide28">Bölüm 3: Veri Türleri ve Nesneler</a></th>
+        <th><a href="#slide28">B&ouml;l&uuml;m 3: Veri T&uuml;rleri ve Nesneler</a></th>
         <td><a href="#slide28">28</a></td>
       </tr>
       
       
       <tr id="toc-row-29">
-        <th><a href="#slide29">3.1 Sayılar</a></th>
+        <th><a href="#slide29">3.1 Say&#305;lar</a></th>
         <td><a href="#slide29">29</a></td>
       </tr>
       
       
       <tr id="toc-row-30">
-        <th><a href="#slide30">3.1.1 Tamsayı sabitleri</a></th>
+        <th><a href="#slide30">3.1.1 Tamsay&#305; sabitleri</a></th>
         <td><a href="#slide30">30</a></td>
       </tr>
       
       
       <tr id="toc-row-31">
-        <th><a href="#slide31">3.1.2 Gerçel sayı sabitleri</a></th>
+        <th><a href="#slide31">3.1.2 Ger&ccedil;el say&#305; sabitleri</a></th>
         <td><a href="#slide31">31</a></td>
       </tr>
       
       
       <tr id="toc-row-32">
-        <th><a href="#slide32">3.1.3 Aritmetik işlemler</a></th>
+        <th><a href="#slide32">3.1.3 Aritmetik i&#351;lemler</a></th>
         <td><a href="#slide32">32</a></td>
       </tr>
       
       
       <tr id="toc-row-33">
-        <th><a href="#slide33">Modül</a></th>
+        <th><a href="#slide33">Mod&uuml;l</a></th>
         <td><a href="#slide33">33</a></td>
       </tr>
       
       
       <tr id="toc-row-34">
-        <th><a href="#slide34">Bit düzeyi erişim</a></th>
+        <th><a href="#slide34">Bit d&uuml;zeyi eri&#351;im</a></th>
         <td><a href="#slide34">34</a></td>
       </tr>
       
       
       <tr id="toc-row-35">
-        <th><a href="#slide35">3.1.4 İkil kayar noktalı sayılar ve yuvarlama hataları</a></th>
+        <th><a href="#slide35">3.1.4 &#304;kil kayar noktal&#305; say&#305;lar ve yuvarlama hatalar&#305;</a></th>
         <td><a href="#slide35">35</a></td>
       </tr>
       
@@ -4059,7 +5298,7 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-37">
-        <th><a href="#slide37">3.2.1.2 Çift tırnak dizgi sabitleri</a></th>
+        <th><a href="#slide37">3.2.1.2 &Ccedil;ift t&#305;rnak dizgi sabitleri</a></th>
         <td><a href="#slide37">37</a></td>
       </tr>
       
@@ -4071,25 +5310,25 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-39">
-        <th><a href="#slide39">3.2.1.4 Keyfi ayırgaç kullanımı</a></th>
+        <th><a href="#slide39">3.2.1.4 Keyfi ay&#305;rga&ccedil; kullan&#305;m&#305;</a></th>
         <td><a href="#slide39">39</a></td>
       </tr>
       
       
       <tr id="toc-row-40">
-        <th><a href="#slide40">3.2.1.5 Here dökümanları</a></th>
+        <th><a href="#slide40">3.2.1.5 Here d&ouml;k&uuml;manlar&#305;</a></th>
         <td><a href="#slide40">40</a></td>
       </tr>
       
       
       <tr id="toc-row-41">
-        <th><a href="#slide41">3.2.1.6 Ters tırnakla komut yürütme</a></th>
+        <th><a href="#slide41">3.2.1.6 Ters t&#305;rnakla komut y&uuml;r&uuml;tme</a></th>
         <td><a href="#slide41">41</a></td>
       </tr>
       
       
       <tr id="toc-row-42">
-        <th><a href="#slide42">3.2.1.7 Dizgi sabitleri ve değiştirilebilirlik</a></th>
+        <th><a href="#slide42">3.2.1.7 Dizgi sabitleri ve de&#287;i&#351;tirilebilirlik</a></th>
         <td><a href="#slide42">42</a></td>
       </tr>
       
@@ -4101,13 +5340,13 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-44">
-        <th><a href="#slide44">3.2.3 Dizgi işleçleri</a></th>
+        <th><a href="#slide44">3.2.3 Dizgi i&#351;le&ccedil;leri</a></th>
         <td><a href="#slide44">44</a></td>
       </tr>
       
       
       <tr id="toc-row-45">
-        <th><a href="#slide45">3.2.4 Karakterlere ve altdizgiere erişim</a></th>
+        <th><a href="#slide45">3.2.4 Karakterlere ve altdizgiere eri&#351;im</a></th>
         <td><a href="#slide45">45</a></td>
       </tr>
       
@@ -4131,8 +5370,188 @@ günceller/ardına ekler</p></li>
       
       
       <tr id="toc-row-49">
-        <th><a href="#slide49">3.4 Çırpı</a></th>
+        <th><a href="#slide49">3.4 &Ccedil;&#305;rp&#305;</a></th>
         <td><a href="#slide49">49</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-50">
+        <th><a href="#slide50">Hash Literals</a></th>
+        <td><a href="#slide50">50</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-51">
+        <th><a href="#slide51">3.5 Range</a></th>
+        <td><a href="#slide51">51</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-52">
+        <th><a href="#slide52">Range Dola&#351;&#305;m</a></th>
+        <td><a href="#slide52">52</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-53">
+        <th><a href="#slide53">3.6 Semboller</a></th>
+        <td><a href="#slide53">53</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-54">
+        <th><a href="#slide54">3.7 True, False, and Nil</a></th>
+        <td><a href="#slide54">54</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-55">
+        <th><a href="#slide55">3.8 Nesneler</a></th>
+        <td><a href="#slide55">55</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-56">
+        <th><a href="#slide56">Nesne &Ouml;mr&uuml;</a></th>
+        <td><a href="#slide56">56</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-57">
+        <th><a href="#slide57">Nesne S&#305;n&#305;flar&#305; ve T&uuml;rleri</a></th>
+        <td><a href="#slide57">57</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-58">
+        <th><a href="#slide58">Nesne: Kar&#351;&#305;la&#351;t&#305;rma</a></th>
+        <td><a href="#slide58">58</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-59">
+        <th><a href="#slide59">Nesne E&#351;itli&#287;i</a></th>
+        <td><a href="#slide59">59</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-60">
+        <th><a href="#slide60">== &#304;&#351;leci</a></th>
+        <td><a href="#slide60">60</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-61">
+        <th><a href="#slide61">eql? y&ouml;ntemi</a></th>
+        <td><a href="#slide61">61</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-62">
+        <th><a href="#slide62">Di&#287;er yayg&#305;n i&#351;le&ccedil;ler</a></th>
+        <td><a href="#slide62">62</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-63">
+        <th><a href="#slide63">Nesne D&ouml;n&uuml;&#351;&uuml;mleri</a></th>
+        <td><a href="#slide63">63</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-64">
+        <th><a href="#slide64">Dondurma</a></th>
+        <td><a href="#slide64">64</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-65">
+        <th><a href="#slide65">B&ouml;l&uuml;m 4: &#304;fadeler ve &#304;&#351;le&ccedil;ler</a></th>
+        <td><a href="#slide65">65</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-66">
+        <th><a href="#slide66">Sabitler</a></th>
+        <td><a href="#slide66">66</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-67">
+        <th><a href="#slide67">K&#305;sa k&#305;sa</a></th>
+        <td><a href="#slide67">67</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-68">
+        <th><a href="#slide68">Paralel Atama</a></th>
+        <td><a href="#slide68">68</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-69">
+        <th><a href="#slide69">Operator</a></th>
+        <td><a href="#slide69">69</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-70">
+        <th><a href="#slide70">B&ouml;l&uuml;m 5: &#304;fadeler ve Denetim Yap&#305;lar&#305;</a></th>
+        <td><a href="#slide70">70</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-71">
+        <th><a href="#slide71">Ko&#351;ulland&#305;rma: if</a></th>
+        <td><a href="#slide71">71</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-72">
+        <th><a href="#slide72">else</a></th>
+        <td><a href="#slide72">72</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-73">
+        <th><a href="#slide73">elsif</a></th>
+        <td><a href="#slide73">73</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-74">
+        <th><a href="#slide74">return</a></th>
+        <td><a href="#slide74">74</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-75">
+        <th><a href="#slide75">Tek sat&#305;rl&#305;</a></th>
+        <td><a href="#slide75">75</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-76">
+        <th><a href="#slide76">unless</a></th>
+        <td><a href="#slide76">76</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-77">
+        <th><a href="#slide77">case</a></th>
+        <td><a href="#slide77">77</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-78">
+        <th><a href="#slide78">ternary</a></th>
+        <td><a href="#slide78">78</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-79">
+        <th><a href="#slide79">D&ouml;ng&uuml;</a></th>
+        <td><a href="#slide79">79</a></td>
       </tr>
       
       

@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>SSO</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/sso">http://seyyah.me/p/sso</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1639,10 +1647,14 @@ div.slide {
             
             
             <section><ul>
-<li><p><a href="https://github.com/19test/sso-devise-omniauth-client">Client</a>,
-<a href="http://sso-client1.herokuapp.com">Heroku</a></p></li>
-<li><p><a href="https://github.com/19test/sso-devise-omniauth-provider">Provider</a>,
-<a href="http://sso-provider-ustad.herokuapp.com">Heroku</a></p></li>
+<li>
+<p><a href="https://github.com/19test/sso-devise-omniauth-client">Client</a>,
+  <a href="http://sso-client1.herokuapp.com">Heroku</a></p>
+</li>
+<li>
+<p><a href="https://github.com/19test/sso-devise-omniauth-provider">Provider</a>,
+  <a href="http://sso-provider-ustad.herokuapp.com">Heroku</a></p>
+</li>
 </ul></section>
             
           </div>
@@ -1675,27 +1687,37 @@ div.slide {
             
             <section><ul>
 <li><a href="https://github.com/diaspora/diaspora/wiki/Howto-setup-services">Twitter, Facebook
-vs Ayar</a></li>
+  vs Ayar</a></li>
 </ul>
-
 <blockquote>
-<p>resimlerle anlatım</p>
+<p>resimlerle anlat&#305;m</p>
 </blockquote>
-
 <ul>
 <li><a href="https://github.com/hulihanapplications/authbuttons-rails">https://github.com/hulihanapplications/authbuttons-rails</a></li>
-<li><p><a href="http://blog.joshsoftware.com/2010/12/16/multiple-applications-with-devise-omniauth-and-single-sign-on/">Multiple Applications with Devise, Omniauth and Single Sign On</a></p></li>
-<li><p><a href="http://andrewrdavis.net/2012/01/28/rails-devise-omniauth-heroku-facebook-twitter-and-google/">http://andrewrdavis.net/2012/01/28/rails-devise-omniauth-heroku-facebook-twitter-and-google/</a></p></li>
-<li><p><a href="https://github.com/nbudin/devise_cas_authenticatable">https://github.com/nbudin/devise_cas_authenticatable</a></p></li>
+<li>
+<p><a href="http://blog.joshsoftware.com/2010/12/16/multiple-applications-with-devise-omniauth-and-single-sign-on/">Multiple Applications with Devise, Omniauth and Single Sign On</a></p>
+</li>
+<li>
+<p><a href="http://andrewrdavis.net/2012/01/28/rails-devise-omniauth-heroku-facebook-twitter-and-google/">http://andrewrdavis.net/2012/01/28/rails-devise-omniauth-heroku-facebook-twitter-and-google/</a></p>
+</li>
+<li>
+<p><a href="https://github.com/nbudin/devise_cas_authenticatable">https://github.com/nbudin/devise_cas_authenticatable</a></p>
+</li>
 </ul>
-
-<h2>Diğer</h2>
-
+<h2>Di&#287;er</h2>
 <ul>
-<li><p><a href="https://www.ruby-toolbox.com/gems/rubycas-server">https://www.ruby-toolbox.com/gems/rubycas-server</a></p></li>
-<li><p><a href="http://stackoverflow.com/questions/5950866/zendesk-single-sign-on-gem-for-rails-3">http://stackoverflow.com/questions/5950866/zendesk-single-sign-on-gem-for-rails-3</a></p></li>
-<li><p><a href="http://www.ruby-forum.com/topic/3544034">http://www.ruby-forum.com/topic/3544034</a></p></li>
-<li><p><a href="http://itshouldbeuseful.wordpress.com/2011/02/02/rails-authlogic-and-single-sign-on/">http://itshouldbeuseful.wordpress.com/2011/02/02/rails-authlogic-and-single-sign-on/</a></p></li>
+<li>
+<p><a href="https://www.ruby-toolbox.com/gems/rubycas-server">https://www.ruby-toolbox.com/gems/rubycas-server</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/5950866/zendesk-single-sign-on-gem-for-rails-3">http://stackoverflow.com/questions/5950866/zendesk-single-sign-on-gem-for-rails-3</a></p>
+</li>
+<li>
+<p><a href="http://www.ruby-forum.com/topic/3544034">http://www.ruby-forum.com/topic/3544034</a></p>
+</li>
+<li>
+<p><a href="http://itshouldbeuseful.wordpress.com/2011/02/02/rails-authlogic-and-single-sign-on/">http://itshouldbeuseful.wordpress.com/2011/02/02/rails-authlogic-and-single-sign-on/</a></p>
+</li>
 </ul></section>
             
           </div>

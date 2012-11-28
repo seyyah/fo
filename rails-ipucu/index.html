@@ -27,7 +27,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta id="viewport" name="viewport" content="user-scalable=no" />
-    <title>Rails: İpucu</title>
+    <title>Rails: &#304;pucu</title>
     <!-- Styles -->
     
     <style type="text/css" media="print">
@@ -319,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1524,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1569,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1594,18 +1609,13 @@ div.slide {
         <div class="slide first has_qr">
           <div class="inner">
             
-            <header><h1>Rails: İpucu</h1></header>
+            <header><h1>Rails: &#304;pucu</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/rails-ipucu">http://seyyah.me/p/rails-ipucu</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1751,13 +1761,11 @@ div.slide {
             <header><h1>before_filter</h1></header>
             
             
-            <section><p><code>controller</code> ve <code>action</code>&#39;a bağlı işler yapmak istenirse,</p>
-
+            <section><p><code>controller</code> ve <code>action</code>&lsquo;a ba&#287;l&#305; i&#351;ler yapmak istenirse,</p>
 <div class="highlight"><pre><span class="n">before_filter</span> <span class="p">{</span> <span class="o">|</span><span class="n">controller</span><span class="o">|</span>
   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;Running before the </span><span class="si">#{</span><span class="n">controller</span><span class="o">.</span><span class="n">action_name</span><span class="si">}</span><span class="s2"> action&quot;</span>
 <span class="p">}</span>
 </pre></div>
-
 
 <p>Kaynak: <a href="http://stackoverflow.com/a/2747748/1325624">http://stackoverflow.com/a/2747748/1325624</a></p></section>
             
@@ -1817,18 +1825,15 @@ div.slide {
             <header><h1>Eager Loading</h1></header>
             
             
-            <section><p>Eager loading, bağlantılı modellerde daha az veritabanı sorgusunu sağlar. Şöyle
+            <section><p>Eager loading, ba&#287;lant&#305;l&#305; modellerde daha az veritaban&#305; sorgusunu sa&#287;lar. &#350;&ouml;yle
 bir modelimiz olsun,</p>
-
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">belongs_to</span> <span class="ss">:author</span>
   <span class="n">has_many</span>   <span class="ss">:comments</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>şöyle bir sorgu çekildiğinde,</p>
-
+<p>&#351;&ouml;yle bir sorgu &ccedil;ekildi&#287;inde,</p>
 <div class="highlight"><pre><span class="no">Post</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">&quot;Post:            &quot;</span> <span class="o">+</span> <span class="n">post</span><span class="o">.</span><span class="n">title</span>
   <span class="nb">puts</span> <span class="s2">&quot;Written by:      &quot;</span> <span class="o">+</span> <span class="n">post</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">name</span>
@@ -1836,20 +1841,16 @@ bir modelimiz olsun,</p>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>ve 100 adet Post varsa <code>title</code> için <code>1</code>, <code>author.name</code> için <code>100</code> ve
-<code>comments.*</code> için <code>100</code> sorgu çekilmek zorunda kalır. Dolayısıyla toplamda <code>201</code>
+<p>ve 100 adet Post varsa <code>title</code> i&ccedil;in <code>1</code>, <code>author.name</code> i&ccedil;in <code>100</code> ve
+<code>comments.*</code> i&ccedil;in <code>100</code> sorgu &ccedil;ekilmek zorunda kal&#305;r. Dolay&#305;s&#305;yla toplamda <code>201</code>
 sorgu yapar.</p>
-
-<p><code>belongs_to</code> ilişkisini dikkate alması söylersek,</p>
-
+<p><code>belongs_to</code> ili&#351;kisini dikkate almas&#305; s&ouml;ylersek,</p>
 <div class="highlight"><pre><span class="no">Post</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:author</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
 </pre></div>
 
-
-<p>Post&#39;lar yüklendikten sonra, herbirinden <code>author_id</code>&#39;leri toplar ve bir sorguda
-tüm author referanslarını yükler. Dolayısıyla sorgu sayısı <code>201</code> den <code>102</code>&#39;e
-düşer.</p></section>
+<p>Post&rsquo;lar y&uuml;klendikten sonra, herbirinden <code>author_id</code>&lsquo;leri toplar ve bir sorguda
+t&uuml;m author referanslar&#305;n&#305; y&uuml;kler. Dolay&#305;s&#305;yla sorgu say&#305;s&#305; <code>201</code> den <code>102</code>&lsquo;e
+d&uuml;&#351;er.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1879,17 +1880,13 @@ düşer.</p></section>
             <header><h1>Eager Loading: derinlemesine</h1></header>
             
             
-            <section><p>Comment&#39;leri de benzer biçimde yükletirsek,</p>
-
+            <section><p>Comment&rsquo;leri de benzer bi&ccedil;imde y&uuml;kletirsek,</p>
 <div class="highlight"><pre><span class="no">Post</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:author</span><span class="p">,</span> <span class="ss">:comments</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
 </pre></div>
 
-
-<p>Tek sorguyla comment&#39;ler de yüklenince <code>201</code>&#39;den <code>3</code>&#39;e inmiş oluruz.</p>
-
-<p>Daha derinlere gitmek istersen comment&#39;in author&#39;u ve hatta gravatar&#39;larını da
-yükleyeceğim dersek,</p>
-
+<p>Tek sorguyla comment&rsquo;ler de y&uuml;klenince <code>201</code>&lsquo;den <code>3</code>&lsquo;e inmi&#351; oluruz.</p>
+<p>Daha derinlere gitmek istersen comment&rsquo;in author&rsquo;u ve hatta gravatar&rsquo;lar&#305;n&#305; da
+y&uuml;kleyece&#287;im dersek,</p>
 <div class="highlight"><pre><span class="no">Post</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:author</span><span class="p">,</span> <span class="p">{</span><span class="n">comments</span><span class="p">:</span> <span class="p">{</span><span class="n">author</span><span class="p">:</span> <span class="ss">:gravatar</span><span class="p">}})</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
 </pre></div>
 </section>
@@ -1922,16 +1919,13 @@ yükleyeceğim dersek,</p>
             <header><h1>Eager Loading: conditions</h1></header>
             
             
-            <section><p>Gereksiz kayıtların getirildiği şöylesi bir sorguyu,</p>
-
+            <section><p>Gereksiz kay&#305;tlar&#305;n getirildi&#287;i &#351;&ouml;ylesi bir sorguyu,</p>
 <div class="highlight"><pre><span class="no">Post</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="o">[</span><span class="ss">:author</span><span class="p">,</span> <span class="ss">:comments</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
   <span class="o">[</span><span class="s1">&#39;comments.approved = ?&#39;</span><span class="p">,</span> <span class="kp">true</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">all</span>
 </pre></div>
 
-
-<p>comment&#39;lerden approved edilmemişlerin include işleminde yüklenmesine gerek yok!
-Bunu şöyle sağlarız,</p>
-
+<p>comment&rsquo;lerden approved edilmemi&#351;lerin include i&#351;leminde y&uuml;klenmesine gerek yok!
+Bunu &#351;&ouml;yle sa&#287;lar&#305;z,</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">has_many</span> <span class="ss">:approved_comments</span><span class="p">,</span> <span class="n">class_name</span><span class="p">:</span> <span class="s1">&#39;Comment&#39;</span><span class="p">,</span>
            <span class="n">conditions</span><span class="p">:</span> <span class="o">[</span><span class="s1">&#39;approved = ?&#39;</span><span class="p">,</span> <span class="kp">true</span><span class="o">]</span>
@@ -1940,9 +1934,7 @@ Bunu şöyle sağlarız,</p>
 <span class="no">Post</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:approved_comments</span><span class="p">)</span>
 </pre></div>
 
-
-<p>limit seçeneği de belirtilebilir,</p>
-
+<p>limit se&ccedil;ene&#287;i de belirtilebilir,</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Picture</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">has_many</span> <span class="ss">:most_recent_comments</span><span class="p">,</span> <span class="n">class_name</span><span class="p">:</span> <span class="s1">&#39;Comment&#39;</span><span class="p">,</span>
            <span class="n">order</span><span class="p">:</span> <span class="s1">&#39;id DESC&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="mi">10</span>
@@ -1981,8 +1973,7 @@ Bunu şöyle sağlarız,</p>
             <header><h1>Eager Loading: polymorphic</h1></header>
             
             
-            <section><p>polymorphic bağlarda da kullanılabilir,</p>
-
+            <section><p>polymorphic ba&#287;larda da kullan&#305;labilir,</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Address</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">belongs_to</span> <span class="ss">:addressable</span><span class="p">,</span> <span class="ss">:polymorphic</span> <span class="o">=&gt;</span> <span class="kp">true</span>
 <span class="k">end</span>
@@ -1990,9 +1981,7 @@ Bunu şöyle sağlarız,</p>
 <span class="no">Address</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:addressable</span><span class="p">)</span>
 </pre></div>
 
-
 <p>Kaynak</p>
-
 <ul>
 <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html">http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html</a></li>
 <li><a href="http://guides.rubyonrails.org/association_basics.html">http://guides.rubyonrails.org/association_basics.html</a></li>
@@ -2027,9 +2016,7 @@ Bunu şöyle sağlarız,</p>
             
             
             <section><h2>::MultiparameterAssignmentErrors</h2>
-
-<p>Örnek</p>
-
+<p>&Ouml;rnek</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">foo</span>
   <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 <span class="k">rescue</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">MultiparameterAssignmentErrors</span>
@@ -2039,9 +2026,7 @@ Bunu şöyle sağlarız,</p>
 <span class="k">end</span>
 </pre></div>
 
-
 <p>Kaynak</p>
-
 <ul>
 <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">http://api.rubyonrails.org/classes/ActiveRecord/Base.html</a></li>
 </ul></section>
@@ -2102,8 +2087,7 @@ Bunu şöyle sağlarız,</p>
             <header><h1>new</h1></header>
             
             
-            <section><p>Amacım mysql ile başlamak ve test-unit&#39;lerini atlamak</p>
-
+            <section><p>Amac&#305;m mysql ile ba&#351;lamak ve test-unit&rsquo;lerini atlamak</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails <span class="nb">help </span>new
 <span class="nv">$ </span>rails new Edessa --skip-test-unit --database<span class="o">=</span>mysql
 </pre></div>
@@ -2137,20 +2121,17 @@ Bunu şöyle sağlarız,</p>
             <header><h1>Generator: model</h1></header>
             
             
-            <section><p>Model oluştururken,</p>
-
+            <section><p>Model olu&#351;tururken,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails g model QuestionGroup title_tr efp:references
 </pre></div>
 
-
 <p>Checklist,</p>
-
 <ol>
-<li>Model dosyasını düzenle</li>
-<li>Migration dosyasını düzenle</li>
+<li>Model dosyas&#305;n&#305; d&uuml;zenle</li>
+<li>Migration dosyas&#305;n&#305; d&uuml;zenle</li>
 <li><code>rake db:migrate</code></li>
-<li>Gerekiyorsa seed dosyasını düzenle</li>
-<li>Gerekiyorsa factorygirl tanımını güncelle</li>
+<li>Gerekiyorsa seed dosyas&#305;n&#305; d&uuml;zenle</li>
+<li>Gerekiyorsa factorygirl tan&#305;m&#305;n&#305; g&uuml;ncelle</li>
 </ol></section>
             
           </div>
@@ -2181,8 +2162,7 @@ Bunu şöyle sağlarız,</p>
             <header><h1>Generator: scaffold: only view</h1></header>
             
             
-            <section><p>Evet sadece view üretmek istersek,</p>
-
+            <section><p>Evet sadece view &uuml;retmek istersek,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails generate scaffold Institution --migration<span class="o">=</span><span class="nb">false</span> --skip
 </pre></div>
 </section>
@@ -2240,11 +2220,10 @@ Bunu şöyle sağlarız,</p>
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>İpucu</h1></header>
+            <header><h1>&#304;pucu</h1></header>
             
             
-            <section><p>İpuçları,</p>
-
+            <section><p>&#304;pu&ccedil;lar&#305;,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rake -T
 <span class="nv">$ </span>rake routes
 <span class="nv">$ </span>rake db:drop
@@ -2315,13 +2294,10 @@ Bunu şöyle sağlarız,</p>
             
             
             <section><p>Authentication,</p>
-
 <div class="highlight"><pre><span class="o">&gt;</span> <span class="no">User</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="s1">&#39;secret&#39;</span><span class="p">)</span>
 </pre></div>
 
-
 <p>Environment bilgisi,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span>rails console production
 </pre></div>
 </section>
@@ -2382,29 +2358,22 @@ Bunu şöyle sağlarız,</p>
             <header><h1>Heroku</h1></header>
             
             
-            <section><p>Başlarken</p>
-
+            <section><p>Ba&#351;larken</p>
 <pre><code>sudo gem install heroku
 heroku keys:add ~/.ssh/id_dsa.pub
 </code></pre>
-
 <p>Depoda tek dal durumu,</p>
-
 <pre><code>heroku create --stack cedar
 git push heroku master
 heroku run rake db:migrate
 </code></pre>
-
 <p>Birden fazla dal durumu,</p>
-
 <pre><code>heroku create APP_NAME --stack cedar --remote heroku_XX
 git push heroku_XX dal_XX:master
 heroku run rake db:migrate --app APP_NAME
 heroku logs --app APP_NAME
 </code></pre>
-
 <p>precompile,</p>
-
 <div class="highlight"><pre><span class="c1"># config/environments/production.rb</span>
 <span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">compile</span> <span class="o">=</span> <span class="kp">true</span>
 </pre></div>
@@ -2438,8 +2407,7 @@ heroku logs --app APP_NAME
             <header><h1>Unicorn</h1></header>
             
             
-            <section><p>Başlat/durdur,</p>
-
+            <section><p>Ba&#351;lat/durdur,</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo service unicorn start | stop
 </pre></div>
 </section>
@@ -2500,8 +2468,7 @@ heroku logs --app APP_NAME
             <header><h1>Logger</h1></header>
             
             
-            <section><p>Controller&#39;da,</p>
-
+            <section><p>Controller&rsquo;da,</p>
 <div class="highlight"><pre><span class="c1"># foo_controller.rb</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">info</span> <span class="p">{</span> <span class="s2">&quot;foo </span><span class="si">#{</span><span class="n">variable</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
 </pre></div>
@@ -2536,7 +2503,6 @@ heroku logs --app APP_NAME
             
             
             <section><p>Yollardan birisi,</p>
-
 <div class="highlight"><pre><span class="nv">$ </span><span class="nb">time </span>bundle <span class="nb">exec </span>rspec ...
 </pre></div>
 </section>
@@ -2569,8 +2535,7 @@ heroku logs --app APP_NAME
             <header><h1>UTF-8</h1></header>
             
             
-            <section><p>controller vs sayfalarında utf-8 desteği için,</p>
-
+            <section><p>controller vs sayfalar&#305;nda utf-8 deste&#287;i i&ccedil;in,</p>
 <div class="highlight"><pre><span class="c1"># encoding: utf-8</span>
 </pre></div>
 </section>
@@ -2626,7 +2591,7 @@ heroku logs --app APP_NAME
       <caption>Table of Contents</caption>
       
       <tr id="toc-row-1">
-        <th><a href="#slide1">Rails: İpucu</a></th>
+        <th><a href="#slide1">Rails: &#304;pucu</a></th>
         <td><a href="#slide1">1</a></td>
       </tr>
       
@@ -2728,7 +2693,7 @@ heroku logs --app APP_NAME
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">İpucu</a></th>
+        <th><a href="#slide18">&#304;pucu</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       

@@ -304,9 +304,7 @@ pre, code, tt {
 pre, .gist .gist-file .gist-data {
   font-size: 18px;
   max-height: 485px;
-  padding-top: 0.25em !important;
-  padding-right: 0.5em !important;
-  padding-left: 0.5em !important;
+  padding: 0.25em 0.5em !important;
   overflow: auto;
 }
 
@@ -321,6 +319,12 @@ pre, .gist .gist-file .gist-data {
 }
 ::-webkit-scrollbar-corner {
   background: #dedede;
+}
+
+blockquote {
+  border-left: solid 8px #FFF;
+  padding: .1ex 1ex;
+  font-style: italic;
 }
 
 li {
@@ -1526,10 +1530,19 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // hide context on small screens and iframes
+        // handle small screens and iframes
         if (window.screen.availWidth < 1280 || top != self) {
+	    // no context
             hiddenContext = true;
+	    // no background
+	    (document.body || document.getElementsByTagName('body')[0]).style.background = 'none';
         }
+	// show navigator only on touch screens without iframes
+	if ('ontouchstart' in document.documentElement && top == self) {
+		var list = document.getElementsByClassName('navigator');
+		for (var i = 0, el; el = list[i]; i++)
+			el.style.display = '';
+	}
 
         document.addEventListener('keyup', checkModifierKeyUp, false);
         document.addEventListener('keydown', handleBodyKeyDown, false);
@@ -1571,7 +1584,7 @@ div.slide {
 <body>
   <div id="blank"></div>
 
-  <nav id="left">
+  <nav class="navigator" id="left" style="display: none;">
     <menu id="top">
       <button title="Previous slide" id="prev" class="prev">«</button>
       <button title="Next slide" id="next" class="next">»</button>
@@ -1599,15 +1612,10 @@ div.slide {
             <header><h1>Cucumber: Senaryo: Hello World!</h1></header>
             
             
-            <section>
-<p>Nurettin Şenyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
-
+            <section><p>Nurettin &#350;enyer <a href="mailto:seyyah@bil.omu.edu.tr">seyyah@bil.omu.edu.tr</a></p>
 <p><a href="http://seyyah.me">http://seyyah.me</a></p>
-
 <p>Haziran, 2012</p>
-
 <p>Samsun</p>
-
 <p class="qr"><img src="http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=<a href="http://seyyah.me/p/cucumber-senaryo-hello">http://seyyah.me/p/cucumber-senaryo-hello</a>&chf=bg,s,00000000&choe=UTF-8" alt="QR Code" /></p></section>
             
           </div>
@@ -1639,8 +1647,12 @@ div.slide {
             
             
             <section><ul>
-<li><p>The Cucumber Book: Behaviour-Driven Development for Testers and Developers,</p></li>
-<li><p>Matt Wynne and Aslak Hellesoy</p></li>
+<li>
+<p>The Cucumber Book: Behaviour-Driven Development for Testers and Developers,</p>
+</li>
+<li>
+<p>Matt Wynne and Aslak Hellesoy</p>
+</li>
 </ul></section>
             
           </div>
@@ -1672,7 +1684,6 @@ div.slide {
             
             
             <section><p>yaz,</p>
-
 <p><script src="https://gist.github.com/2964925.js?"></script></p></section>
             
           </div>
@@ -1704,7 +1715,6 @@ div.slide {
             
             
             <section><p>yaz,</p>
-
 <div class="highlight"><pre><span class="no">Given</span><span class="sr"> /^I go to the new institution page$/</span> <span class="k">do</span>
   <span class="n">visit</span> <span class="n">new_institution_path</span>
 <span class="k">end</span>
@@ -1752,7 +1762,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m</h1></header>
             
             
           </div>
@@ -1780,7 +1790,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 1</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 1</h1></header>
             
             
             <section><h2>ADIM 1: Given I go to the new institution page</h2></section>
@@ -1810,10 +1820,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 1: a</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 1: a</h1></header>
             
             
-            <section><h3>ADIM 1.a: senaryonun ve adımlarının yazılmasıdır.</h3></section>
+            <section><h3>ADIM 1.a: senaryonun ve ad&#305;mlar&#305;n&#305;n yaz&#305;lmas&#305;d&#305;r.</h3></section>
             
           </div>
           <div class="presenter_notes">
@@ -1840,18 +1850,15 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 1: b</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 1: b</h1></header>
             
             
             <section><h3>ADIM 1.b</h3>
-
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/P2a3al.jpg" alt="hepsi kırmızı"/></p>
-
-<p>Hatanın kaynağı <code>visit new_institution_path</code> de path&#39;in olmayışı.</p></section>
+<p><img alt="hepsi k&#305;rm&#305;z&#305;" src="http://i.imgur.com/P2a3al.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305; <code>visit new_institution_path</code> de path&rsquo;in olmay&#305;&#351;&#305;.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1878,27 +1885,21 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 1: b</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 1: b</h1></header>
             
             
             <section><h3>ADIM 1.b</h3>
-
-<p>Path&#39;i ekleyelim,</p>
-
+<p>Path&rsquo;i ekleyelim,</p>
 <div class="highlight"><pre><span class="c1"># config/routes.rb</span>
 <span class="n">resources</span> <span class="ss">:institutions</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/H52DMl.jpg" alt="fixme"/></p>
-
-<p>Hatanın kaynağı <code>InstitutionsController</code>&#39;u bulamayışıdır.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/H52DMl.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305; <code>InstitutionsController</code>&lsquo;u bulamay&#305;&#351;&#305;d&#305;r.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1925,28 +1926,21 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 1: c</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 1: c</h1></header>
             
             
             <section><h3>ADIM 1.c</h3>
-
-<p>Controller&#39;u oluşturalım,</p>
-
+<p>Controller&rsquo;u olu&#351;tural&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails g controller Institutions new
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/JXPmfl.jpg" alt="fixme"/></p>
-
-<p>Hatanın kaynağı doldurulacak bir formun olmayışı.</p>
-
-<p>Bu arada <code>fill_in</code>, <a href="https://github.com/jnicklas/capybara/blob/master/lib/capybara/node/actions.rb#L36">Capybara: matcher</a>&#39;ından gelir.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/JXPmfl.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305; doldurulacak bir formun olmay&#305;&#351;&#305;.</p>
+<p>Bu arada <code>fill_in</code>, <a href="https://github.com/jnicklas/capybara/blob/master/lib/capybara/node/actions.rb#L36">Capybara: matcher</a>&lsquo;&#305;ndan gelir.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1973,10 +1967,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 2</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 2</h1></header>
             
             
-            <section><h2>ADIM 2: And I fill in &ldquo;Name&rdquo; with &ldquo;OMÜ&rdquo;</h2></section>
+            <section><h2>ADIM 2: And I fill in &ldquo;Name&rdquo; with &ldquo;OM&Uuml;&rdquo;</h2></section>
             
           </div>
           <div class="presenter_notes">
@@ -2003,13 +1997,11 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 2: a</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 2: a</h1></header>
             
             
             <section><h3>ADIM 2.a:</h3>
-
-<p>Form&#39;u hazırla,</p>
-
+<p>Form&rsquo;u haz&#305;rla,</p>
 <div class="highlight"><pre><span class="c1"># new.html.rb</span>
 <span class="o">&lt;</span><span class="sx">%= form_for @institution do |f| %&gt;</span>
 <span class="sx">  &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:name</span> <span class="sx">%&gt;</span>
@@ -2018,16 +2010,12 @@ div.slide {
 <span class="sx">&lt;% end %&gt;</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/CGBaHl.jpg" alt="fixme"/></p>
-
-<p>Hatanın kaynağı model&#39;in instance&#39;ını bulamaması.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/CGBaHl.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305; model&rsquo;in instance&rsquo;&#305;n&#305; bulamamas&#305;.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2054,25 +2042,20 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 2: b</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 2: b</h1></header>
             
             
             <section><h3>ADIM 2.b:</h3>
-
-<p>Controller&#39;a <code>new</code> metodunu ekle,</p>
-
+<p>Controller&rsquo;a <code>new</code> metodunu ekle,</p>
 <div class="highlight"><pre><span class="c1"># app/controllers/institutions_controller.rb</span>
 <span class="k">def</span> <span class="nf">new</span>
   <span class="vi">@institution</span> <span class="o">=</span> <span class="no">Institution</span><span class="o">.</span><span class="n">new</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım: <code>$ cucumber</code></p>
-
-<p><img src="http://i.imgur.com/nqIsjl.jpg" alt="fixme"/></p>
-
-<p>Hatanın kaynağı, model&#39;i bulamamasıdır.</p></section>
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m: <code>$ cucumber</code></p>
+<p><img alt="fixme" src="http://i.imgur.com/nqIsjl.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305;, model&rsquo;i bulamamas&#305;d&#305;r.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2099,28 +2082,22 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 2: c</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 2: c</h1></header>
             
             
             <section><h3>ADIM 2.c:</h3>
-
-<p>Model&#39;i oluştur,</p>
-
+<p>Model&rsquo;i olu&#351;tur,</p>
 <div class="highlight"><pre><span class="c1"># app/models/institution.rb</span>
 <span class="k">class</span> <span class="nc">Institution</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/ABv3Ll.jpg" alt="fixme"/></p>
-
-<p>Hatanın kaynağı, <code>Table &#39;edessa_test.institutions&#39; doesn&#39;t exist</code> yani tablonun olmayışıdır.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/ABv3Ll.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305;, <code>Table 'edessa_test.institutions' doesn't exist</code> yani tablonun olmay&#305;&#351;&#305;d&#305;r.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2147,28 +2124,22 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 2: d</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 2: d</h1></header>
             
             
             <section><h3>ADIM 2.d:</h3>
-
-<p>Migration yapmalısın,</p>
-
+<p>Migration yapmal&#305;s&#305;n,</p>
 <div class="highlight"><pre><span class="nv">$ </span>rails g migration CreateInstitutions name:string
 <span class="nv">$ </span>rake db:migrate
 <span class="nv">$ </span>rake db:test:prepare
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/pEDORl.jpg" alt="fixme"/></p>
-
-<p>Hatanın kaynağı, <code>The action &#39;create&#39; could not ...</code>  <code>create</code> eylemini bulamamasıdır.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/pEDORl.jpg" /></p>
+<p>Hatan&#305;n kayna&#287;&#305;, <code>The action 'create' could not ...</code>  <code>create</code> eylemini bulamamas&#305;d&#305;r.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2195,7 +2166,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 3</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 3</h1></header>
             
             
             <section><h2>ADIM 3: When I press &ldquo;Create&rdquo;</h2></section>
@@ -2225,25 +2196,20 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 3: a</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 3: a</h1></header>
             
             
             <section><h3>ADIM 3.a:</h3>
-
-<p>Controller:create metodunu oluşturalım,</p>
-
+<p>Controller:create metodunu olu&#351;tural&#305;m,</p>
 <div class="highlight"><pre><span class="c1"># app/controllers/institutions_controller.rb</span>
 <span class="k">def</span> <span class="nf">create</span>
   <span class="n">redirect_to</span> <span class="n">institutions_path</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım: <code>$ cucumber</code></p>
-
-<p><img src="http://i.imgur.com/N1nSXl.jpg" alt="fixme"/></p>
-
-<p>Template model oluşturulurken verildiğinden bu aşama yeşillendi. Hata, index sayfası &ldquo;List Institutions&rdquo; içermelidir.</p></section>
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m: <code>$ cucumber</code></p>
+<p><img alt="fixme" src="http://i.imgur.com/N1nSXl.jpg" /></p>
+<p>Template model olu&#351;turulurken verildi&#287;inden bu a&#351;ama ye&#351;illendi. Hata, index sayfas&#305; &ldquo;List Institutions&rdquo; i&ccedil;ermelidir.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2270,7 +2236,7 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 4</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 4</h1></header>
             
             
             <section><h2>ADIM 4: Then I should be on the institution list page</h2></section>
@@ -2300,27 +2266,21 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 4: a</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 4: a</h1></header>
             
             
             <section><h3>ADIM 4.a:</h3>
-
-<p>View:list oluşturalım,</p>
-
+<p>View:list olu&#351;tural&#305;m,</p>
 <div class="highlight"><pre><span class="c1"># app/views/institutions/index.html.erb</span>
 <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="no">List</span> <span class="no">Institutions</span><span class="o">&lt;</span><span class="sr">/h2&gt;</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/XqnYul.jpg" alt="fixme"/></p>
-
-<p>Bu aşamada yeşillendi. Fakat listede &ldquo;OMÜ&rdquo; olmamasına kızıyor.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/XqnYul.jpg" /></p>
+<p>Bu a&#351;amada ye&#351;illendi. Fakat listede &ldquo;OM&Uuml;&rdquo; olmamas&#305;na k&#305;z&#305;yor.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2347,10 +2307,10 @@ div.slide {
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 5</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 5</h1></header>
             
             
-            <section><h2>ADIM 5: And I should see &ldquo;OMÜ&rdquo;</h2></section>
+            <section><h2>ADIM 5: And I should see &ldquo;OM&Uuml;&rdquo;</h2></section>
             
           </div>
           <div class="presenter_notes">
@@ -2377,27 +2337,21 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 5: a</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 5: a</h1></header>
             
             
-            <section><h3>ADIM 5.a: önce institutions listesini basmayı deneyelim.</h3>
-
-<p>View:list, institutions&#39;ları dikkate alsın,</p>
-
+            <section><h3>ADIM 5.a: &ouml;nce institutions listesini basmay&#305; deneyelim.</h3>
+<p>View:list, institutions&rsquo;lar&#305; dikkate als&#305;n,</p>
 <div class="highlight"><pre><span class="c1"># app/views/institutions/index.html.erb</span>
 <span class="o">&lt;%=</span> <span class="n">render</span> <span class="vi">@institutions</span> <span class="o">%&gt;</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/PbhfGl.jpg" alt="fixme"/></p>
-
-<p>Hata var çünkü <code>@institutions</code> değişkeni ilgili kontrollerda <code>index</code> eylemiyle doldurulmamış.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/PbhfGl.jpg" /></p>
+<p>Hata var &ccedil;&uuml;nk&uuml; <code>@institutions</code> de&#287;i&#351;keni ilgili kontrollerda <code>index</code> eylemiyle doldurulmam&#305;&#351;.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2424,13 +2378,11 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 5: b</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 5: b</h1></header>
             
             
-            <section><h3>ADIM 5.b: index ve create eylemini güncelle.</h3>
-
-<p>Controller:create ve :index&#39;i güncelle,</p>
-
+            <section><h3>ADIM 5.b: index ve create eylemini g&uuml;ncelle.</h3>
+<p>Controller:create ve :index&rsquo;i g&uuml;ncelle,</p>
 <div class="highlight"><pre><span class="c1"># app/controllers/institutions_controller.rb</span>
 <span class="k">def</span> <span class="nf">index</span>
   <span class="vi">@institutions</span> <span class="o">=</span> <span class="no">Institution</span><span class="o">.</span><span class="n">all</span>
@@ -2442,12 +2394,9 @@ div.slide {
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım: <code>$ cucumber</code></p>
-
-<p>Hata, <code>Can&#39;t mass-assign protected attributes: name</code>.</p>
-
-<p><img src="http://i.imgur.com/ctyqHl.jpg" alt="fixme"/></p></section>
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m: <code>$ cucumber</code></p>
+<p>Hata, <code>Can't mass-assign protected attributes: name</code>.</p>
+<p><img alt="fixme" src="http://i.imgur.com/ctyqHl.jpg" /></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2474,28 +2423,22 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 5: c</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 5: c</h1></header>
             
             
             <section><h3>ADIM 5.c:</h3>
-
-<p>Model:name erişim izni ver,</p>
-
+<p>Model:name eri&#351;im izni ver,</p>
 <div class="highlight"><pre><span class="c1"># app/models/institutions.rb</span>
 <span class="k">class</span> <span class="nc">Institution</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">attr_accessible</span> <span class="ss">:name</span>
 <span class="k">end</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/ZXqp2l.jpg" alt="fixme"/></p>
-
+<p><img alt="fixme" src="http://i.imgur.com/ZXqp2l.jpg" /></p>
 <p>Hata, <code>Missing partial institutions/institution with ...</code>.</p></section>
             
           </div>
@@ -2523,27 +2466,21 @@ div.slide {
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Adımlayalım: Adım 5: d</h1></header>
+            <header><h1>Ad&#305;mlayal&#305;m: Ad&#305;m 5: d</h1></header>
             
             
             <section><h3>ADIM 5.d:</h3>
-
-<p>View:form oluşturalım,</p>
-
+<p>View:form olu&#351;tural&#305;m,</p>
 <div class="highlight"><pre><span class="c1">#app/views/institutions/_institution.html.erb</span>
 <span class="o">&lt;%=</span> <span class="n">institution</span><span class="o">.</span><span class="n">name</span> <span class="o">%&gt;</span>
 </pre></div>
 
-
-<p>Testleri çalıştıralım,</p>
-
+<p>Testleri &ccedil;al&#305;&#351;t&#305;ral&#305;m,</p>
 <div class="highlight"><pre><span class="nv">$ </span>cucumber
 </pre></div>
 
-
-<p><img src="http://i.imgur.com/trO59l.jpg" alt="fixme"/></p>
-
-<p>Tamamı yeşillendi.</p></section>
+<p><img alt="fixme" src="http://i.imgur.com/trO59l.jpg" /></p>
+<p>Tamam&#305; ye&#351;illendi.</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -2630,121 +2567,121 @@ div.slide {
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">Adımlayalım</a></th>
+        <th><a href="#slide5">Ad&#305;mlayal&#305;m</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">Adımlayalım: Adım 1</a></th>
+        <th><a href="#slide6">Ad&#305;mlayal&#305;m: Ad&#305;m 1</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Adımlayalım: Adım 1: a</a></th>
+        <th><a href="#slide7">Ad&#305;mlayal&#305;m: Ad&#305;m 1: a</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Adımlayalım: Adım 1: b</a></th>
+        <th><a href="#slide8">Ad&#305;mlayal&#305;m: Ad&#305;m 1: b</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Adımlayalım: Adım 1: b</a></th>
+        <th><a href="#slide9">Ad&#305;mlayal&#305;m: Ad&#305;m 1: b</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
       
       <tr id="toc-row-10">
-        <th><a href="#slide10">Adımlayalım: Adım 1: c</a></th>
+        <th><a href="#slide10">Ad&#305;mlayal&#305;m: Ad&#305;m 1: c</a></th>
         <td><a href="#slide10">10</a></td>
       </tr>
       
       
       <tr id="toc-row-11">
-        <th><a href="#slide11">Adımlayalım: Adım 2</a></th>
+        <th><a href="#slide11">Ad&#305;mlayal&#305;m: Ad&#305;m 2</a></th>
         <td><a href="#slide11">11</a></td>
       </tr>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">Adımlayalım: Adım 2: a</a></th>
+        <th><a href="#slide12">Ad&#305;mlayal&#305;m: Ad&#305;m 2: a</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Adımlayalım: Adım 2: b</a></th>
+        <th><a href="#slide13">Ad&#305;mlayal&#305;m: Ad&#305;m 2: b</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Adımlayalım: Adım 2: c</a></th>
+        <th><a href="#slide14">Ad&#305;mlayal&#305;m: Ad&#305;m 2: c</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Adımlayalım: Adım 2: d</a></th>
+        <th><a href="#slide15">Ad&#305;mlayal&#305;m: Ad&#305;m 2: d</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Adımlayalım: Adım 3</a></th>
+        <th><a href="#slide16">Ad&#305;mlayal&#305;m: Ad&#305;m 3</a></th>
         <td><a href="#slide16">16</a></td>
       </tr>
       
       
       <tr id="toc-row-17">
-        <th><a href="#slide17">Adımlayalım: Adım 3: a</a></th>
+        <th><a href="#slide17">Ad&#305;mlayal&#305;m: Ad&#305;m 3: a</a></th>
         <td><a href="#slide17">17</a></td>
       </tr>
       
       
       <tr id="toc-row-18">
-        <th><a href="#slide18">Adımlayalım: Adım 4</a></th>
+        <th><a href="#slide18">Ad&#305;mlayal&#305;m: Ad&#305;m 4</a></th>
         <td><a href="#slide18">18</a></td>
       </tr>
       
       
       <tr id="toc-row-19">
-        <th><a href="#slide19">Adımlayalım: Adım 4: a</a></th>
+        <th><a href="#slide19">Ad&#305;mlayal&#305;m: Ad&#305;m 4: a</a></th>
         <td><a href="#slide19">19</a></td>
       </tr>
       
       
       <tr id="toc-row-20">
-        <th><a href="#slide20">Adımlayalım: Adım 5</a></th>
+        <th><a href="#slide20">Ad&#305;mlayal&#305;m: Ad&#305;m 5</a></th>
         <td><a href="#slide20">20</a></td>
       </tr>
       
       
       <tr id="toc-row-21">
-        <th><a href="#slide21">Adımlayalım: Adım 5: a</a></th>
+        <th><a href="#slide21">Ad&#305;mlayal&#305;m: Ad&#305;m 5: a</a></th>
         <td><a href="#slide21">21</a></td>
       </tr>
       
       
       <tr id="toc-row-22">
-        <th><a href="#slide22">Adımlayalım: Adım 5: b</a></th>
+        <th><a href="#slide22">Ad&#305;mlayal&#305;m: Ad&#305;m 5: b</a></th>
         <td><a href="#slide22">22</a></td>
       </tr>
       
       
       <tr id="toc-row-23">
-        <th><a href="#slide23">Adımlayalım: Adım 5: c</a></th>
+        <th><a href="#slide23">Ad&#305;mlayal&#305;m: Ad&#305;m 5: c</a></th>
         <td><a href="#slide23">23</a></td>
       </tr>
       
       
       <tr id="toc-row-24">
-        <th><a href="#slide24">Adımlayalım: Adım 5: d</a></th>
+        <th><a href="#slide24">Ad&#305;mlayal&#305;m: Ad&#305;m 5: d</a></th>
         <td><a href="#slide24">24</a></td>
       </tr>
       
