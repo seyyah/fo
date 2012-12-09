@@ -1216,3 +1216,80 @@ Ayrıca,
 
 # Döngü
 
+Örnek,
+
+    !ruby
+    x = 10
+    while x >= 0 do
+      puts x
+      x = x - 1
+    end
+
+    x = 0
+    until x > 10 do
+      puts x
+      x = x + 1
+    end
+
+---
+
+# Döngü: modifier
+
+Örnek,
+
+    !ruby
+    x = 0
+    puts x = x + 1 while x < 10
+
+    x = 0
+    while x < 10 do puts x = x + 1 end
+
+    a = [1, 2, 3]
+    puts a.pop until a.empty?
+
+    x = 10
+    begin
+      puts x
+      x = x - 1
+    end until x == 0
+
+---
+
+# for-in
+
+Örnek,
+
+    !ruby
+    array = [1,2,3,4,5]
+    for element in array
+      puts element
+    end
+
+    hash = {a: 1, b: 2, c: 3}
+    for key,value in hash
+      puts "#{key}: #{value}"
+    end
+
+    hash = {a: 1, b: 2, c: 3}
+    hash.each do |key, value|
+      puts "#{key}: #{value}"
+    end
+
+---
+
+# Iterator ve Enumerable Nesneleri
+
+Örnek,
+
+    !ruby
+    3.times { puts "thank you!" }
+    data.each {|x| puts x }
+    [1,2,3].map {|x| x * x }
+    factorial = 1
+    2.upto(n) {|x| factorial * = x }
+
+Burada,
+
+- times, each, map ve upto: iterator
+- blokla etkileşir
+- karmaşık yapının arkasında `yield` vardır
