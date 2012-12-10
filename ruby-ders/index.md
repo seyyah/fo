@@ -1031,7 +1031,7 @@ Kod,
     x, y, *z = 1, *[2,3,4] # x=1; y=2; z=[3,4]
 
     x,y,z = 1,[2,3]    # x=1; y=[2,3]; z=nil
-    x,(y,z) = 1,[2,3]  # x=1; y=2; z=3
+    x,(y,z) = 1,[2,3]  # x=1; y=2; z=3 #*
 
 ---
 
@@ -1086,7 +1086,7 @@ Koşul: else
 
     !ruby
     if data
-      data << x
+      data << x # >>
     else
       data = [x]
     end
@@ -1215,4 +1215,412 @@ Ayrıca,
 ---
 
 # Döngü
+
+- while, until, for
+
+---
+
+#   while ve until
+
+Kod,
+
+    !ruby
+    x = 10
+    while x >= 0 do # -u sürece
+      puts x
+      x = x - 1
+    end
+
+    x = 0
+    until x > 10 do # -e kadar
+      puts x
+      x = x + 1
+    end
+
+---
+
+#   Modifier
+
+Kod,
+
+    !ruby
+    x = 0
+    puts x = x + 1 while x < 10
+
+    x = 0
+    while x < 10 do puts x = x + 1 end
+
+    a = [1, 2, 3]
+    puts a.pop until a.empty?
+
+do-while gibi kullanmak,
+
+    !ruby
+    x = 10
+    begin
+      puts x
+      x = x - 1
+    end until x == 0
+---
+
+#   for
+
+Kod,
+
+    !ruby
+    for var in collection do
+      body
+    end
+
+Örnek,
+
+    !ruby
+    array = [1,2,3,4,5]
+    for element in array
+      puts element
+    end
+
+    hash = {a: 1, b: 2, c: 3}
+    for key, value in hash
+      puts "#{key} => #{value}"
+    end
+
+`each`'i tercih edin,
+
+    !ruby
+    hash = {a: 1, b: 2, c: 3}
+    hash.each do |key, value|
+      puts "#{key} => #{value}"
+    end
+
+---
+
+#   Iterator ve Enumerable
+
+Kod,
+
+    !ruby
+    41.times { puts "Maasalah" }
+    data.each {|x| puts x }
+    [1,2,3].map {|x| x * x }
+
+    factorial = 1
+    2.upto(n) {|x| factorial * = x }
+
+Burada
+- `times`, `each`, `map` ve `upto` yöntemleri birer iteratördür
+- _block_ ile etkileşime girer.
+- karmaşık yapının arkasında `yield` durur
+
+---
+
+#   yield
+
+`yield` ise iteratör içerisinde geçici olarak kontrol çağırana verilir
+
+![](http://i.imgur.com/AcaK5.png)
+
+---
+
+#   Sayısal Iteratorler
+
+`upto`,
+
+    !ruby
+    4.upto(6) {|x| print x} # => prints "456"
+
+benzer şekilde `downto`.
+
+`times`,
+
+    !ruby
+    3.times {|x| print x } # => prints "012"
+
+`step`: `0:0.1:PI`,
+
+    !ruby
+    0.step(Math::PI, 0.1) {|x| puts Math.sin(x) }
+
+---
+
+#   Enumerable
+
+`each`,
+
+    !ruby
+    [1,2,3].each {|x| print x } # => prints "123"
+    (1..3).each  {|x| print x } # => prints "123" Same as 1.upto(3)
+
+Input/Output,
+
+    !ruby
+    File.open(filename) do |f|    # Open named file, pass as f
+      f.each {|line| print line } # Print each line in f
+    end                           # End block and close file
+
+`each_with_index`,
+
+    !ruby
+    File.open(filename) do |f|
+      f.each_with_index do |line,number|
+        print "#{number}: #{line}"
+      end
+    end
+
+---
+
+#   Kafiyeleri
+
+`collect`: ~map,
+
+    !ruby
+    squares = [1,2,3].collect {|x| x * x} # => [1,4,9]
+
+`select`,
+
+    !ruby
+    evens = (1..10).select {|x| x%2 == 0} # => [2,4,6,8,10]
+
+`reject`,
+
+    !ruby
+    odds = (1..10).reject {|x| x%2 == 0} # => [1,3,5,7,9]
+
+`inject`,
+
+    !ruby
+    data = [2, 5, 3, 4]
+    sum = data.inject {|sum, x| sum + x }       # => 14 (2+5+3+4)
+
+    floatprod = data.inject(1.0) {|p,x| p * x } # => 120.0 (1.0 * 2 * 5 * 3 * 4)
+    max = data.inject {|m,x| m>x ? m : x }      # => 5 (largest element)
+
+---
+
+#   Sıra sizde
+
+- Faktoriyel
+- Fibonacci
+- Min
+- Mean
+
+---
+
+#   Iterator Yazma
+
+Yöntem içerisinde `yield` kullan ve çağrıda blok ile işle,
+
+    !ruby
+    def twice
+      yield
+      yield
+    end
+
+Örnek,
+
+    !ruby
+    # Görev: m * i + c, i=0..n-1
+    def sequence(n, m, c)
+      i = 0
+      while(i < n)
+        yield m * i + c
+        i += 1
+      end
+    end
+
+    sequence(3, 5, 1) {|y| puts y}
+
+---
+
+#   Iterator: circle
+
+Örnek,
+
+    !ruby
+    # Gorev: n noktali, (0,0)'da konumlu, r yaricapli cember
+    def circle(r, n)
+      n.times do |i|
+        angle = Math::PI * 2 * i / n
+        yield r * Math.cos(angle), r * Math.sin(angle)
+      end
+    end
+
+    circle(1, 4) {|x,y| printf "(%.2f, %.2f) ", x, y }
+    # (1.00, 0.00) (0.00, 1.00) (-1.00, 0.00) (-0.00, -1.00)
+
+---
+
+#   block_given?
+
+Bloğun olup-olmamasına göre işler yapmak,
+
+    !ruby
+    def sequence(n, m, c)
+      i, s = 0, []
+      while(i < n)
+        y = m * i + c
+        yield y if block_given?
+        s << y
+        i += 1
+      end
+      s
+    end
+
+burada,
+
+1. beşinci satırda ki `block_given?` a dikkat!
+2. dokuzuncu satırda ki `s` (~ return s)
+
+---
+
+#   Enumerator
+
+Kod,
+
+    !ruby
+    "hello".chars.map {|c| c.succ } # => ["i", "f", "m", "m", "p"]
+
+Enumarator'le,
+
+    !ruby
+    s = "hello"
+    s.enum_for(:each_char).map {|c| c.succ } # => ["i", "f", "m", "m", "p"]
+
+Neden?
+
+- String, Enumarable değildir!
+- `each_char, each_byte, each_line` olarak üç Iterator'e sahiptir
+
+---
+
+#   Kısa kısa
+
+Kod,
+
+    !ruby
+    enumerator = 3.times              # An enumerator object
+    enumerator.each {|x| print x }    # Prints "012"
+
+    # downto returns an enumerator with a select method
+    10.downto(1).select {|x| x%2==0}  # => [10,8,6,4,2]
+
+    # each_byte iterator returns an enumerator with a to_a method
+    "hello".each_byte.to_a            # => [104, 101, 108, 108, 111]
+
+Kısa kısa,
+
+    !ruby
+    > 3.times
+    #<Enumerator: ...>
+    > "hello".each_byte
+    #<Enumerator: ...>
+
+---
+
+#   Örnek
+
+Daha önce ki kodu refaktör edelim,
+
+    !ruby
+    def twice
+      if block_given?
+        yield
+        yield
+      else
+        self.to_enum(:twice)
+      end
+    end
+
+Test,
+
+    !ruby
+    > enum_for(:twice).map {"foo"}
+    => ["foo", "foo"]
+    > twice {"bar"}
+    => "bar"
+    > twice {p "baz"}
+    "baz"
+    "baz"
+
+---
+
+#   with_index
+
+`with_index`,
+
+    !ruby
+    > s = "abc"
+    > s.each_char
+    #<Enumerator: ...>
+    > s.each_char.with_index
+    #<Enumerator: ...>
+    > s.each_char.with_index.map {|c,i| p "s[#{i}] = #{c}" }
+    "s[0] = a"
+    "s[1] = b"
+    "s[2] = c"
+    => ["s[0] = a", "s[1] = b", "s[2] = c"]
+
+IO,
+
+    !ruby
+    for line, number in text.each_line.with_index
+      print "#{number+1}: #{line}"
+    end
+
+---
+
+#   External Iterator
+
+İstemci kontrol edebildiklerine _external_ diyoruz. `next` ve `StopIteration`,
+
+    !ruby
+    iterator = 9.downto(1)
+    begin
+      print iterator.next while true
+    rescue StopIteration
+      puts "..... piiisst!"
+    end
+
+`loop` ile güzelleştir,
+
+    !ruby
+    iterator = 9.downto(1)
+    loop do # StopIteration'e kadar
+      print iterator.next
+    end
+    puts "..... piiisst!"
+
+`rewind` bir çoğunda işe yarar
+
+---
+
+#   Üst seviye: Iterable + Enumerable
+
+Hedef,
+
+    !ruby
+    iterate(9.downto(1)) {|x| print x }
+
+Önce, Iterable'a each yeteneği kazandıralım,
+
+    !ruby
+    module Iterable
+      include Enumerable
+      def each
+        loop { yield self.next }
+      end
+    end
+
+Şimdi yöntemi tasarla,
+
+    !ruby
+    def iterate(iterator)
+      loop { yield iterator.next }
+    end
+
+Daha fazlası: s139: Example 5-1. Parallel iteration with external iterators
+
+---
+
+#   5.4 Bloklar
 
